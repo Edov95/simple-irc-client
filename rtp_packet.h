@@ -56,7 +56,7 @@ typedef struct {
   * @param port: il numero di porta del servizio
   * @param payload: il payload del pacchetto
   */
-RTP_Handler RTPCreate(unsigned int IP, int port, RTP_Payload payload);
+RTP_Handler* RTPCreate(unsigned int IP, int port, RTP_Payload payload);
 
 /**
   * @brief distruttore per la struttura RTP_Handler
