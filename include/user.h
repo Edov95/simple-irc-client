@@ -26,7 +26,7 @@ typedef struct {
 
 /**
   * @brief Lista concatenata per gestire gli utenti
-  * @details Implementazione di una lista doppiamente concatenata per gestie
+  * @details Implementazione di una lista doppiamente concatenata per gestire
       gli utenti connessi al server
   */
 typedef struct {
