@@ -7,9 +7,14 @@
 #ifndef __USER_H__
 #define __USER_H__
 
+#include <string.h>
+
+
 #ifndef __STRING__
 typedef string char*
 #endif
+
+
 
 /**
   * @brief Struttura per gestire gli utenti
@@ -32,12 +37,12 @@ typedef struct {
 typedef struct {
   User_list* next;
   User_list* prev;
-  User* user;
+  User* payload;
 } User_list;
 
 /**
   * @brief Aggiunge un utente alla lista
-  * @return -1 se l'utente non è stato inserito correttamente nella lista
+  * @return -1 se l'utente NON è stato inserito correttamente nella lista
   * @return diverso da -1 se l'utente è stato inserito correttamente
   */
 int add_user(User_list* list, User* u);
