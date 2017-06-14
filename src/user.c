@@ -97,3 +97,26 @@ User* remove_user_by_username(User_list* list, string username){
 
   return remove_user_by_id(list, temp->id);
 }
+
+int print_list(User_list *list) {
+    User_list *p = list;
+
+    if(list == NULL) {
+        printf("Empty List.\n");
+        return 0;
+    }
+    printf("User Node List.\n");
+    User *user = (User *) p->payload;
+    printf("\tName   : %s\n", user->name);
+    printf("\tID     : %d\n", user->id);
+    printf("\tChannel: %s\n", user->current_channel);
+    p = p->next;
+    while(p != NULL) {
+        user = (User *) p->payload;
+        printf("\tName   : %s\n", user->name);
+        printf("\tID     : %d\n", user->id);
+        printf("\tChannel: %s\n", user->current_channel);
+        p = p->next;
+    }
+    return 0;
+}

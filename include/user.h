@@ -93,5 +93,9 @@ User* find_by_id(User_list* list, int id);
   */
 User* find_by_username(User_list* list, string username);
 
+/**
+  * @brief Stampa la lista utenti
+  */
+int print_list(User_list* list);
 
 #endif
