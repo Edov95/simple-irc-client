@@ -10,11 +10,12 @@
 #define __USER_H__
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 
 
 #ifndef __STRING__
-typedef char* string
+typedef char* string;
 #endif
 
 
@@ -37,9 +38,9 @@ typedef struct {
   * @details Implementazione di una lista doppiamente concatenata per gestire
       gli utenti connessi al server
   */
-typedef struct {
-  User_list* next;
-  User_list* prev;
+typedef struct _User_list{
+  struct _User_list* next;
+  struct _User_list* prev;
   User* payload;
 } User_list;
 
