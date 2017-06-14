@@ -15,7 +15,7 @@ int add_user(User_list** list, User* user){
   } else {
     //inserimento in testa
     temp -> prev = NULL;
-    temp -> next = list;
+    temp -> next = *list;
     (*list) -> prev = temp;
   }
 
@@ -26,7 +26,7 @@ int add_user(User_list** list, User* user){
 
 /*FIND BY ID*/
 User* find_by_id(User_list* list, int id){
-  if (list == NULL) return NULL;
+  if (list == NULL) return NULL; // in teoria è inutile come controllo ma non mi fido
 
   User_list* temp = list;
 
@@ -59,18 +59,11 @@ User* find_by_username(User_list* list, string username){
 }
 
 /*REMOVE BY ID*/
-User* remove_user_by_id(User_list* list, int id){
-  if(list == NULL) return NULL;
+User* remove_user_by_id(User_list** list, int id){
+  if(*list == NULL) return NULL;
 
-  User_list* temp = list;
+  User_list* temp = *list;
 
-  /* lasciato in sospeso
-  if(temp -> payload -> id != id){
-    temp = temp -> next;
-  } else{
-
-  }
-  */
   //scorro la lista
   while (temp -> payload -> id != id) {
     if(temp -> next == NULL) {
@@ -80,9 +73,17 @@ User* remove_user_by_id(User_list* list, int id){
     }
   }
 
-  //rimozione del nodo dalla lista
-  temp -> prev -> next = temp -> next;
-  temp -> next -> prev = temp -> prev;
+  //caso in cui il nodo da rimuovere è il primo
+  if(temp -> prev == NULL){
+    temp -> next -> prev = NULL;
+    *list = *list -> next;
+  } else if(temp -> next == NULL){ //caso in cui il nodo da rimuovere è l'ultimo
+    temp -> prev -> next = NULL;   //anche qui in teoria funzionava senza
+                                   //esplicitare il caso
+  } else {
+    temp -> prev -> next = temp -> next;
+    temp -> next -> prev = temp -> prev;
+  }
 
   User* user = temp -> payload; //salvo l'utente
 
@@ -92,8 +93,8 @@ User* remove_user_by_id(User_list* list, int id){
 }
 
 /*REMOVE BY USERNAME*/
-User* remove_user_by_username(User_list* list, string username){
-  if(list == NULL || username == NULL) return NULL;
+User* remove_user_by_username(User_list** list, string username){
+  if(*list == NULL || username == NULL) return NULL;
 
   /*Al posto di iterare la lista sfrutto la funzione find_by_username
   per trovare l'utende da eliminare e poi, grazie alla finzione

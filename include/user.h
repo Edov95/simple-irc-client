@@ -4,7 +4,7 @@
   * @date 12 Giugno 2017
   * @brief File per gestire gli utenti collegati al server
   * @todo Creare un test per la lista
-  * @todo Create la documentazione
+  * @todo Creare la documentazione
   */
 #ifndef __USER_H__
 #define __USER_H__
@@ -59,7 +59,7 @@ int add_user(User_list** list, User* u);
       l'oggetto e contemporaneamente lo rimuove dalla lista ma NON libera
       l'area di memoria occupata
   */
-User* remove_user_by_id(User_list* list, int id);
+User* remove_user_by_id(User_list** list, int id);
 
 /**
   * @brief Rimuove un utente dalla lista dato lo username
@@ -71,7 +71,7 @@ User* remove_user_by_id(User_list* list, int id);
       l'oggetto e contemporaneamente lo rimuove dalla lista ma NON libera
       l'area di memoria occupata
   */
-User* remove_user_by_username(User_list* list, string username);
+User* remove_user_by_username(User_list** list, string username);
 
 /**
   * @brief Trova un utende usando il suo identificativo
