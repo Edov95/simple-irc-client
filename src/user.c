@@ -2,7 +2,8 @@
 
 /*ADD USER*/
 int add_user(User_list** list, User* user){
-  if( find_by_id(*list,user->id) != NULL ) // L'utente è già presente nella lista
+  // Utente nullo o già presente
+  if(user == NULL || find_by_id(*list,user->id) != NULL )
     return -1;
 
   User_list* temp = malloc(sizeof(User_list)); // allocazione memoria
