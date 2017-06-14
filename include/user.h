@@ -47,7 +47,7 @@ typedef struct {
   * @return -1 se l'utente NON è stato inserito correttamente nella lista
   * @return diverso da -1 se l'utente è stato inserito correttamente
   */
-int add_user(User_list* list, User* u);
+int add_user(User_list** list, User* u);
 
 /**
   * @brief Rimuove un utente dalla lista dato l'identificatore

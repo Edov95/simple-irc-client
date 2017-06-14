@@ -1,26 +1,32 @@
 #include "../include/user.h"
 
 /*ADD USER*/
-int add_user(User_list* list, User* user){
-  if( find_by_id(list,user->id) != NULL ) // L'utente è già presente nella lista
+int add_user(User_list** list, User* user){
+  if( find_by_id(_list,user->id) != NULL ) // L'utente è già presente nella lista
     return -1;
 
   User_list* temp = malloc(sizeof(User_list)); // allocazione memoria
   temp -> payload = user; // inserisco l'utene nel nodo di lista
 
-  //inserimento in testa
-  temp -> prev = NULL;
-  temp -> next = list;
-  list -> prev = temp;
+  //gestisco il caso critico: il primo inserimento
+  if(list == NULL){
+    temp -> prev = NULL;
+    temp -> next = NULL;
+  } else {
+    //inserimento in testa
+    temp -> prev = NULL;
+    temp -> next = list;
+    (*list) -> prev = temp;
+  }
 
-  list = temp; // riassegnazione della testa della lista
+  *list = temp; // riassegnazione della testa della lista
 
   return 1; // ritorno di successo
 }
 
 /*FIND BY ID*/
 User* find_by_id(User_list* list, int id){
-  if (list != NULL) return NULL;
+  if (list == NULL) return NULL;
 
   User_list* temp = list;
 
@@ -37,7 +43,7 @@ User* find_by_id(User_list* list, int id){
 
 /*FIND BY USERNAME*/
 User* find_by_username(User_list* list, string username){
-  if (list != NULL || username == NULL ) return NULL;
+  if (list == NULL || username == NULL ) return NULL;
 
   User_list* temp = list;
 
@@ -79,7 +85,7 @@ User* remove_user_by_id(User_list* list, int id){
 }
 
 /*REMOVE BY USERNAME*/
-User* remove_user_by_username(User_list list, string username){
+User* remove_user_by_username(User_list* list, string username){
   if(list == NULL || username == NULL) return NULL;
 
   /*Al posto di iterare la lista sfrutto la funzione find_by_username
