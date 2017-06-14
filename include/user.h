@@ -9,6 +9,7 @@
 #ifndef __USER_H__
 #define __USER_H__
 
+#include <stdlib.h>
 #include <string.h>
 
 
