@@ -1,4 +1,4 @@
-#include "../include/user.h"
+#include "user.h"
 
 /*ADD USER*/
 int add_user(User_list** list, User* user){
