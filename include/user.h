@@ -13,7 +13,7 @@
 
 
 #ifndef __STRING__
-typedef string char*
+typedef char* string
 #endif
 
 
