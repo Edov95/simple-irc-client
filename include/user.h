@@ -44,6 +44,7 @@ typedef struct {
 
 /**
   * @brief Aggiunge un utente alla lista
+  * @param list puntatore doppio alla lista di utenti, la lista viene modificata
   * @return -1 se l'utente NON è stato inserito correttamente nella lista
   * @return diverso da -1 se l'utente è stato inserito correttamente
   */
@@ -51,7 +52,7 @@ int add_user(User_list** list, User* u);
 
 /**
   * @brief Rimuove un utente dalla lista dato l'identificatore
-  * @param list puntatore alla lista di utenti
+  * @param list puntatore doppio alla lista di utenti, la lista viene modificata
   * @param id identificatore univoco dell'utente
   * @return il puntatore all'utente se trovato, altrimenti puntatore nullo
   * @details La funzione cerca l'utente con id passato come parametro e se
@@ -63,7 +64,7 @@ User* remove_user_by_id(User_list** list, int id);
 
 /**
   * @brief Rimuove un utente dalla lista dato lo username
-  * @param list puntatore alla lista di utenti
+  * @param list puntatore doppio alla lista di utenti, la lista viene modificata
   * @param username identificatore univoco dell'utente
   * @return il puntatore all'utente se trovato, altrimenti puntatore nullo
   * @details La funzione cerca l'utente con username passato come parametro e se
