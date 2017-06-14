@@ -31,14 +31,14 @@ User* find_by_id(User_list* list, int id){
   User_list* temp = list;
 
   //scorro la lista
-  while (temp -> payload -> id != id) {
-    if(temp -> next == NULL) {
-      return NULL;
-    } else {
-      temp = temp -> next;
+  while (temp != NULL) {
+    if(temp -> payload -> id == id){
+      return temp -> payload;
     }
+    temp = temp -> next;
   }
-  return temp -> payload;
+
+  return NULL;
 }
 
 /*FIND BY USERNAME*/
@@ -48,14 +48,14 @@ User* find_by_username(User_list* list, string username){
   User_list* temp = list;
 
   //scorro la lista
-  while (strcmp(temp -> payload -> username, username) != 0) {
-    if(temp -> next == NULL) {
-      return NULL;
-    } else {
-      temp = temp -> next;
+  while (temp != NULL) {
+    if(strcmp(temp -> payload -> username, username) == 0) {
+      return temp -> payload;
     }
+    temp = temp -> next;
   }
-  return temp -> payload;
+
+  return NULL;
 }
 
 /*REMOVE BY ID*/
@@ -64,6 +64,13 @@ User* remove_user_by_id(User_list* list, int id){
 
   User_list* temp = list;
 
+  /* lasciato in sospeso
+  if(temp -> payload -> id != id){
+    temp = temp -> next;
+  } else{
+
+  }
+  */
   //scorro la lista
   while (temp -> payload -> id != id) {
     if(temp -> next == NULL) {
@@ -98,6 +105,7 @@ User* remove_user_by_username(User_list* list, string username){
   return remove_user_by_id(list, temp->id);
 }
 
+/*PRINT LIST*/
 int print_list(User_list *list) {
     User_list *p = list;
 
