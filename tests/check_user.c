@@ -7,17 +7,46 @@ START_TEST(test_user_list){
 
   User_list* list = NULL;
 
-  printf("%i\n", &list);
-
   User* u = NULL;
 
   ck_assert_int_eq(add_user(&list,u),-1);
 
   // popolo la lista
-  for (size_t i = 0; i < 10; i++) {
+  for (size_t i = 0; i < 20; i++) {
     u = malloc(sizeof(User));
     u -> id = i;
     ck_assert_int_eq(add_user(&list,u),1);
+  }
+
+  //rimozione dei nodi centrali
+  for (size_t i = 1; i < 19; i++) {
+    u = remove_user_by_id(&list,i);
+    ck_assert_msg(u != NULL,"Errore in rimozione");
+    free(u);
+  }
+
+  //rimozione in testa
+  u = remove_user_by_id(&list,19);
+  ck_assert_msg(u != NULL,"Errore in rimozione");
+  free(u);
+
+  //rimozione quando ho un solo nodo
+  u = remove_user_by_id(&list,0);
+  ck_assert_msg(u != NULL,"Errore in rimozione");
+  free(u);
+
+  // ripopolo la lista
+  for (size_t i = 0; i < 20; i++) {
+    u = malloc(sizeof(User));
+    u -> id = i;
+    ck_assert_int_eq(add_user(&list,u),1);
+  }
+
+  //rimozione in coda
+  for (size_t i = 0; i < 20; i++) {
+    u = remove_user_by_id(&list,i);
+    ck_assert_msg(u != NULL,"Errore in rimozione");
+    free(u);
   }
 
 }END_TEST
