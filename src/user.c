@@ -66,7 +66,7 @@ User* remove_user_by_id(User_list** list, int id){
 
   User_list* temp = *list;
 
-  //scorro la lista
+  //scorro la lista per portarmi all'utente scelto
   while (temp -> payload -> id != id) {
     if(temp -> next == NULL) {
       return NULL;
@@ -75,13 +75,13 @@ User* remove_user_by_id(User_list** list, int id){
     }
   }
 
-  //caso in cui il nodo da rimuovere è il primo
-  if(temp -> prev == NULL){
+  if(temp -> next == NULL && temp -> prev == NULL){ //c'è un solo nodo
+    (*list) = NULL;
+  } else if(temp -> prev == NULL){ //caso in cui il nodo da rimuovere è il primo
     temp -> next -> prev = NULL;
     *list = (*list) -> next;
-  } else if(temp -> next == NULL){ //caso in cui il nodo da rimuovere è l'ultimo
-    temp -> prev -> next = NULL;   //anche qui in teoria funzionava senza
-                                   //esplicitare il caso
+  } else if(temp -> next == NULL) { //devo rimuovere l'ultimo
+    temp -> prev -> next = NULL;
   } else {
     temp -> prev -> next = temp -> next;
     temp -> next -> prev = temp -> prev;
