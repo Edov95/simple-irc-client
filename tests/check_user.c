@@ -17,7 +17,7 @@ START_TEST(test_user_list){
   for (size_t i = 0; i < 10; i++) {
     u = malloc(sizeof(User));
     u -> id = i;
-    ck_assert_int_eq(add_user(&list,u),-1);
+    ck_assert_int_eq(add_user(&list,u),1);
   }
 
 }END_TEST

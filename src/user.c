@@ -3,7 +3,7 @@
 /*ADD USER*/
 int add_user(User_list** list, User* user){
   // Utente nullo o già presente
-  if(user == NULL || find_by_id(*list,user->id) != NULL ){
+  if(user == NULL || find_by_id(*list,user->id) != NULL){
     return -1;
   }
 
@@ -11,7 +11,7 @@ int add_user(User_list** list, User* user){
   temp -> payload = user; // inserisco l'utene nel nodo di lista
 
   //gestisco il caso critico: il primo inserimento
-  if(list == NULL){
+  if(*list == NULL){
     temp -> prev = NULL;
     temp -> next = NULL;
   } else {
