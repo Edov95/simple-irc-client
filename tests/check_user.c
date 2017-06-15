@@ -5,7 +5,19 @@
 
 START_TEST(test_user_list){
 
+  User_list* list = NULL;
 
+  printf("%i\n", &list);
+
+  User* u = NULL;
+
+  ck_assert_int_eq(add_user(&list,u),-1);
+
+  // popolo la lista
+  for (size_t i = 0; i < 10; i++) {
+    u = malloc(sizeof(User));
+    ck_assert_int_eq(add_user(&list,u),-1);
+  }
 
 }END_TEST
 
