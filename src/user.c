@@ -3,8 +3,9 @@
 /*ADD USER*/
 int add_user(User_list** list, User* user){
   // Utente nullo o già presente
-  if(user == NULL || find_by_id(*list,user->id) != NULL )
+  if(user == NULL || find_by_id(*list,user->id) != NULL ){
     return -1;
+  }
 
   User_list* temp = malloc(sizeof(User_list)); // allocazione memoria
   temp -> payload = user; // inserisco l'utene nel nodo di lista
