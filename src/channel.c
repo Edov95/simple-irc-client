@@ -3,7 +3,7 @@
 /*ADD Channel*/
 int add_channel(Channel_list** list, Channel* c){
   // Canale nullo o già presente
-  if(c == NULL || find_channel(*list,channel->name) != NULL){
+  if(c == NULL || find_channel(*list,c->name) != NULL){
     return -1;
   }
 

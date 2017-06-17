@@ -40,7 +40,7 @@ typedef struct _Channel_list{
   * @return -1 se il canale NON è stato inserito correttamente nella lista
   * @return diverso da -1 se il canale è stato inserito correttamente
   */
-int add_user(Channel_list** list, Channel* c);
+int add_channel(Channel_list** list, Channel* c);
 
 /**
   * @brief Rimuove un canale dalla lista
