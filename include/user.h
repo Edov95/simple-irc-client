@@ -31,8 +31,8 @@ typedef char* string;
   */
 typedef struct {
   string name;
+  string hostname;
   int id;
-  string curr_channel;
   int socket;
 } User;
 
