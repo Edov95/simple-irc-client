@@ -5,3 +5,4 @@ add_executable(irc_server main.c)
 
 target_link_libraries(irc_server LINK_PUBLIC user_lib)
 target_link_libraries(irc_server LINK_PUBLIC channel_lib)
+target_link_libraries(channel_lib LINK_PUBLIC user_lib)

@@ -1,4 +1,5 @@
 #include "channel.h"
+#include "user.h"
 
 /*ADD Channel*/
 int add_channel(Channel_list** list, Channel* c){
@@ -102,7 +103,7 @@ void print_list_channel_and_users(Channel_list* list){
   while(list != NULL){
     printf("Channel name's: %s\n", list -> payload -> name );
     printf("User in channel: \n");
-    print_list(c -> users);
+    print_list(list -> payload -> users);
     list = list -> next;
   }
 }
