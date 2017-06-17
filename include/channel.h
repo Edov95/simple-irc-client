@@ -69,5 +69,19 @@ Channel* remove_channel(Channel_list** list, string name);
   */
 Channel* find_channel(Channel_list* list, string name);
 
+/**
+  * @brief Stampa la lista dei canali
+  */
+void print_list_channel(Channel_list* list);
+
+/**
+  * @brief Stampa la lista utenti per il canale selezionato
+  */
+void print_users_in_channel(Channel* c);
+
+/**
+  * @brief Stampa la lista degli utenti in ogni canale
+  */
+void print_list_channel_and_users(Channel_list* list);
 
 #endif

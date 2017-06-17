@@ -76,3 +76,33 @@ Channel* remove_channel(Channel_list** list, string name){
 
   return chan; //ritoro l'utente
 }
+
+/*PRITN LIST IN CHANNEL*/
+void print_list_channel(Channel_list* list) {
+  if(list == NULL) return;
+  while(list != NULL){
+    printf("Channel name's: %s\n", list -> payload -> name );
+    list = list -> next;
+  }
+}
+
+/*PRINT USERS IN CHANNEL*/
+void print_users_in_channel(Channel* c){
+  if(c == NULL) return;
+  printf("Channel name's: %s\n", c -> name );
+  printf("User in channel: \n");
+  print_list(c -> users);
+}
+
+/*PRINT LIST CHANNEL AND USERS*/
+void print_list_channel_and_users(Channel_list* list){
+  if(list == NULL) return;
+
+  if(list == NULL) return;
+  while(list != NULL){
+    printf("Channel name's: %s\n", list -> payload -> name );
+    printf("User in channel: \n");
+    print_list(c -> users);
+    list = list -> next;
+  }
+}
