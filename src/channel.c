@@ -1,0 +1,78 @@
+#include "channel.h"
+
+/*ADD Channel*/
+int add_channel(Channel_list** list, Channel* c){
+  // Canale nullo o già presente
+  if(c == NULL || find_channel(*list,channel->name) != NULL){
+    return -1;
+  }
+
+  Channel_list* temp = malloc(sizeof(Channel_list)); // allocazione memoria
+  temp -> payload = c; // inserisco il canale nel nodo di lista
+
+  //gestisco il caso critico: il primo inserimento
+  if(*list == NULL){
+    temp -> prev = NULL;
+    temp -> next = NULL;
+  } else {
+    //inserimento in testa
+    temp -> prev = NULL;
+    temp -> next = *list;
+    (*list) -> prev = temp;
+  }
+
+  *list = temp; // riassegnazione della testa della lista
+
+  return 1; // ritorno di successo
+}
+
+/*FIND CHANNEL*/
+Channel* find_channel(Channel_list* list, string name){
+  if (list == NULL || name == NULL ) return NULL;
+
+  Channel_list* temp = list;
+
+  //scorro la lista
+  while (temp != NULL) {
+    if(strcmp(temp -> payload -> name, name) == 0) {
+      return temp -> payload;
+    }
+    temp = temp -> next;
+  }
+
+  return NULL;
+}
+
+/*REMOVE *CHANNEL*/
+Channel* remove_channel(Channel_list** list, string name){
+  if(*list == NULL) return NULL;
+
+  Channel_list* temp = *list;
+
+  //scorro la lista per portarmi all'utente scelto
+  while (strcmp(temp -> payload -> name, name) != 0) {
+    if(temp -> next == NULL) {
+      return NULL;
+    } else {
+      temp = temp -> next;
+    }
+  }
+
+  if(temp -> next == NULL && temp -> prev == NULL){ //c'è un solo nodo
+    (*list) = NULL;
+  } else if(temp -> prev == NULL){ //caso in cui il nodo da rimuovere è il primo
+    temp -> next -> prev = NULL;
+    *list = (*list) -> next;
+  } else if(temp -> next == NULL) { //devo rimuovere l'ultimo
+    temp -> prev -> next = NULL;
+  } else {
+    temp -> prev -> next = temp -> next;
+    temp -> next -> prev = temp -> prev;
+  }
+
+  Channel* chan = temp -> payload; //salvo l'utente
+
+  free(temp); // libero la cella di memoria puntata
+
+  return chan; //ritoro l'utente
+}

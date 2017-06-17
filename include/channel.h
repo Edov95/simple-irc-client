@@ -30,7 +30,7 @@ typedef struct {
 typedef struct _Channel_list{
   struct _Channel_list *prev;
   struct _Channel_list *next;
-  Channel* chan;
+  Channel* payload;
 }Channel_list;
 
 /**
