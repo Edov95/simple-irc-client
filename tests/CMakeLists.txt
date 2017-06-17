@@ -16,8 +16,8 @@ set(CHECK_INSTALL_DIR "/bin/share/check/")
 find_package(Check REQUIRED)
 include_directories(${CHECK_INCLUDE_DIRS})
 
-set(TEST_SOURCES check_user.c)
+set(TEST_SOURCES check_channel.c)
 
 
-add_executable(check_user ${TEST_SOURCES})
-target_link_libraries(check_user user_lib ${CHECK_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+add_executable(check_channel ${TEST_SOURCES})
+target_link_libraries(check_channel channel_lib ${CHECK_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})

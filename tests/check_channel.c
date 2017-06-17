@@ -12,7 +12,6 @@ START_TEST(test_channel_list){
   ck_assert(add_channel(&list,c) == -1);
   // popolo la lista
   for (int i = 0; i < 20; i++) {
-    printf("%i\n",i );
     c = malloc(sizeof(Channel));
     c -> name = malloc(1024*sizeof(char));
     sprintf(c -> name,"%c%i",'#', i);
@@ -41,7 +40,6 @@ START_TEST(test_channel_list){
 
   // ripopolo la lista
   for (int i = 0; i < 20; i++) {
-    printf("%i\n",i );
     c = malloc(sizeof(Channel));
     c -> name = malloc(1024*sizeof(char));
     sprintf(c -> name,"%c%i",'#', i);
