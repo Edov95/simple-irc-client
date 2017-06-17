@@ -9,16 +9,18 @@
 #ifndef __USER_H__
 #define __USER_H__
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-
 
 #ifndef __STRING__
 #define __STRING__
 typedef char* string;
 #endif
 
+#define USER(OBJ) ((User*)(OBJ))
+#define USER_LIST(OBJ) ((User_list*)(OBJ))
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
 
 /**

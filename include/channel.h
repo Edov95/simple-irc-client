@@ -12,6 +12,10 @@
 typedef char* string;
 #endif
 
+
+#define CHANNEL(OBJ) ((Channel*)(OGJ))
+#define CHANNEL_LIST(OBJ) ((Channel_list*)(OBJ))
+
 #include "user.h"
 #include <stdlib.h>
 
@@ -24,6 +28,7 @@ typedef struct {
   User_list* users;
 }Channel;
 
+
 /**
   * @brief Struttura per collezionare i canali nel server
   */
@@ -32,6 +37,7 @@ typedef struct _Channel_list{
   struct _Channel_list *next;
   Channel* payload;
 }Channel_list;
+
 
 /**
   * @brief Aggiunge un canale alla lista
