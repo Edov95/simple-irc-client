@@ -37,6 +37,16 @@ typedef struct {
 } User;
 
 /**
+  * @brief Inizializza un oggetto utente
+  */
+User* create_user(char name[9], string hostname, int id, int socket);
+
+/**
+  * @brief Cambia il nome all'utente
+  */
+int change_name(User* u, char name[9]);
+
+/**
   * @brief Lista concatenata per gestire gli utenti
   * @details Implementazione di una lista doppiamente concatenata per gestire
       gli utenti connessi al server

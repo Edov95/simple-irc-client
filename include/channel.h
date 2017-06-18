@@ -28,6 +28,15 @@ typedef struct {
   User_list* users;
 }Channel;
 
+/**
+  * @brief Crea un canale date un nome del canale
+  */
+Channel* create_channel(string name);
+
+/**
+  * @brief Aggiunge un utente al canale
+  */
+int add_user(Channel* c, User* c);
 
 /**
   * @brief Struttura per collezionare i canali nel server
