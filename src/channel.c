@@ -1,6 +1,20 @@
 #include "channel.h"
 #include "user.h"
 
+/*CREATE CHANNEL*/
+Channel* create_channel(string name){
+  Channel* c = malloc(sizeof(Channel));
+  c -> name = malloc(strlen(name) + 1);
+  strcpy(c -> name, name);
+  c -> list = NULL;
+}
+
+/*ADD USER*/
+int add_user(Channel** c,User* u){
+  if(*c == NULL) return -1;
+  return add_user(&c,u);
+}
+
 /*ADD Channel*/
 int add_channel(Channel_list** list, Channel* c){
   // Canale nullo o già presente

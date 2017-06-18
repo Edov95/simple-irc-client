@@ -1,5 +1,27 @@
 #include "user.h"
 
+/*CREAT USER*/
+User* create_user(char name[9], string hostname,int id, int socket){
+
+  User* u =  malloc(sizeof(User));
+
+  u -> name = malloc(9*sizeof(char));
+  u -> hostname = malloc(strlen(hostname) + 1);
+  strcpy(u -> name, name);
+  strcpy(u -> hostname, hostname);
+  u -> id = id;
+  u -> socket = socket;
+
+  return u;
+}
+
+/*CHANGE NAME*/
+int change_name(User** u, char name[9]){
+  free(u -> name);
+  u -> name = malloc(9*sizeof(char));
+  strcpy(u -> name, name);
+}
+
 /*ADD USER*/
 int add_user(User_list** list, User* user){
   // Utente nullo o già presente
