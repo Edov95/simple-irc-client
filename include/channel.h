@@ -36,7 +36,7 @@ Channel* create_channel(string name);
 /**
   * @brief Aggiunge un utente al canale
   */
-int add_user(Channel** c, User* c);
+int add_user_to_channel(Channel** c, User* u);
 
 /**
   * @brief Struttura per collezionare i canali nel server

@@ -6,13 +6,13 @@ Channel* create_channel(string name){
   Channel* c = malloc(sizeof(Channel));
   c -> name = malloc(strlen(name) + 1);
   strcpy(c -> name, name);
-  c -> list = NULL;
+  c -> users = NULL;
 }
 
 /*ADD USER*/
-int add_user(Channel** c,User* u){
+int add_user_to_channel(Channel** c,User* u){
   if(*c == NULL) return -1;
-  return add_user(&c,u);
+  return add_user(&((*c) -> users),u);
 }
 
 /*ADD Channel*/

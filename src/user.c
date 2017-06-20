@@ -17,9 +17,9 @@ User* create_user(char name[9], string hostname,int id, int socket){
 
 /*CHANGE NAME*/
 int change_name(User** u, char name[9]){
-  free(u -> name);
-  u -> name = malloc(9*sizeof(char));
-  strcpy(u -> name, name);
+  free((*u) -> name);
+  (*u) -> name = malloc(9*sizeof(char));
+  strcpy((*u) -> name, name);
 }
 
 /*ADD USER*/
