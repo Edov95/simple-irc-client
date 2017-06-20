@@ -6,8 +6,7 @@
 #include <unistd.h>
 #include "user.h"
 #include "channel.h"
-
-#define MAXUSER 15 //va esterna
+#include "util.h"
 
 /*
   - inizializzare il socket
