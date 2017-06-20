@@ -10,6 +10,7 @@
 
 ///@brief impone un numero massimo di utenti che si possono collegare al server
 #define MAXUSER 15
+#define NOME_FAKE "enjoy"
 
 ///@brief lista globale per contenente tutti gli utenti del presenti nel server
 User_list* main_user_list;
