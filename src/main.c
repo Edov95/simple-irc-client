@@ -22,7 +22,7 @@ int main(int argc, char const *argv[]) {
   struct sockaddr_in server_address;
   struct sockaddr_in client_address;
   socklen_t client_address_size = sizeof(client_address);
-  int count = 0, u_id = 1000;
+  int u_id = 1000;
 
   User* new_user;
 
@@ -53,6 +53,7 @@ int main(int argc, char const *argv[]) {
   printf("[Premi Ctrl+C per uscire.]\n");
 
   while(1){
+    //accept non è all'interno dell'if di decisione perché è una funzione bloccante
     if ((user_socket = accept(server_socket,
                             (struct sockaddr *) &client_address,
                             &client_address_size)) == -1 ) {
@@ -70,9 +71,9 @@ int main(int argc, char const *argv[]) {
       u_id = u_id + 1; //incrementa il contatore degli id
       pthread_mutex_lock(&main_user_list_mutex);
       add_user(&main_user_list,new_user);
+      count = count + 1; //va a braccetto con la lista, deve andare qui
       pthread_mutex_unlock(&main_user_list_mutex);
-      count = count + 1;
-    } else { //troppi utenti, libero l'utente
+    } else { //troppi utenti glielo dico
       //send_connection_refuse(user_socket);
     }
 
