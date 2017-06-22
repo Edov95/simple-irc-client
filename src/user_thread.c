@@ -18,6 +18,11 @@ void user_thread(User* u){
     while (command != NULL) {
       printf("L'utente: %i ha inviato il comando: %s\n",u -> id, command);
       /*Qui parte lo switch di comparazaione con i comandi conosciuti*/
+      command = strtok(NULL, " \t\r\n/");
     }
+
+    pthread_mutex_lock(&u->socket_mutex);
+    n = read(u->socket, recvline, MAXLINE);
+    pthread_mutex_unlock(&u->socket_mutex);
   }
 }

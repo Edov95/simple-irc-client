@@ -26,6 +26,7 @@ int main(int argc, char const *argv[]) {
 
   User* new_user;
 
+  count = 0;// inizializzo a zero il contator di utenti
 
   printf("Hello, Word\n");
 

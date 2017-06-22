@@ -13,7 +13,7 @@
 #define NOME_FAKE "enjoy"
 
 ///@brief contatore per la lista utenti
-int count = 0;
+int count;
 ///@brief lista globale per contenente tutti gli utenti del presenti nel server
 User_list* main_user_list;
 ///@brief semaforo per la lista utenti, evita malfunzionamenti dalla programmazione concorrente
