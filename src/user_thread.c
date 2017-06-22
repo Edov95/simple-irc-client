@@ -3,11 +3,12 @@
 void user_thread(User* u){
   char recvline[MAXLINE + 1];
   char* line = malloc((MAXLINE + 1) * sizeof(char));
-  char send_line = malloc((MAXLINE + 1) * sizeof(char));
+  char* send_line = malloc((MAXLINE + 1) * sizeof(char));
+  char* command;
   ssize_t n;
 
   pthread_mutex_lock(&(u -> socket_mutex));
-  n = read(&u -> socket, recvline, MAXLINE);
+  n = read(u -> socket, recvline, MAXLINE);
   pthread_mutex_unlock(&(u -> socket_mutex));
 
   while(n > 0){

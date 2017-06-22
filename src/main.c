@@ -7,6 +7,7 @@
 #include "user.h"
 #include "channel.h"
 #include "util.h"
+#include "user_thread.h"
 
 /*
   - inizializzare il socket
@@ -68,14 +69,14 @@ int main(int argc, char const *argv[]) {
 
       u_id = u_id + 1; //incrementa il contatore degli id
       pthread_mutex_lock(&main_user_list_mutex);
-      add_user(main_user_list,new_user);
+      add_user(&main_user_list,new_user);
       pthread_mutex_unlock(&main_user_list_mutex);
       count = count + 1;
     } else { //troppi utenti, libero l'utente
-      send_connection_refuse(user_socket);      
+      //send_connection_refuse(user_socket);
     }
 
-    pthread_create(&(new_user -> thread), NULL, (void* (*) (void*)) user_thread, new_user);
+    pthread_create(&(new_user -> thread), NULL, (void* (*)(void*))user_thread, new_user);
 
   }
 
