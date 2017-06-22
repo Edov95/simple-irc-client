@@ -21,13 +21,8 @@ int main(int argc, char const *argv[]) {
   struct sockaddr_in server_address;
   struct sockaddr_in client_address;
   socklen_t client_address_size = sizeof(client_address);
-  unsigned int count = 1000;
+  int count = 0, u_id = 1000;
 
-  /*int n;
-  char recvline[4096+1];
-  char* line;
-  line = malloc(4096+1);
-  char* command;*/
   User* new_user;
 
 
@@ -64,25 +59,23 @@ int main(int argc, char const *argv[]) {
       exit(5);
     }
 
-    new_user = create_user( NOME_FAKE,
-                            inet_ntoa(client_address.sin_addr),
-                            count,
-                            user_socket);
+    // aggiunge l'utente alla lista se permesso
+    if(count < MAXUSER){
+      new_user = create_user( NOME_FAKE,
+                              inet_ntoa(client_address.sin_addr),
+                              u_id,
+                              user_socket);
 
-    count = count + 1; //incrementa il contatore degli id
+      u_id = u_id + 1; //incrementa il contatore degli id
+      pthread_mutex_lock(&main_user_list_mutex);
+      add_user(main_user_list,new_user);
+      pthread_mutex_unlock(&main_user_list_mutex);
+      count = count + 1;
+    } else { //troppi utenti, libero l'utente
+      send_connection_refuse(user_socket);      
+    }
 
-    //aggiunge l'utente alla lista utenti
-    pthread_mutex_lock(&main_user_list_mutex);
-    add_user(main_user_list,new_user);
-    pthread_mutex_unlock(&main_user_list_mutex);
-
-
-/*
-    n = read(user_socket, recvline, 4096);
-    recvline[n] = 0;
-    line = strcpy(line, recvline);
-    //command = strtok(line, " \t\r\n/");
-    printf("[L'utente ha inviato il comando \"%s\"]\n",line);*/
+    pthread_create(&(new_user -> thread), NULL, (void* (*) (void*)) user_thread, new_user);
 
   }
 

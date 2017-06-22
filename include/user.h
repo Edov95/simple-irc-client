@@ -34,6 +34,8 @@ typedef struct {
   string hostname;
   int id;
   int socket;
+  pthread_mutex_t socket_mutex;
+  pthread_t thread;
 } User;
 
 /**

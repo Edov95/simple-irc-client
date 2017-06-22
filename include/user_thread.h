@@ -14,6 +14,8 @@
 #include "channel.h"
 #include "util.h"
 
+#define MAXLINE 4096
+
 
 /**
   * @brief Gestice i comandi arrivati dagli utenti connessi
