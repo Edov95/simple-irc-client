@@ -1,4 +1,5 @@
 #include "user_thread.h"
+#include "commands.h"
 
 void user_thread(User* u){
   char recvline[MAXLINE + 1];
