@@ -1,11 +1,11 @@
 #include "user.h"
 
 /*CREAT USER*/
-User* create_user(char name[9], string hostname,int id, int socket){
+User* create_user(string name, string hostname,int id, int socket){
 
   User* u =  malloc(sizeof(User));
 
-  u -> name = malloc(9*sizeof(char));
+  u -> name = malloc(strlen(name));
   u -> hostname = malloc(strlen(hostname) + 1);
   strcpy(u -> name, name);
   strcpy(u -> hostname, hostname);
@@ -16,9 +16,9 @@ User* create_user(char name[9], string hostname,int id, int socket){
 }
 
 /*CHANGE NAME*/
-int change_name(User** u, char name[9]){
+int change_name(User** u, string name){
   free((*u) -> name);
-  (*u) -> name = malloc(9*sizeof(char));
+  (*u) -> name = malloc(strlen(name));
   strcpy((*u) -> name, name);
 }
 

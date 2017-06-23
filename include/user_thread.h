@@ -13,6 +13,8 @@
 #include "user.h"
 #include "channel.h"
 #include "util.h"
+#include "commands.h"
+#include "user_commands.h"
 
 #define MAXLINE 4096
 

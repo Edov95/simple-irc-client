@@ -1,5 +1,4 @@
 #include "user_thread.h"
-#include "commands.h"
 
 void user_thread(User* u){
   char recvline[MAXLINE + 1];
@@ -19,6 +18,16 @@ void user_thread(User* u){
     while (command != NULL) {
       printf("L'utente: %i ha inviato il comando: %s\n",u -> id, command);
       /*Qui parte lo switch di comparazaione con i comandi conosciuti*/
+      if(strcmp(command,NICK) == 0){
+        //call command nick
+      } else if(strcmp(command,USER) == 0){
+        //call command USER
+      } else if(strcmp(command,JOIN) == 0){
+        //call command join
+      } else {
+        //call command not admitted
+      }
+
       command = strtok(NULL, " \t\r\n/");
     }
 

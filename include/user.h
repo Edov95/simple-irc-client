@@ -41,12 +41,12 @@ typedef struct {
 /**
   * @brief Inizializza un oggetto utente
   */
-User* create_user(char name[9], string hostname, int id, int socket);
+User* create_user(string name, string hostname, int id, int socket);
 
 /**
   * @brief Cambia il nome all'utente
   */
-int change_name(User** u, char name[9]);
+int change_name(User** u, string name);
 
 /**
   * @brief Lista concatenata per gestire gli utenti
