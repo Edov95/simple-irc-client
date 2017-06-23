@@ -16,8 +16,6 @@
 #include "commands.h"
 #include "user_commands.h"
 
-#define MAXLINE 4096
-
 
 /**
   * @brief Gestice i comandi arrivati dagli utenti connessi
