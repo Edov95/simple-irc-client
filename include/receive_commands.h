@@ -9,6 +9,7 @@
 
 #include "user.h"
 #include "channel.h"
+#include "util.h"
 
 /**
   * @brief Cambia il nickname

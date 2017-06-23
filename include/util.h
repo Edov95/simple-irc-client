@@ -11,6 +11,7 @@
 ///@brief impone un numero massimo di utenti che si possono collegare al server
 #define MAXUSER 15
 #define NOME_FAKE "enjoy"
+#define MAXLINE 4096
 
 ///@brief contatore per la lista utenti
 int count;
