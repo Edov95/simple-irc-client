@@ -74,8 +74,6 @@ int main(int argc, char const *argv[]) {
       add_user(&main_user_list,new_user);
       count = count + 1; //va a braccetto con la lista, deve andare qui
       pthread_mutex_unlock(&main_user_list_mutex);
-
-      print_list(main_user_list);
     } else { //troppi utenti glielo dico
       //send_connection_refuse(user_socket);
     }
