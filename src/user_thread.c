@@ -19,9 +19,9 @@ void user_thread(User* u){
       printf("L'utente: %i ha inviato il comando: %s\n",u -> id, command);
       /*Qui parte lo switch di comparazaione con i comandi conosciuti*/
       if(strcmp(command,NICK) == 0){
-        //call command nick
+        recieve_nick(u, main_user_list, strtok(NULL, " \t\r\n/"));
       } else if(strcmp(command,USER) == 0){
-        //call command USER
+        recieve_user(u);
       } else if(strcmp(command,JOIN) == 0){
         //call command join
       } else {

@@ -7,6 +7,8 @@
 #ifndef __USER_COMMANDS_H__
 #define __USER_COMMANDS_H__
 
+#include <unistd.h>
+#include "commands.h"
 #include "user.h"
 #include "channel.h"
 #include "util.h"
@@ -16,7 +18,7 @@
 /**
   * @brief Cambia il nickname
   */
-void recieve_nick(User* u, char* name);
+void recieve_nick(User* u, User_list* list, char* name);
 
 /**
   * @brief Risponde con un messaggio di benvenuto

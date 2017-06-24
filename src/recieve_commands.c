@@ -1,18 +1,19 @@
-#include "receive_commands.h"
+#include "recieve_commands.h"
 
 void recieve_nick(User* u, User_list* list, char* name){
+
   char* send_line = malloc(MAXLINE + 1);
   strcpy(send_line, ":");
   strcat(send_line, u -> name);
   strcat(send_line, "!");
-  strcat(send_line, user->hostname);
+  strcat(send_line, u->hostname);
   strcat(send_line, " ");
 
   if(name == NULL){
     strcat(send_line, ERR_NONICKNAMEGIVEN);
     strcat(send_line, NONICKNAMEGIVEN);
     strcat(send_line, "\n");
-  } else if (find_by_username(list, u -> name) != NULL) {
+  } else if (find_by_username(list, name) != NULL) {
     strcat(send_line, ERR_NICKNAMEINUSE);
     strcat(send_line, " ");
     strcat(send_line, name);
@@ -24,6 +25,7 @@ void recieve_nick(User* u, User_list* list, char* name){
     strcat(send_line, " :");
     strcat(send_line, name);
     strcat(send_line, "\n");
+    write(u->socket, send_line, strlen(send_line));
     //notificare che ho cambiato nome
     change_name(&u,name);
     free(send_line);
