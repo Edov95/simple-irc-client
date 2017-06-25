@@ -12,6 +12,10 @@ User* create_user(string name, string hostname,int id, int socket){
   u -> id = id;
   u -> socket = socket;
 
+  for (size_t i = 0; i < 15; i++) {
+    u -> channel[i] = NULL;
+  }
+
   return u;
 }
 
