@@ -9,7 +9,7 @@
 #include <pthread.h>
 
 ///@brief impone un numero massimo di utenti che si possono collegare al server
-#define MAXUSER 15
+#define MAXUSER 150
 #define MAXLINE 4096
 
 ///@brief contatore per la lista utenti
