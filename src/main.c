@@ -16,6 +16,8 @@ int main(int argc, char const *argv[]) {
   struct sockaddr_in client_address;
   socklen_t client_address_size = sizeof(client_address);
   int u_id = 1000;
+  char* username = malloc(8*sizeof(char));
+  char temp[5];
 
   User* new_user;
 
@@ -57,7 +59,10 @@ int main(int argc, char const *argv[]) {
 
     // aggiunge l'utente alla lista se permesso
     if(count < MAXUSER){
-      new_user = create_user( NOME_FAKE,
+      strcpy(username, "user"); //pulisco la stringa dal nome precendente
+      sprintf(temp,"%d", u_id);
+      strcat(username, tmp);
+      new_user = create_user( username,
                               inet_ntoa(client_address.sin_addr),
                               u_id,
                               user_socket);
