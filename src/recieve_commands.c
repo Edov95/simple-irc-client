@@ -50,3 +50,7 @@ void recieve_user(User* u){
   write(u->socket, send_line, strlen(send_line));
   free(send_line);
 }
+
+void recieve_join(User* u, char* channel){
+  
+}

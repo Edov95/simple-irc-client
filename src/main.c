@@ -9,13 +9,6 @@
 #include "util.h"
 #include "user_thread.h"
 
-/*
-  - inizializzare il socket
-  - ascoltare la porta
-  - accettare le richieste fino ad un max utenti
-  - associare un thread ad ogni utente che si connette
-  */
-
 int main(int argc, char const *argv[]) {
 
   int server_socket, user_socket;
@@ -75,7 +68,7 @@ int main(int argc, char const *argv[]) {
       count = count + 1; //va a braccetto con la lista, deve andare qui
       pthread_mutex_unlock(&main_user_list_mutex);
     } else { //troppi utenti glielo dico
-      //send_connection_refuse(user_socket);
+      close(user_socket); // così rifiuto la connessione, chiudendo il socket
     }
 
     pthread_create(&(new_user -> thread), NULL, (void* (*)(void*))user_thread, new_user);
