@@ -32,7 +32,7 @@ typedef char* string;
 typedef struct {
   string name;
   string hostname;
-  string channels[];
+  string channels[15];
   int id;
   int socket;
   pthread_mutex_t socket_mutex;
