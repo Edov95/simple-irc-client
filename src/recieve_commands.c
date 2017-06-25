@@ -26,7 +26,19 @@ void recieve_nick(User* u, User_list* list, char* name){
     strcat(send_line, name);
     strcat(send_line, "\n");
     write(u->socket, send_line, strlen(send_line));
-    //notificare che ho cambiato nome
+    // cazzo mene lo invio a tutti
+    for(int i = 0; i < 15; i++){
+      if(u -> channels[i] != NULL){
+        Channel* c = find_channel(u -> channels[i]);
+        User_list* list_tmp = c -> users;
+        while (list_tmp != NULL) {
+          User* user_tmp = list -> payload;
+          write(user_tmp -> socket, send_line, strlen(send_line));
+        }
+      } else {
+        i = 15;
+      }
+    }
     change_name(&u,name);
     free(send_line);
     return;
@@ -52,5 +64,5 @@ void recieve_user(User* u){
 }
 
 void recieve_join(User* u, char* channel){
-  
+
 }
