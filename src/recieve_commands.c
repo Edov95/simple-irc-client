@@ -36,9 +36,8 @@ void recieve_nick(User* u, User_list* list, char* name){
         while (list_tmp != NULL) {
           User* user_tmp = list -> payload;
           write(user_tmp -> socket, send_line, strlen(send_line));
+          list_tmp = list_tmp -> next;
         }
-      } else {
-        i = 15;
       }
     }
     change_name(&u,name);
@@ -83,13 +82,14 @@ void recieve_join(User* u, char* channel){
     strcat(send_line, " :No such channel");
 
     write(u -> socket, send_line, strlen(send_line));
+    free(send_line);
     return;
   }
 
   //eseguo operazioni per aggiungere il canale oppure entrarci
   int max_chan = 1;
   pthread_mutex_lock(&main_channel_list_mutex);
-  Channel* c = find_channel(main_channel_list, channel)
+  Channel* c = find_channel(main_channel_list, channel);
 
   for (size_t i = 0; i < 15; i++) {
     //se almeno una stringa del vettore punta a NULL vuol dire che non ho raggiunto il numero massimo di canali
@@ -104,7 +104,7 @@ void recieve_join(User* u, char* channel){
       if(add_user(&(c -> users), u) != -1){
         (u -> channels[i]) = malloc(30);
         strcpy(u -> channels[i], channel); //aggiorno la lista canali
-        add_user(&(c -> users), u);//aggiungo l'utente alla lista utenti
+        //add_user(&(c -> users), u);//aggiungo l'utente alla lista utenti
       }
 
       max_chan = 0; //l'utente non ha raggiunto il numero massimo di canali
@@ -139,22 +139,24 @@ void recieve_join(User* u, char* channel){
   write(u -> socket, send_line, strlen(send_line));
 
   if(!max_chan){
-    strcpy(send_line, ":");
-    strcat(send_line, SERVER_NAME);
-    strcat(send_line, " ");
-    strcat(send_line, RPL_NAMREPLY);
-    strcat(send_line, " ");
-    strcat(send_line, u -> name);
-    strcat(send_line, " @ ");
-    strcat(send_line, channel);
-    strcat(send_line, " :");
+    strcpy(send_line, "");
     //invio la lista utenti a tutti
     User_list* list = c -> users;
     User* temp;
 
     while (list != NULL) {
       temp = list -> payload;
+      strcat(send_line, ":");
+      strcat(send_line, SERVER_NAME);
+      strcat(send_line, " ");
+      strcat(send_line, RPL_NAMREPLY);
+      strcat(send_line, " ");
+      strcat(send_line, u -> name);
+      strcat(send_line, " @ ");
+      strcat(send_line, channel);
+      strcat(send_line, " :");
       strcat(send_line, temp -> name);
+      strcat(send_line, "\n");
       list = list -> next;
     }
 
@@ -180,5 +182,24 @@ void recieve_join(User* u, char* channel){
 
   // invio a tutti gli utenti di chan che sono entrato :)
 
+  free(send_line);
+}
+
+/*MODE*/
+void recieve_mode(User* u, char* umode){
+  char* send_line = malloc(MAXLINE + 1);
+  if(umode != NULL) {
+    strcpy(send_line, ":");
+    strcat(send_line, u -> name);
+    strcat(send_line, " ");
+    strcat(send_line, MODE);
+    strcat(send_line, " ");
+    strcat(send_line, u -> name);
+    strcat(send_line, " ");
+    strcat(send_line, umode);
+    strcat(send_line, "\n");
+
+    write(u -> socket, send_line, strlen(send_line));
+  }
   free(send_line);
 }

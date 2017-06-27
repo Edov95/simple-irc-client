@@ -24,8 +24,9 @@ void user_thread(User* u){
         recieve_user(u);
       } else if(strcmp(command,JOIN) == 0){
         recieve_join(u, strtok(NULL, " \t\r\n/"));
-      } else {
-        //call command not admitted
+      } else if(strcmp(command, MODE) == 0){
+        strtok(NULL, " \t\r\n/");
+        recieve_mode(u, strtok(NULL, " \t\r\n/"));
       }
 
       command = strtok(NULL, " \t\r\n/");

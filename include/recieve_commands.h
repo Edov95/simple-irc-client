@@ -31,4 +31,9 @@ void recieve_user(User* u);
   */
 void recieve_join(User* u, char* name);
 
+/**
+  * @brief Mode
+  */
+void recieve_mode(User* u, char* umode);
+
 #endif
