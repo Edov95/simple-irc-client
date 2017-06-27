@@ -21,26 +21,29 @@ void recieve_nick(User* u, User_list* list, char* name){
     strcat(send_line, name);
     strcat(send_line, "\n");
   } else {
+    change_name(&u,name);
     strcat(send_line, NICK);
     strcat(send_line, " :");
     strcat(send_line, name);
     strcat(send_line, "\n");
     write(u->socket, send_line, strlen(send_line));
+    User_list* list_tmp;
+    User* user_tmp;
+    Channel* c;
     // cazzo mene lo invio a tutti
     for(int i = 0; i < 15; i++){
       if(u -> channels[i] != NULL){
         pthread_mutex_lock(&main_channel_list_mutex);
-        Channel* c = find_channel(main_channel_list, u -> channels[i]);
+        c = find_channel(main_channel_list, u -> channels[i]);
         pthread_mutex_unlock(&main_channel_list_mutex);
-        User_list* list_tmp = c -> users;
+        list_tmp = c -> users;
         while (list_tmp != NULL) {
-          User* user_tmp = list -> payload;
+          user_tmp = list_tmp -> payload;
           write(user_tmp -> socket, send_line, strlen(send_line));
           list_tmp = list_tmp -> next;
         }
       }
     }
-    change_name(&u,name);
     free(send_line);
     return;
   }

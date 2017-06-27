@@ -144,15 +144,12 @@ int print_list(User_list *list) {
     }
     printf("User Node List.\n");
     User *user = (User *) p->payload;
-    printf("\tName    : %s\n", user->name);
-    printf("\tHostname: %s\n", user->hostname);
-    printf("\tID      : %d\n", user->id);
-    p = p->next;
     while(p != NULL) {
         user = USER(p->payload);
-        printf("\tName   : %s\n", user->name);
+        printf("\tName    : %s\n", user->name);
         printf("\tHostname: %s\n", user->hostname);
-        printf("\tID     : %d\n", user->id);
+        printf("\tID      : %d\n", user->id);
+        printf("\tSocket  : %d\n", user->socket);
         p = p->next;
     }
     return 0;
