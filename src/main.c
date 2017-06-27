@@ -61,7 +61,7 @@ int main(int argc, char const *argv[]) {
     if(count < MAXUSER){
       strcpy(username, "user"); //pulisco la stringa dal nome precendente
       sprintf(temp,"%d", u_id);
-      strcat(username, tmp);
+      strcat(username, temp);
       new_user = create_user( username,
                               inet_ntoa(client_address.sin_addr),
                               u_id,

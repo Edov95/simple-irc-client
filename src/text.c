@@ -3,7 +3,7 @@
 char *WELCOME_01      = ":irc.labiis.org NOTICE * :*** Benvenuto!\n";
 char *WELCOME_02      = ":irc.labiis.org NOTICE * :*** Registrando...\n";
 char *WELCOME_03      = ":irc.labiis.org NOTICE * :*** Pronto!\n";
-char *WELCOME_USER_01 = ":irc.progredes.org 001 ";
+char *WELCOME_USER_01 = ":irc.labiis.org 001 ";
 char *WELCOME_USER_02 = " :Benvenuto! il tuo hostname è: ";
 
 char *DUMMY_USER      = "unnamed_user";

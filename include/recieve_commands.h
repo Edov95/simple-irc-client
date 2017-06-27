@@ -14,6 +14,7 @@
 #include "util.h"
 #include "text.h"
 #include "errors.h"
+#include "response.h"
 
 /**
   * @brief Cambia il nickname

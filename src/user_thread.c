@@ -23,7 +23,7 @@ void user_thread(User* u){
       } else if(strcmp(command,USER) == 0){
         recieve_user(u);
       } else if(strcmp(command,JOIN) == 0){
-        //call command join
+        recieve_join(u, strtok(NULL, " \t\r\n/"));
       } else {
         //call command not admitted
       }
