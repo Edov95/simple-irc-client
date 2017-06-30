@@ -11,7 +11,7 @@
 #include "commands.h"
 #include "user.h"
 #include "channel.h"
-#include "util.h"
+#include "utils.h"
 #include "text.h"
 #include "errors.h"
 #include "response.h"
@@ -35,5 +35,10 @@ void recieve_join(User* u, char* name);
   * @brief Mode
   */
 void recieve_mode(User* u, char* umode);
+
+/**
+  * @brief Who
+  */
+void recieve_who(User* u, char* query);
 
 #endif

@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include "user.h"
 #include "channel.h"
-#include "util.h"
+#include "utils.h"
 #include "user_thread.h"
 
 int main(int argc, char const *argv[]) {

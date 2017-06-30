@@ -27,6 +27,8 @@ void user_thread(User* u){
       } else if(strcmp(command, MODE) == 0){
         strtok(NULL, " \t\r\n/");
         recieve_mode(u, strtok(NULL, " \t\r\n/"));
+      } else if(strcmp(command, WHO) == 0){
+        recieve_who(u, strtok(NULL, " \t\r\n/"));
       }
 
       command = strtok(NULL, " \t\r\n/");

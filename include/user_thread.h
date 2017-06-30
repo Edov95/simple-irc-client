@@ -12,7 +12,7 @@
 #include <unistd.h>
 #include "user.h"
 #include "channel.h"
-#include "util.h"
+#include "utils.h"
 #include "commands.h"
 #include "recieve_commands.h"
 

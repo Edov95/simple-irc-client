@@ -206,3 +206,61 @@ void recieve_mode(User* u, char* umode){
   }
   free(send_line);
 }
+
+void recieve_who(User* u, char* query){
+
+  char* send_line = malloc(MAXLINE + 1);
+  bzero(send_line, MAXLINE + 1);
+  User_list* list;
+  User* temp;
+  Channel *c;
+  int is_in_the_same_channel = 0;
+
+  printf("%s\n", query);
+
+  if (query == NULL) { //se chiede info su tutti gli utenti
+    send_all_user_info(u);
+  } else {
+
+    printf("Qui4\n");
+    pthread_mutex_lock(&main_user_list_mutex);
+    temp = find_by_username(main_user_list, query);
+    pthread_mutex_unlock(&main_user_list_mutex);
+
+    pthread_mutex_lock(&main_channel_list_mutex);
+    c = find_channel(main_channel_list, query);
+    pthread_mutex_unlock(&main_channel_list_mutex);
+    printf("Qui5\n");
+
+    if(temp == NULL && c == NULL){ // if (query == NULL)
+      printf("Qui6\n");
+      strcpy(send_line, ":");
+      strcat(send_line, SERVER_NAME);
+      strcat(send_line, " ");
+      strcat(send_line, ERR_NOSUCHCHANNEL);
+      strcat(send_line, " ");
+      strcat(send_line, u -> name);
+      strcat(send_line, " ");
+      strcat(send_line, query);
+      strcat(send_line, " :No such channel\n");
+      write(u -> socket, send_line, strlen(send_line));
+    } else if(temp != NULL){
+      printf("Qui7\n");
+      send_user_info(u, temp, NULL);
+      strcpy(send_line, ":");
+      strcat(send_line, SERVER_NAME);
+      strcat(send_line, " ");
+      strcat(send_line, RPL_ENDOFWHO);
+      strcat(send_line, " ");
+      strcat(send_line, u -> name);
+      strcat(send_line, " * ");
+      strcat(send_line, ENDOFWHO);
+      write(u -> socket, send_line, strlen(send_line));
+    } else if(c != NULL){
+      printf("Qui8\n");
+      send_channel_info(u,c);
+    }
+  }
+
+  free(send_line);
+}
