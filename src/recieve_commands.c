@@ -211,10 +211,8 @@ void recieve_who(User* u, char* query){
 
   char* send_line = malloc(MAXLINE + 1);
   bzero(send_line, MAXLINE + 1);
-  User_list* list;
   User* temp;
   Channel *c;
-  int is_in_the_same_channel = 0;
 
   if (query == NULL) { //se chiede info su tutti gli utenti
     send_all_user_info(u);
