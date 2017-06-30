@@ -41,4 +41,9 @@ void recieve_mode(User* u, char* umode);
   */
 void recieve_who(User* u, char* query);
 
+/**
+  * @brief Whois
+  */
+void recieve_whois(User* u, char* query);
+
 #endif

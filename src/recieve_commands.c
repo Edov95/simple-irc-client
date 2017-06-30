@@ -207,6 +207,7 @@ void recieve_mode(User* u, char* umode){
   free(send_line);
 }
 
+/*WHO BESTEMMIE*/
 void recieve_who(User* u, char* query){
 
   char* send_line = malloc(MAXLINE + 1);
@@ -253,4 +254,70 @@ void recieve_who(User* u, char* query){
   }
 
   free(send_line);
+}
+
+/*WHOIS*/
+void recieve_whois(User* u, char* query){
+
+  char* send_line = malloc(MAXLINE + 1);
+
+  pthread_mutex_lock(&main_user_list_mutex);
+  User* user = find_by_username(main_user_list, query);
+  pthread_mutex_unlock(&main_user_list_mutex);
+
+  if(user != NULL){
+    strcpy(send_line, ":");
+    strcat(send_line, SERVER_NAME);
+    strcat(send_line, " ");
+    strcat(send_line, RPL_WHOISUSER);
+    strcat(send_line, " ");
+    strcat(send_line, user->name);
+    strcat(send_line, " ");
+    strcat(send_line, user->name);
+    strcat(send_line, " ~");
+    strcat(send_line, user->name);
+    strcat(send_line, " ");
+    strcat(send_line, user->hostname);
+    strcat(send_line, " * :");
+    strcat(send_line, user->name);
+    strcat(send_line, "\n");
+
+    strcat(send_line, ":");
+    strcat(send_line, SERVER_NAME);
+    strcat(send_line, " ");
+    strcat(send_line, RPL_WHOISSERVER);
+    strcat(send_line, " ");
+    strcat(send_line, user->name);
+    strcat(send_line, " ");
+    strcat(send_line, user->name);
+    strcat(send_line, " ");
+    strcat(send_line, SERVER_NAME);
+    strcat(send_line, " ");
+    strcat(send_line, SERVER_INFO);
+    strcat(send_line, "\n");
+
+    strcat(send_line, ":");
+    strcat(send_line, SERVER_NAME);
+    strcat(send_line, " ");
+    strcat(send_line, RPL_ENDOFWHOIS);
+    strcat(send_line, " ");
+    strcat(send_line, u -> name);
+    strcat(send_line, " ");
+    strcat(send_line, user->name);
+    strcat(send_line, ENDOFWHOIS);
+
+  } else {
+    strcpy(send_line, ":");
+    strcat(send_line, SERVER_NAME);
+    strcat(send_line, " ");
+    strcat(send_line, RPL_ENDOFWHOIS);
+    strcat(send_line, " ");
+    strcat(send_line, u -> name);
+    strcat(send_line, " ");
+    strcat(send_line, query);
+    strcat(send_line, ENDOFWHOIS);
+  }
+
+  write(u -> socket, send_line, strlen(send_line));
+
 }
