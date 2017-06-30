@@ -74,9 +74,7 @@ void send_all_user_info(User* u){
   strcat(send_line, ENDOFWHO);
   write(u -> socket, send_line, strlen(send_line));
 
-  printf("Qui\n");
   free(send_line);
-  printf("Qui2\n");
 }
 
 void send_channel_info(User* u, Channel* c) {
