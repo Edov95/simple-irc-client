@@ -327,4 +327,6 @@ void recieve_ping(User* u, char* ping_message){
   strcpy(send_line, DEFAULT_PONG);
   strcat(send_line, ping_message);
   strcat(send_line, "\n");
+  write(u -> socket, send_line, strlen(send_line));
+  free(send_line);
 }
