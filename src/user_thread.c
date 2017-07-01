@@ -35,6 +35,8 @@ void user_thread(User* u){
         recieve_ping(u, strtok(NULL, " \t\r\n/"));
       } else if(strcmp(command, PRIVMSG) == 0){
         recieve_privmsg(u, strtok(NULL, "\n"));
+      } else if(strcmp(command, PART) == 0){
+        recieve_part(u, strtok(NULL, "\n"));
       }
 
       command = strtok(NULL, " \t\r\n/");

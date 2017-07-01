@@ -330,6 +330,7 @@ void recieve_whois(User* u, char* query){
   free(send_line);
 }
 
+/*PING*/
 void recieve_ping(User* u, char* ping_message){
   char* send_line = malloc(MAXLINE + 1);
   strcpy(send_line, DEFAULT_PONG);
@@ -339,6 +340,7 @@ void recieve_ping(User* u, char* ping_message){
   free(send_line);
 }
 
+/*PRIVMSG*/
 void recieve_privmsg(User* u, char* message){
   char* send_line = malloc(MAXLINE + 1);
   char* target = strtok(message, " \t\r\n/");
@@ -373,4 +375,59 @@ void recieve_privmsg(User* u, char* message){
     list = list -> next;
   }
   free(send_line);
+}
+
+/*PART*/
+void  recieve_part(User* u, char* parameter) {
+  char* send_line = malloc(MAXLINE + 1);
+  char* channel = strtok(parameter, " \t\r\n/");
+  char* leave_msg = strtok(NULL, "\n");
+  Channel* c;
+
+  pthread_mutex_lock(&main_channel_list_mutex);
+  c = find_channel(main_channel_list, channel);
+  pthread_mutex_unlock(&main_channel_list_mutex);
+
+  //prima di rimuovere il canale e l'utente devo inviare il comando di risposta
+  strcpy(send_line, ":");
+  strcat(send_line, u -> name);
+  strcat(send_line, "!");
+  strcat(send_line, u -> hostname);
+  strcat(send_line, " ");
+  strcat(send_line, PART);
+
+  strcat(send_line, " ");
+  strcat(send_line, channel);
+  strcat(send_line, " ");
+  strcat(send_line, leave_msg);
+  strcat(send_line, "\n");
+
+
+  User_list* list = c -> users;
+  User* temp;
+  while (list != NULL) {
+    temp = list -> payload;
+    write(temp -> socket, send_line, strlen(send_line));
+    list = list -> next;
+  }
+
+  remove_user_by_id(&(c -> users), u -> id);
+
+  for (size_t i = 0; i < 15; i++) {
+    if(u -> channels[i] != NULL &&
+       strcmp(u -> channels[i], channel) == 0) {
+      printf("%s\n", u -> channels[i]);
+      free((u -> channels[i]));
+      u -> channels[i] = NULL;
+      //i = 15;
+    }
+  }
+  //se u è l'unico utente elimino il canale dalla lista canali
+  if(c -> users == NULL){
+    pthread_mutex_lock(&main_channel_list_mutex);
+    remove_channel(&main_channel_list, c -> name);
+    pthread_mutex_unlock(&main_channel_list_mutex);
+    free((c -> name));
+    free(c); //ho eliminato il canale :)
+  }
 }

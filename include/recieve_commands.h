@@ -55,4 +55,9 @@ void recieve_ping(User* u, char* ping_message);
   */
 void recieve_privmsg(User* u, char* message);
 
+/**
+  * @brief Part
+  */
+void recieve_part(User* u, char* parameter);
+
 #endif
