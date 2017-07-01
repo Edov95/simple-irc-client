@@ -50,4 +50,9 @@ void recieve_whois(User* u, char* query);
   */
 void recieve_ping(User* u, char* ping_message);
 
+/**
+  * @brief Privmsg
+  */
+void recieve_privmsg(User* u, char* message);
+
 #endif

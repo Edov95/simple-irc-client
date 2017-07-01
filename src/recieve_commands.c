@@ -338,3 +338,39 @@ void recieve_ping(User* u, char* ping_message){
   write(u -> socket, send_line, strlen(send_line));
   free(send_line);
 }
+
+void recieve_privmsg(User* u, char* message){
+  char* send_line = malloc(MAXLINE + 1);
+  char* target = strtok(message, " \t\r\n/");
+  char* send_message = strtok(NULL, "\n");
+  Channel* c;
+
+  pthread_mutex_lock(&main_channel_list_mutex);
+  c = find_channel(main_channel_list, target);
+  pthread_mutex_unlock(&main_channel_list_mutex);
+
+  //non faccio controlli sull'esistenza dell canale perché
+  //effettivamente il comando parte solo se l'utente è nel canale
+  strcpy(send_line, ":");
+  strcat(send_line, u -> name);
+  strcat(send_line, "!");
+  strcat(send_line, u -> hostname);
+  strcat(send_line, " ");
+  strcat(send_line, PRIVMSG);
+  strcat(send_line, " ");
+  strcat(send_line, target);
+  strcat(send_line, " ");
+  strcat(send_line, send_message);
+  strcat(send_line, "\n");
+
+  User_list* list = c -> users;
+  User* temp;
+  while (list != NULL) {
+    temp = list -> payload;
+    if(temp -> id != u -> id){
+      write(temp -> socket, send_line, strlen(send_line));
+    }
+    list = list -> next;
+  }
+  free(send_line);
+}
