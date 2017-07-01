@@ -319,5 +319,12 @@ void recieve_whois(User* u, char* query){
   }
 
   write(u -> socket, send_line, strlen(send_line));
+  free(send_line);
+}
 
+void recieve_ping(User* u, char* ping_message){
+  char* send_line = malloc(MAXLINE + 1);
+  strcpy(send_line, DEFAULT_PONG);
+  strcat(send_line, ping_message);
+  strcat(send_line, "\n");
 }

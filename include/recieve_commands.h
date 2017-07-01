@@ -45,5 +45,9 @@ void recieve_who(User* u, char* query);
   * @brief Whois
   */
 void recieve_whois(User* u, char* query);
+/**
+  * @brief Ping
+  */
+void recieve_ping(User* u, char* ping_message);
 
 #endif
