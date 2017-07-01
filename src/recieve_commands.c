@@ -236,6 +236,14 @@ void recieve_who(User* u, char* query){
       strcat(send_line, " ");
       strcat(send_line, query);
       strcat(send_line, " :No such channel\n");
+      strcat(send_line, ":");
+      strcat(send_line, SERVER_NAME);
+      strcat(send_line, " ");
+      strcat(send_line, RPL_ENDOFWHO);
+      strcat(send_line, " ");
+      strcat(send_line, u -> name);
+      strcat(send_line, " * ");
+      strcat(send_line, ENDOFWHO);
       write(u -> socket, send_line, strlen(send_line));
     } else if(temp != NULL){
       send_user_info(u, temp, NULL);
