@@ -64,7 +64,7 @@ Channel* remove_channel(Channel_list** list, string name){
 
   Channel_list* temp = *list;
 
-  //scorro la lista per portarmi all'utente scelto
+  //scorro la lista per portarmi al canale scelto
   while (strcmp(temp -> payload -> name, name) != 0) {
     if(temp -> next == NULL) {
       return NULL;
@@ -85,11 +85,11 @@ Channel* remove_channel(Channel_list** list, string name){
     temp -> next -> prev = temp -> prev;
   }
 
-  Channel* chan = temp -> payload; //salvo l'utente
+  Channel* chan = temp -> payload; //salvo il canale
 
   free(temp); // libero la cella di memoria puntata
 
-  return chan; //ritoro l'utente
+  return chan; //ritoro il canale
 }
 
 /*PRITN LIST IN CHANNEL*/
