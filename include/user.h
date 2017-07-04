@@ -30,22 +30,31 @@ typedef char* string;
       il socket da cui l'utente si connette
   */
 typedef struct {
-  string name;
-  string hostname;
-  string channels[15];
-  int id;
-  int socket;
-  pthread_mutex_t socket_mutex;
+  string name;                  //!< nome utente
+  string hostname;              //!< l'hostname da cui l'utente si collega
+  string channels[15];          //!< la lista dei nomi dei canali a cui l'utente è connesso
+  int id;                       //!< l'identificativo univoco
+  int socket;                   //!< il socket dell'utente
+  pthread_mutex_t socket_mutex; //!< semaforo per il socket
   pthread_t thread;
 } User;
 
 /**
   * @brief Inizializza un oggetto utente
+  * @param name il nome che si vuole dare all'utente
+  * @param hostname l'hostname con cui l'utente è collegato
+  * @param id l'identificativo univoco dell'utente
+  * @param socket il socket da cui l'utente si connette
+  * @return il puntatore all'area di memoria occupata dall'utente o se non riesce a crearlo NULL
   */
 User* create_user(string name, string hostname, int id, int socket);
 
 /**
   * @brief Cambia il nome all'utente
+  * @param u l'utente a cui si vuole cambiare il nome
+  * @param name il nuovo nome
+  * @return 1 se riesce a cambiare il nome utente
+  * @return -1 se il parametro name è nullo
   */
 int change_name(User** u, string name);
 
@@ -55,9 +64,9 @@ int change_name(User** u, string name);
       gli utenti connessi al server
   */
 typedef struct _User_list{
-  struct _User_list* next;
-  struct _User_list* prev;
-  User* payload;
+  struct _User_list* next;  //!< puntatore alla cella successiva della lista
+  struct _User_list* prev;  //!< puntatore alla cella precedente della lista
+  User* payload;            //!< l'utente da memorizzare nella lista
 } User_list;
 
 /**
@@ -114,6 +123,7 @@ User* find_by_username(User_list* list, string username);
 
 /**
   * @brief Stampa la lista utenti
+  * @param list la lista utenti da stampare
   */
 int print_list(User_list* list);
 

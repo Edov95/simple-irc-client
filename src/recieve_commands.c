@@ -227,7 +227,7 @@ void recieve_who(User* u, char* query){
     c = find_channel(main_channel_list, query);
     pthread_mutex_unlock(&main_channel_list_mutex);
 
-    if(temp == NULL && c == NULL){ // if (query == NULL)
+    if(temp == NULL && c == NULL){
       strcpy(send_line, ":");
       strcat(send_line, SERVER_NAME);
       strcat(send_line, " ");
@@ -236,7 +236,7 @@ void recieve_who(User* u, char* query){
       strcat(send_line, u -> name);
       strcat(send_line, " ");
       strcat(send_line, query);
-      strcat(send_line, " :No such channel\n");
+      strcat(send_line, " :No such user/channel\n");
       strcat(send_line, ":");
       strcat(send_line, SERVER_NAME);
       strcat(send_line, " ");

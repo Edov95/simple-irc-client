@@ -1,3 +1,10 @@
+/**
+  * @file text.h
+  * @author Edoardo Vanin
+  * @date 24 Giugno 2017
+  * @brief File contenente le dichiarazioni delle variabili contenenti i testi predefiniti
+  */
+
 #ifndef __RESPONSE__
 #define __RESPONSE__
 
@@ -7,9 +14,6 @@ extern char *WELCOME_03;
 extern char *WELCOME_USER_01;
 extern char *WELCOME_USER_02;
 
-extern char *DUMMY_USER;
-extern char *DUMMY_CHANNEL;
-extern char *DUMMY_HOST;
 
 extern char *SERVER_NAME;
 extern char *SERVER_INFO;
@@ -19,7 +23,6 @@ extern char *ENDOFWHOIS;
 extern char *ENDOFWHO;
 extern char *ENDOFNAMES;
 
-extern char *CHANNELS[];
 extern char *LIST_END;
 extern char *LIST_HEADER;
 

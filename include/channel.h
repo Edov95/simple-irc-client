@@ -25,24 +25,32 @@ typedef char* string;
   * @brief Struttura per gestire i cananli
   */
 typedef struct {
-  string name;
-  string topic;
-  int number_users;
-  User_list* users;
+  string name;      //!< il nome del canale
+  string topic;     //!< il topic del canale, non ancora utilizzato, per sviluppi futuri
+  int number_users; //!< conta il numero di utenti presenti nel canale
+  User_list* users; //!< la lista degli utenti presenti nel canale
 }Channel;
 
 /**
-  * @brief Crea un canale date un nome del canale
+  * @brief Crea un canale dato un nome ed un argomento
+  * @param name il nome del canale
+  * @param topic l'argomento del canale, può eventualmente essere nullo non influisce sulla creazione effettiva del canale
+  * @return il puntatore all'area occupata dal canale appena creato
   */
 Channel* create_channel(string name, string topic);
 
 /**
   * @brief Cambia il topic
+  * @param topic l'argomento da cambiare
   */
 void change_topic(Channel* c, string topic);
 
 /**
   * @brief Aggiunge un utente al canale
+  * @param c il canale a cui aggiungere l'utente
+  * @param u l'utente da aggiungere al canale
+  * @return -1 se l'utente NON è stato inserito correttamente nella lista
+  * @return diverso da -1 se l'utente è stato inserito correttamente
   */
 int add_user_to_channel(Channel** c, User* u);
 
@@ -50,9 +58,9 @@ int add_user_to_channel(Channel** c, User* u);
   * @brief Struttura per collezionare i canali nel server
   */
 typedef struct _Channel_list{
-  struct _Channel_list *prev;
-  struct _Channel_list *next;
-  Channel* payload;
+  struct _Channel_list *prev; //!< puntatore alla cella precedente della lista
+  struct _Channel_list *next; //!< puntatore alla cella successiva della lista
+  Channel* payload;           //!< il canale da memorizzare nella lista
 }Channel_list;
 
 
@@ -88,16 +96,19 @@ Channel* find_channel(Channel_list* list, string name);
 
 /**
   * @brief Stampa la lista dei canali
+  * @param list la lista da stampare
   */
 void print_list_channel(Channel_list* list);
 
 /**
   * @brief Stampa la lista utenti per il canale selezionato
+  * @param c il canale per di cui si vuole stampare la lista utenti
   */
 void print_users_in_channel(Channel* c);
 
 /**
   * @brief Stampa la lista degli utenti in ogni canale
+  * @param lista la lista che si vuole stampare
   */
 void print_list_channel_and_users(Channel_list* list);
 

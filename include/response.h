@@ -1,3 +1,9 @@
+/**
+  * @file response.h
+  * @author Edoardo Vanin
+  * @date 24 Giugno 2017
+  * @brief File contenente le dichiarazioni di tutte le risposte possibili
+  */
 #ifndef __RESPONSE_H__
 #define __RESPONSE_H__
 

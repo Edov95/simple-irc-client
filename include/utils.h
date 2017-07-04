@@ -34,16 +34,24 @@ pthread_mutex_t main_channel_list_mutex;
 
 /**
   * @brief Funzione per gestire il caso "utente" del comando WHO
+  * @param u l'utente che ha chiamato la funzione WHO
+  * @param target l'obbiettivo su cui chiamare WHO
+  * @param il nome del cananle
+  * @details la funzione è usate in due casi d'uso diversi, la presenza del parametro
+  channel non NULLO facilita la selezione del caso
   */
 void send_user_info(User* u, User* target, char* channel);
 
 /**
   * @brief Funzione per gestire il caso "tutti gli utenti" del comando WHO
+  * @param u l'utente che ha chiamato la funzione
   */
 void send_all_user_info(User* u);
 
 /**
   * @brief Fuzione per gestire il caso "cananle" del comando WHO
+  * @param u l'utente che ha chiamato la funzione
+  * @param c il canale di cui si vogliono le informazioni
   */
 void send_channel_info(User* u, Channel* c);
 

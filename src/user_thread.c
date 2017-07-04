@@ -19,7 +19,9 @@ void user_thread(User* u){
       printf("L'utente: %i ha inviato il comando: %s\n",u -> id, command);
       /*Qui parte lo switch di comparazaione con i comandi conosciuti*/
       if(strcmp(command,NICK) == 0){
+        pthread_mutex_lock(&main_user_list_mutex);
         recieve_nick(u, main_user_list, strtok(NULL, " \t\r\n/"));
+        pthread_mutex_unlock(&main_user_list_mutex);
       } else if(strcmp(command,USER) == 0){
         recieve_user(u);
       } else if(strcmp(command,JOIN) == 0){
