@@ -60,4 +60,9 @@ void recieve_privmsg(User* u, char* message);
   */
 void recieve_part(User* u, char* parameter);
 
+/**
+  * @brief Quit
+  */
+void recieve_quit(User* u, char* parameter);
+
 #endif

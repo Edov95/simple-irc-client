@@ -37,6 +37,8 @@ void user_thread(User* u){
         recieve_privmsg(u, strtok(NULL, "\n"));
       } else if(strcmp(command, PART) == 0){
         recieve_part(u, strtok(NULL, "\n"));
+      } else if(strcmp(command, QUIT) == 0){
+        recieve_quit(u, strtok(NULL, "\n"));
       }
 
       command = strtok(NULL, " \t\r\n/");

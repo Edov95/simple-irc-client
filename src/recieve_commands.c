@@ -379,9 +379,16 @@ void recieve_privmsg(User* u, char* message){
 
 /*PART*/
 void  recieve_part(User* u, char* parameter) {
+  int len = strlen(parameter);
   char* send_line = malloc(MAXLINE + 1);
   char* channel = strtok(parameter, " \t\r\n/");
-  char* leave_msg = strtok(NULL, "\n");
+  char* leave_msg;
+
+  //se hanno la stessa lunghezza non c'è il leave message
+  if(len != strlen(channel)){
+    leave_msg = strtok(NULL, "\n");
+  }
+
   Channel* c;
 
   pthread_mutex_lock(&main_channel_list_mutex);
@@ -416,7 +423,6 @@ void  recieve_part(User* u, char* parameter) {
   for (size_t i = 0; i < 15; i++) {
     if(u -> channels[i] != NULL &&
        strcmp(u -> channels[i], channel) == 0) {
-      printf("%s\n", u -> channels[i]);
       free((u -> channels[i]));
       u -> channels[i] = NULL;
       //i = 15;
@@ -430,4 +436,44 @@ void  recieve_part(User* u, char* parameter) {
     free((c -> name));
     free(c); //ho eliminato il canale :)
   }
+}
+
+/*QUIT*/
+void recieve_quit(User* u, char* parameter){
+
+  User* temp;
+  char* str_temp = malloc(MAXLINE + 1);
+
+  //esco da tutti i canali in cui sono collegato
+  for (size_t i = 0; i < 15; i++) {
+    if(u -> channels[i] != NULL){
+      strcpy(str_temp, u -> channels[i]);
+      recieve_part(u, str_temp);
+    }
+  }
+
+  // chiudo la connessione
+  pthread_mutex_lock(&u -> socket_mutex);
+  close(u -> socket);
+  pthread_mutex_unlock(&u -> socket_mutex);
+
+  //rimuovo l'utente dalla lista utenti
+  pthread_mutex_lock(&main_user_list_mutex);
+  remove_user_by_id(&main_user_list, u -> id);
+  pthread_mutex_unlock(&main_user_list_mutex);
+
+  //libero le zone di memoria occupate dall'utente
+  for (size_t i = 0; i < 15; i++) {
+    if(u -> channels[i] != NULL){
+      free(u -> channels[i]);
+    }
+  }
+
+  free(u -> name);
+  free(u -> hostname);
+
+  free(u);
+
+  free(str_temp);
+
 }
