@@ -3,8 +3,6 @@
   * @author Edoardo Vanin
   * @date 12 Giugno 2017
   * @brief File per gestire gli utenti collegati al server
-  * @todo Creare un test per la lista
-  * @todo Creare la documentazione
   */
 #ifndef __USER_H__
 #define __USER_H__
