@@ -530,5 +530,19 @@ void recieve_list(User* u){
 }
 
 void recieve_topic(User* u, char* parameter){
+  int len = strlen(parameter);
+  char* send_line = malloc(MAXLINE + 1);
+  char* channel = strtok(parameter, " \t\r\n/");
+  char* topic;
 
+  //se hanno la stessa lunghezza non c'è il leave message
+  if(len != strlen(channel)){
+    topic = strtok(NULL, "\n");
+  }
+
+  pthread_mutex_lock(&main_channel_list_mutex);
+  Channel* c = find_channel(main_channel_list, channel);
+  pthread_mutex_unlock(&main_channel_list_mutex);
+
+  change_topic(c,topic);
 }
