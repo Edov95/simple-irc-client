@@ -1,5 +1,5 @@
 /**
-  * @file user_commands.h
+  * @file recieve_commands.h
   * @author Edoardo Vanin
   * @date 23 Giugno 2017
   * @brief File contenente le funzioni da svolgere ogni volta che ricevo un comando

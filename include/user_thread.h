@@ -1,5 +1,5 @@
 /**
-  * @file user.h
+  * @file user_thread.h
   * @author Edoardo Vanin
   * @date 20 Giugno 2017
   * @brief File per gestire i comandi utente

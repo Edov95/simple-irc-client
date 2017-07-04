@@ -1,5 +1,5 @@
 /**
-  * @file user.h
+  * @file channel.h
   * @author Edoardo Vanin
   * @date 17 Giugno 2017
   * @brief File per gestire i cananli del server

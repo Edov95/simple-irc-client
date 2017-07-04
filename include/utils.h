@@ -1,5 +1,5 @@
 /**
-  * @file user.h
+  * @file utils.h
   * @author Edoardo Vanin
   * @date 20 Giugno 2017
   * @brief File contenente funzioni e/o variabili globali
