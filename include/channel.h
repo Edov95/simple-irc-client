@@ -17,6 +17,7 @@ typedef char* string;
 #define CHANNEL_LIST(OBJ) ((Channel_list*)(OBJ))
 
 #include "user.h"
+#define MAXLINE 4096
 #include <stdlib.h>
 
 
@@ -25,13 +26,20 @@ typedef char* string;
   */
 typedef struct {
   string name;
+  string topic;
+  int number_users;
   User_list* users;
 }Channel;
 
 /**
   * @brief Crea un canale date un nome del canale
   */
-Channel* create_channel(string name);
+Channel* create_channel(string name, string topic);
+
+/**
+  * @brief Cambia il topic
+  */
+void change_topic(Channel* c, string topic);
 
 /**
   * @brief Aggiunge un utente al canale

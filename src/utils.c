@@ -70,7 +70,7 @@ void send_all_user_info(User* u){
   strcat(send_line, RPL_ENDOFWHO);
   strcat(send_line, " ");
   strcat(send_line, u -> name);
-  strcat(send_line, " * ");
+  //strcat(send_line, " * ");
   strcat(send_line, ENDOFWHO);
   write(u -> socket, send_line, strlen(send_line));
 
@@ -93,7 +93,7 @@ void send_channel_info(User* u, Channel* c) {
   strcat(send_line, RPL_ENDOFWHO);
   strcat(send_line, " ");
   strcat(send_line, u -> name);
-  strcat(send_line, " * ");
+  //strcat(send_line, " * ");
   strcat(send_line, ENDOFWHO);
   write(u -> socket, send_line, strlen(send_line));
 

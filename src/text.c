@@ -17,6 +17,7 @@ char *ENDOFNAMES      = " :End of /NAMES list\n";
 
 char *LIST_END        = " :End of /LIST\n";
 char *LIST_HEADER     = " Channel :Users Name\n";
+//char* LIST_HEADER     = " Channel\n";
 
 char *DCC_START       = "\001DCC ";
 char *DCC_END         = "\001\n";

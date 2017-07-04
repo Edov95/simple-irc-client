@@ -6,7 +6,7 @@ void recieve_nick(User* u, User_list* list, char* name){
   strcpy(send_line, ":");
   strcat(send_line, u -> name);
   strcat(send_line, "!");
-  strcat(send_line, u->hostname);
+  strcat(send_line, u -> hostname);
   strcat(send_line, " ");
 
   if(name == NULL){
@@ -48,7 +48,7 @@ void recieve_nick(User* u, User_list* list, char* name){
     return;
   }
 
-  write(u->socket, send_line, strlen(send_line));
+  write(u -> socket, send_line, strlen(send_line));
 
   free(send_line);
   return;
@@ -59,11 +59,11 @@ void recieve_user(User* u){
   strcpy(send_line, WELCOME_02);
   strcat(send_line, WELCOME_03);
   strcat(send_line, WELCOME_USER_01);
-  strcat(send_line, u->name);
+  strcat(send_line, u -> name);
   strcat(send_line, WELCOME_USER_02);
-  strcat(send_line, u->hostname);
+  strcat(send_line, u -> hostname);
   strcat(send_line, "\n");
-  write(u->socket, send_line, strlen(send_line));
+  write(u -> socket, send_line, strlen(send_line));
   free(send_line);
 }
 
@@ -99,12 +99,13 @@ void recieve_join(User* u, char* channel){
     if(u -> channels[i] == NULL){
       if(c == NULL){
         //aggiungo il canale alla lista canali
-        c = create_channel(channel);
+        c = create_channel(channel, NULL);
         add_channel(&main_channel_list,c);
       }
       //se riesce ad aggiungere l'utente, vuol dire che non era già presente nel canale
       // il caso "l'utente è già nel canale" viene gestito da client
       if(add_user(&(c -> users), u) != -1){
+        c -> number_users = c -> number_users + 1;
         (u -> channels[i]) = malloc(30);
         strcpy(u -> channels[i], channel); //aggiorno la lista canali
         //add_user(&(c -> users), u);//aggiungo l'utente alla lista utenti
@@ -242,7 +243,7 @@ void recieve_who(User* u, char* query){
       strcat(send_line, RPL_ENDOFWHO);
       strcat(send_line, " ");
       strcat(send_line, u -> name);
-      strcat(send_line, " * ");
+      //strcat(send_line, " * ");
       strcat(send_line, ENDOFWHO);
       write(u -> socket, send_line, strlen(send_line));
     } else if(temp != NULL){
@@ -253,7 +254,7 @@ void recieve_who(User* u, char* query){
       strcat(send_line, RPL_ENDOFWHO);
       strcat(send_line, " ");
       strcat(send_line, u -> name);
-      strcat(send_line, " * ");
+      //strcat(send_line, " * ");
       strcat(send_line, ENDOFWHO);
       write(u -> socket, send_line, strlen(send_line));
     } else if(c != NULL){
@@ -286,7 +287,7 @@ void recieve_whois(User* u, char* query){
     strcat(send_line, user->name);
     strcat(send_line, " ");
     strcat(send_line, user->hostname);
-    strcat(send_line, " * :");
+    strcat(send_line, " :");
     strcat(send_line, user->name);
     strcat(send_line, "\n");
 
@@ -434,8 +435,12 @@ void  recieve_part(User* u, char* parameter) {
     remove_channel(&main_channel_list, c -> name);
     pthread_mutex_unlock(&main_channel_list_mutex);
     free((c -> name));
+    free((c -> topic));
     free(c); //ho eliminato il canale :)
+  } else {
+    c -> number_users = c -> number_users - 1;
   }
+  free(send_line);
 }
 
 /*QUIT*/
@@ -475,5 +480,55 @@ void recieve_quit(User* u, char* parameter){
   free(u);
 
   free(str_temp);
+
+}
+
+/*LIST*/
+void recieve_list(User* u){
+  char* send_line = malloc(MAXLINE + 1);
+
+  strcpy(send_line, ":");
+  strcat(send_line, SERVER_NAME);
+  strcat(send_line, " ");
+  strcat(send_line, RPL_LISTSTART);
+  strcat(send_line, " ");
+  strcat(send_line, u -> name);
+  strcat(send_line, LIST_HEADER);
+
+  pthread_mutex_lock(&main_channel_list_mutex);
+  Channel_list* list = main_channel_list;
+  while (list != NULL) {
+    strcat(send_line, ":");
+    strcat(send_line, SERVER_NAME);
+    strcat(send_line, " ");
+    strcat(send_line, RPL_LIST);
+    strcat(send_line, " ");
+    strcat(send_line, u -> name);
+    strcat(send_line, " ");
+    strcat(send_line, list -> payload -> name);
+    strcat(send_line, " %i");
+    sprintf(send_line, send_line, list -> payload -> number_users);
+    strcat(send_line, " ");
+    if(list -> payload -> topic != NULL)
+      strcat(send_line, list -> payload -> topic);
+    strcat(send_line, "\n");
+    list = list -> next;
+  }
+  pthread_mutex_unlock(&main_channel_list_mutex);
+
+  strcat(send_line, ":");
+  strcat(send_line, SERVER_NAME);
+  strcat(send_line, " ");
+  strcat(send_line, RPL_LISTEND);
+  strcat(send_line, " ");
+  strcat(send_line, u -> name);
+  //strcat(send_line, " ");
+  strcat(send_line, LIST_END);
+
+  write(u -> socket, send_line, strlen(send_line));
+  free(send_line);
+}
+
+void recieve_topic(User* u, char* parameter){
 
 }

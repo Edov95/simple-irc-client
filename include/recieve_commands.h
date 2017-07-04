@@ -65,4 +65,14 @@ void recieve_part(User* u, char* parameter);
   */
 void recieve_quit(User* u, char* parameter);
 
+/**
+  * @brief List
+  */
+void recieve_list(User* u);
+
+/**
+  * @brief Topic
+  */
+void recieve_topic(User* u, char* parameter);
+
 #endif

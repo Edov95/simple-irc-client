@@ -2,11 +2,31 @@
 #include "user.h"
 
 /*CREATE CHANNEL*/
-Channel* create_channel(string name){
+Channel* create_channel(string name, string topic){
   Channel* c = malloc(sizeof(Channel));
   c -> name = malloc(strlen(name) + 1);
   strcpy(c -> name, name);
   c -> users = NULL;
+  if (topic != NULL){
+    c -> topic = malloc(MAXLINE + 1);
+    strcpy((c -> topic), topic);
+  } else {
+    c -> topic = NULL;
+  }
+  c -> number_users = 0;
+}
+
+/*CHANGE TOPIC*/
+void change_topic(Channel* c, string topic){
+  if(topic == NULL){
+    free((c -> topic));
+    c -> topic = NULL;
+  } else {
+    if(c -> topic == NULL){
+      c -> topic = malloc(MAXLINE + 1);
+    }
+    strcpy((c -> topic), topic);
+  }
 }
 
 /*ADD USER*/
