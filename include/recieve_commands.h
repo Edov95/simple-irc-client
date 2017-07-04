@@ -72,7 +72,7 @@ void recieve_list(User* u);
 
 /**
   * @brief Topic
-  */
-void recieve_topic(User* u, char* parameter);
+  *
+void recieve_topic(User* u, char* parameter);*/
 
 #endif

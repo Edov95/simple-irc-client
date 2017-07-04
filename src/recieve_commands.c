@@ -528,7 +528,7 @@ void recieve_list(User* u){
   write(u -> socket, send_line, strlen(send_line));
   free(send_line);
 }
-
+/*
 void recieve_topic(User* u, char* parameter){
   int len = strlen(parameter);
   char* send_line = malloc(MAXLINE + 1);
@@ -546,3 +546,4 @@ void recieve_topic(User* u, char* parameter){
 
   change_topic(c,topic);
 }
+*/

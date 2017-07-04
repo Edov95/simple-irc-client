@@ -41,9 +41,9 @@ void user_thread(User* u){
         recieve_quit(u, strtok(NULL, "\n"));
       } else if(strcmp(command, LIST) == 0){
         recieve_list(u);
-      } else if(strcmp(command, TOPIC) == 0){
+      }/* else if(strcmp(command, TOPIC) == 0){
         recieve_topic(u, strtok(NULL, "\n"));
-      }
+      }*/
 
       command = strtok(NULL, " \t\r\n/");
     }
