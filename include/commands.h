@@ -2,7 +2,7 @@
   * @file commands.h
   * @author Edoardo Vanin
   * @date 23 Giugno 2017
-  * @brief Definisco i comandi utenti permessi come stringhe i comandi
+  * @brief Definisco i comandi utenti permessi come stringhe, i comandi
    sono fanno riferimento alla documentazione ufficiale (RFC)
   */
 #ifndef __COMMANDS_H__

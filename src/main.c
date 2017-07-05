@@ -1,3 +1,43 @@
+/**
+  * @file main.c
+  * @author Edoardo Vanin <edoardo.vanin.1@studenti.unipd.it>
+  * @date 17 Giugno 2017
+  * @mainpage IRC server
+  * IRC Server è un progetto sviluppato per l'esame di laboratorio
+  * di ingegneria informatica dell'università di Padova.
+  *
+  * @section implementazione Cosa implmenta e cosa non implementa il server
+  * Il server è un'implementazione molto semplificata del protocollo definitio
+  * dalla RFC1459 (<https://tools.ietf.org/html/rfc1459>) in particolare implementa
+  * i comandi
+  *   - NICK
+  *   - JOIN
+  *   - MODE
+  *   - WHO
+  *   - WHOIS
+  *   - PING
+  *   - PRIVMSG
+  *   - PART
+  *   - QUIT
+  *   - LIST
+  *
+  * Il server non gestisce a differenza di quanto dichiarato nel RFC1459 (<https://tools.ietf.org/html/rfc1459>)
+  * le proprietà dei canali e degli utenti, non gestisce gli operatori dei canali quindi un utente non si può
+  * chiamare il comando KICK su nessun utente e non è stato implementato l'invio di file tra utenti
+  *
+  * @section installazione Come installare il server
+  * Una volta scaricati i sorgenti del progetto eseguire i seguenti comandi
+  *   - cmake .
+  *   - make
+  *
+  * Il primo serve a creare i file make per la compilazione, il secondo comando compila il progetto
+  * creando gli eseguibili nella cartella bin/ il progetto include anche due programmi di test per
+  * le due liste, Channel_list e User_list i sorgenti sono disponibili in test/
+  *
+  * I test file sono stati creati con il framework Check (<https://libcheck.github.io/check/>) 
+  *
+  */
+
 #include <stdio.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>

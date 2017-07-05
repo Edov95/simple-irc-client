@@ -1,3 +1,9 @@
+/**
+  * @file errors.h
+  * @author Edoardo Vanin
+  * @date 23 Giugno 2017
+  * @brief Definisco gli errori possibili, fanno riferimento alla documentazione ufficiale (RFC1459)
+  */
 #ifndef __ERRORS__
 #define __ERRORS__
 

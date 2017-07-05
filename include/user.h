@@ -34,7 +34,7 @@ typedef struct {
   int id;                       //!< l'identificativo univoco
   int socket;                   //!< il socket dell'utente
   pthread_mutex_t socket_mutex; //!< semaforo per il socket
-  pthread_t thread;
+  pthread_t thread;             //!< il thread associato all'utente
 } User;
 
 /**
