@@ -1,0 +1,9 @@
+Gli utenti sono gestiti come lista
+
+I canali sono gesititi come lista e ogni canale ha la lista di utenti che ne fanno parte
+(vediamo se riesco ad implementare gli operatori)
+
+La gestione dei canali come lista separata concettualmente sembra avere problemi di sincronia tra utenti
+sarebbe meglio usare una mappa associativa ma allo stato attuale è impensabile
+
+implementare i comandi utenti e le risposte del server

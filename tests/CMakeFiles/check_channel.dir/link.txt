@@ -1,0 +1,1 @@
+/usr/bin/cc -lpthread   CMakeFiles/check_channel.dir/check_channel.c.o  -o ../bin/check_channel ../lib/libchannel_lib.a -lcheck -lpthread ../lib/libuser_lib.a 

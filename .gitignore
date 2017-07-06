@@ -34,12 +34,3 @@
 
 ### OSX ###
 .DS_Store
-
-# Makefile & CMake
-**/Makefile
-*.cmake
-**/CMakeFiles
-CMakeCache.txt
-
-#Files
-Roadmap

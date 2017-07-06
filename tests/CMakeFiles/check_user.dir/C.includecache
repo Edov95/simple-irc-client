@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/edoardo/Progetti/vanin/tests/check_user.c
+check.h
+-
+user.h
+/home/edoardo/Progetti/vanin/tests/user.h
+stdio.h
+-
+stdlib.h
+-
+
+include/user.h
+stdlib.h
+-
+stdio.h
+-
+string.h
+-
+

@@ -1,0 +1,16 @@
+/home/edoardo/Progetti/vanin/CMakeFiles/rebuild_cache.dir
+/home/edoardo/Progetti/vanin/CMakeFiles/test.dir
+/home/edoardo/Progetti/vanin/CMakeFiles/edit_cache.dir
+/home/edoardo/Progetti/vanin/src/CMakeFiles/rebuild_cache.dir
+/home/edoardo/Progetti/vanin/src/CMakeFiles/edit_cache.dir
+/home/edoardo/Progetti/vanin/src/CMakeFiles/channel_lib.dir
+/home/edoardo/Progetti/vanin/src/CMakeFiles/user_lib.dir
+/home/edoardo/Progetti/vanin/src/CMakeFiles/utils_lib.dir
+/home/edoardo/Progetti/vanin/src/CMakeFiles/user_thread_lib.dir
+/home/edoardo/Progetti/vanin/src/CMakeFiles/irc_server.dir
+/home/edoardo/Progetti/vanin/src/CMakeFiles/test.dir
+/home/edoardo/Progetti/vanin/tests/CMakeFiles/edit_cache.dir
+/home/edoardo/Progetti/vanin/tests/CMakeFiles/test.dir
+/home/edoardo/Progetti/vanin/tests/CMakeFiles/check_user.dir
+/home/edoardo/Progetti/vanin/tests/CMakeFiles/rebuild_cache.dir
+/home/edoardo/Progetti/vanin/tests/CMakeFiles/check_channel.dir

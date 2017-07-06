@@ -1,0 +1,1 @@
+/usr/bin/cc -lpthread   CMakeFiles/check_user.dir/check_user.c.o  -o ../bin/check_user ../lib/libuser_lib.a -lcheck -lpthread 
