@@ -465,6 +465,7 @@ void recieve_quit(User* u, char* parameter){
   //rimuovo l'utente dalla lista utenti
   pthread_mutex_lock(&main_user_list_mutex);
   remove_user_by_id(&main_user_list, u -> id);
+  count = count - 1;
   pthread_mutex_unlock(&main_user_list_mutex);
 
   //libero le zone di memoria occupate dall'utente
