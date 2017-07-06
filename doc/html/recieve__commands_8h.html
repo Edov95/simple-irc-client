@@ -1,0 +1,558 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IRC Server: Riferimenti per il file recieve_commands.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">IRC Server
+   </div>
+   <div id="projectbrief">Un semplice server IRC</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Cerca');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funzioni</a>  </div>
+  <div class="headertitle">
+<div class="title">Riferimenti per il file recieve_commands.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>File contenente le funzioni da svolgere ogni volta che ricevo un comando.  
+<a href="#details">Continua...</a></p>
+<div class="textblock"><code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="commands_8h_source.html">commands.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="user_8h_source.html">user.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="channel_8h_source.html">channel.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="utils_8h_source.html">utils.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="text_8h_source.html">text.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="errors_8h_source.html">errors.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="response_8h_source.html">response.h</a>&quot;</code><br />
+</div>
+<p><a href="recieve__commands_8h_source.html">Vai al codice sorgente di questo file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funzioni</h2></td></tr>
+<tr class="memitem:a6da47519f46bb4a907ea3a8f36c9ca5e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="recieve__commands_8h.html#a6da47519f46bb4a907ea3a8f36c9ca5e">recieve_nick</a> (<a class="el" href="structUser.html">User</a> *u, <a class="el" href="user_8h.html#a2bea59709d82bd0d4c29c992bf9c7607">User_list</a> *list, char *name)</td></tr>
+<tr class="memdesc:a6da47519f46bb4a907ea3a8f36c9ca5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cambia il nickname.  <a href="#a6da47519f46bb4a907ea3a8f36c9ca5e">Continua...</a><br /></td></tr>
+<tr class="separator:a6da47519f46bb4a907ea3a8f36c9ca5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6322b90daeda0bf1a55b469404cc7bfc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="recieve__commands_8h.html#a6322b90daeda0bf1a55b469404cc7bfc">recieve_user</a> (<a class="el" href="structUser.html">User</a> *u)</td></tr>
+<tr class="memdesc:a6322b90daeda0bf1a55b469404cc7bfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Risponde con un messaggio di benvenuto.  <a href="#a6322b90daeda0bf1a55b469404cc7bfc">Continua...</a><br /></td></tr>
+<tr class="separator:a6322b90daeda0bf1a55b469404cc7bfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00a9ad79797ca07556a061bae0110025"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="recieve__commands_8h.html#a00a9ad79797ca07556a061bae0110025">recieve_join</a> (<a class="el" href="structUser.html">User</a> *u, char *name)</td></tr>
+<tr class="memdesc:a00a9ad79797ca07556a061bae0110025"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entra in un canale.  <a href="#a00a9ad79797ca07556a061bae0110025">Continua...</a><br /></td></tr>
+<tr class="separator:a00a9ad79797ca07556a061bae0110025"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcff67724bfdca4928e190b68dc50450"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="recieve__commands_8h.html#abcff67724bfdca4928e190b68dc50450">recieve_mode</a> (<a class="el" href="structUser.html">User</a> *u, char *umode)</td></tr>
+<tr class="memdesc:abcff67724bfdca4928e190b68dc50450"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mode.  <a href="#abcff67724bfdca4928e190b68dc50450">Continua...</a><br /></td></tr>
+<tr class="separator:abcff67724bfdca4928e190b68dc50450"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a2d0ec2c0f1b1b76fa0b62e1075f7a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="recieve__commands_8h.html#a2a2d0ec2c0f1b1b76fa0b62e1075f7a5">recieve_who</a> (<a class="el" href="structUser.html">User</a> *u, char *query)</td></tr>
+<tr class="memdesc:a2a2d0ec2c0f1b1b76fa0b62e1075f7a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Who.  <a href="#a2a2d0ec2c0f1b1b76fa0b62e1075f7a5">Continua...</a><br /></td></tr>
+<tr class="separator:a2a2d0ec2c0f1b1b76fa0b62e1075f7a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a519608af0e51957666094b2d946b7142"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="recieve__commands_8h.html#a519608af0e51957666094b2d946b7142">recieve_whois</a> (<a class="el" href="structUser.html">User</a> *u, char *query)</td></tr>
+<tr class="memdesc:a519608af0e51957666094b2d946b7142"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whois.  <a href="#a519608af0e51957666094b2d946b7142">Continua...</a><br /></td></tr>
+<tr class="separator:a519608af0e51957666094b2d946b7142"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ed2081bb13c3aefd76f07a458036a63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="recieve__commands_8h.html#a5ed2081bb13c3aefd76f07a458036a63">recieve_ping</a> (<a class="el" href="structUser.html">User</a> *u, char *ping_message)</td></tr>
+<tr class="memdesc:a5ed2081bb13c3aefd76f07a458036a63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ping.  <a href="#a5ed2081bb13c3aefd76f07a458036a63">Continua...</a><br /></td></tr>
+<tr class="separator:a5ed2081bb13c3aefd76f07a458036a63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a915ec42a8d89c7a70670507c84b42a19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="recieve__commands_8h.html#a915ec42a8d89c7a70670507c84b42a19">recieve_privmsg</a> (<a class="el" href="structUser.html">User</a> *u, char *message)</td></tr>
+<tr class="memdesc:a915ec42a8d89c7a70670507c84b42a19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Privmsg.  <a href="#a915ec42a8d89c7a70670507c84b42a19">Continua...</a><br /></td></tr>
+<tr class="separator:a915ec42a8d89c7a70670507c84b42a19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f347668266a14b6595360574e9f32c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="recieve__commands_8h.html#a8f347668266a14b6595360574e9f32c3">recieve_part</a> (<a class="el" href="structUser.html">User</a> *u, char *parameter)</td></tr>
+<tr class="memdesc:a8f347668266a14b6595360574e9f32c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Part.  <a href="#a8f347668266a14b6595360574e9f32c3">Continua...</a><br /></td></tr>
+<tr class="separator:a8f347668266a14b6595360574e9f32c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3728de77e184fc48924e06a23067e87f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="recieve__commands_8h.html#a3728de77e184fc48924e06a23067e87f">recieve_quit</a> (<a class="el" href="structUser.html">User</a> *u, char *parameter)</td></tr>
+<tr class="memdesc:a3728de77e184fc48924e06a23067e87f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quit.  <a href="#a3728de77e184fc48924e06a23067e87f">Continua...</a><br /></td></tr>
+<tr class="separator:a3728de77e184fc48924e06a23067e87f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b7a8e07ab51af7a61431669299ef487"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="recieve__commands_8h.html#a4b7a8e07ab51af7a61431669299ef487">recieve_list</a> (<a class="el" href="structUser.html">User</a> *u)</td></tr>
+<tr class="memdesc:a4b7a8e07ab51af7a61431669299ef487"><td class="mdescLeft">&#160;</td><td class="mdescRight">List.  <a href="#a4b7a8e07ab51af7a61431669299ef487">Continua...</a><br /></td></tr>
+<tr class="separator:a4b7a8e07ab51af7a61431669299ef487"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descrizione dettagliata</h2>
+<div class="textblock"><p>File contenente le funzioni da svolgere ogni volta che ricevo un comando. </p>
+<dl class="section author"><dt>Autore</dt><dd>Edoardo Vanin </dd></dl>
+<dl class="section date"><dt>Data</dt><dd>23 Giugno 2017 </dd></dl>
+
+<p class="definition">Definizione nel file <a class="el" href="recieve__commands_8h_source.html">recieve_commands.h</a>.</p>
+</div><h2 class="groupheader">Documentazione delle funzioni</h2>
+<a id="a00a9ad79797ca07556a061bae0110025"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00a9ad79797ca07556a061bae0110025">&#9670;&nbsp;</a></span>recieve_join()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void recieve_join </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUser.html">User</a> *&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Entra in un canale. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>l'utente che ha chiamato il comando </td></tr>
+    <tr><td class="paramname">name</td><td>il nome del canale in cui entrare</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>la funzione entra sempre in un canale, se non esiste lo crea, se esiste aggiunge l'utente alla lista utenti del canale </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="recieve__commands_8c_source.html#l00071">71</a> del file <a class="el" href="recieve__commands_8c_source.html">recieve_commands.c</a>.</p>
+
+</div>
+</div>
+<a id="a4b7a8e07ab51af7a61431669299ef487"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b7a8e07ab51af7a61431669299ef487">&#9670;&nbsp;</a></span>recieve_list()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void recieve_list </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUser.html">User</a> *&#160;</td>
+          <td class="paramname"><em>u</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>List. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>l'utente che ha chiamato il comando</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>ritorna la lista di canali presenti nel server </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="recieve__commands_8c_source.html#l00487">487</a> del file <a class="el" href="recieve__commands_8c_source.html">recieve_commands.c</a>.</p>
+
+</div>
+</div>
+<a id="abcff67724bfdca4928e190b68dc50450"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcff67724bfdca4928e190b68dc50450">&#9670;&nbsp;</a></span>recieve_mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void recieve_mode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUser.html">User</a> *&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>umode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Mode. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>l'utente che ha chiamato il comando </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="recieve__commands_8c_source.html#l00193">193</a> del file <a class="el" href="recieve__commands_8c_source.html">recieve_commands.c</a>.</p>
+
+</div>
+</div>
+<a id="a6da47519f46bb4a907ea3a8f36c9ca5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6da47519f46bb4a907ea3a8f36c9ca5e">&#9670;&nbsp;</a></span>recieve_nick()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void recieve_nick </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUser.html">User</a> *&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="user_8h.html#a2bea59709d82bd0d4c29c992bf9c7607">User_list</a> *&#160;</td>
+          <td class="paramname"><em>list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cambia il nickname. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>l'utente che ha chiamato il comando </td></tr>
+    <tr><td class="paramname">list</td><td>la lista utenti da cui andare a cercare u </td></tr>
+    <tr><td class="paramname">name</td><td>il nuovo nickname </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="recieve__commands_8c_source.html#l00003">3</a> del file <a class="el" href="recieve__commands_8c_source.html">recieve_commands.c</a>.</p>
+
+</div>
+</div>
+<a id="a8f347668266a14b6595360574e9f32c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f347668266a14b6595360574e9f32c3">&#9670;&nbsp;</a></span>recieve_part()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void recieve_part </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUser.html">User</a> *&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>parameter</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Part. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>l'utente che ha chiamato il comando </td></tr>
+    <tr><td class="paramname">parameter</td><td>la stringa che contiene il canale da abbandonare e il messaggio di leave</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>la funzione non gestisce, a differenza di quanto indicato dalla RFC1459 l'abbandono multiplo </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="recieve__commands_8c_source.html#l00382">382</a> del file <a class="el" href="recieve__commands_8c_source.html">recieve_commands.c</a>.</p>
+
+</div>
+</div>
+<a id="a5ed2081bb13c3aefd76f07a458036a63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ed2081bb13c3aefd76f07a458036a63">&#9670;&nbsp;</a></span>recieve_ping()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void recieve_ping </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUser.html">User</a> *&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>ping_message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ping. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>l'utente che ha chiamato il comando </td></tr>
+    <tr><td class="paramname">ping_message</td><td>l'identificativo del cliente che ha chiamato il comando Ping</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>a differenza della specifica nel RFC1459 non supporta la gestione di server multipli o chiamata di ping verso utenti del sistema </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="recieve__commands_8c_source.html#l00335">335</a> del file <a class="el" href="recieve__commands_8c_source.html">recieve_commands.c</a>.</p>
+
+</div>
+</div>
+<a id="a915ec42a8d89c7a70670507c84b42a19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a915ec42a8d89c7a70670507c84b42a19">&#9670;&nbsp;</a></span>recieve_privmsg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void recieve_privmsg </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUser.html">User</a> *&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Privmsg. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>l'utente che ha chiamato il comando </td></tr>
+    <tr><td class="paramname">message</td><td>il messaggio da inviare al canale</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>la funzione non gestisce lo scambio di messaggi tra utenti ma sono nei canali </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="recieve__commands_8c_source.html#l00345">345</a> del file <a class="el" href="recieve__commands_8c_source.html">recieve_commands.c</a>.</p>
+
+</div>
+</div>
+<a id="a3728de77e184fc48924e06a23067e87f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3728de77e184fc48924e06a23067e87f">&#9670;&nbsp;</a></span>recieve_quit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void recieve_quit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUser.html">User</a> *&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>parameter</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Quit. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>l'utente che ha chiamato il comando </td></tr>
+    <tr><td class="paramname">parameter</td><td>il leave message</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>comando quit, disconnnette l'utente dal server e rimuove la sua presenza dalle liste utente e canale </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="recieve__commands_8c_source.html#l00447">447</a> del file <a class="el" href="recieve__commands_8c_source.html">recieve_commands.c</a>.</p>
+
+</div>
+</div>
+<a id="a6322b90daeda0bf1a55b469404cc7bfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6322b90daeda0bf1a55b469404cc7bfc">&#9670;&nbsp;</a></span>recieve_user()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void recieve_user </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUser.html">User</a> *&#160;</td>
+          <td class="paramname"><em>u</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Risponde con un messaggio di benvenuto. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>l'utente che ha chiamato il comando </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="recieve__commands_8c_source.html#l00057">57</a> del file <a class="el" href="recieve__commands_8c_source.html">recieve_commands.c</a>.</p>
+
+</div>
+</div>
+<a id="a2a2d0ec2c0f1b1b76fa0b62e1075f7a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a2d0ec2c0f1b1b76fa0b62e1075f7a5">&#9670;&nbsp;</a></span>recieve_who()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void recieve_who </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUser.html">User</a> *&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>query</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Who. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>l'utente che ha chiamato il comando </td></tr>
+    <tr><td class="paramname">query</td><td>la sintassi per il comando WHO</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>si possono distinguere tre casi in cui agisce il comando WHO il primo senza query ed invia al chiamante tutte le informazioni di tutti gli utenti che non sono negli stessi canali di u il secondo con parametro un canale ed invia ad u le informazioni di tutt gli utenti del canale (u escluso) infine il terzo caso in cui la funzione WHO viene chiamata su un utente e invia ad u nickname e hostname dell'utente cercato </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="recieve__commands_8c_source.html#l00212">212</a> del file <a class="el" href="recieve__commands_8c_source.html">recieve_commands.c</a>.</p>
+
+</div>
+</div>
+<a id="a519608af0e51957666094b2d946b7142"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a519608af0e51957666094b2d946b7142">&#9670;&nbsp;</a></span>recieve_whois()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void recieve_whois </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUser.html">User</a> *&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>query</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Whois. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>l'utente che ha chiamato il comando </td></tr>
+    <tr><td class="paramname">query</td><td>l'utente su vui si vuole chiamare il WHOIS</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>invia le stesse informazioni di WHO username solo con la formattazione di una chiamata WHOIS </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="recieve__commands_8c_source.html#l00269">269</a> del file <a class="el" href="recieve__commands_8c_source.html">recieve_commands.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

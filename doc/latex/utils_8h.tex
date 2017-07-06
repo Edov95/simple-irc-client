@@ -1,0 +1,211 @@
+\hypertarget{utils_8h}{}\section{Riferimenti per il file utils.\+h}
+\label{utils_8h}\index{utils.\+h@{utils.\+h}}
+
+
+File contenente funzioni e/o variabili globali.  
+
+
+{\ttfamily \#include \char`\"{}user.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}channel.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}errors.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}response.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}text.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+\subsection*{Definizioni}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{utils_8h_adee8f73df9f6ac5e1ef0cb6cfa9cba4d}{M\+A\+X\+U\+S\+ER}~150
+\begin{DoxyCompactList}\small\item\em impone un numero massimo di utenti che si possono collegare al server \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{utils_8h_a3e937c42922f7601edb17b747602c471}\label{utils_8h_a3e937c42922f7601edb17b747602c471}} 
+\#define {\bfseries M\+A\+X\+L\+I\+NE}~4096
+\end{DoxyCompactItemize}
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{utils_8h_ab5fc4a05a21140b36781db99da85c392}{send\+\_\+user\+\_\+info} (\hyperlink{structUser}{User} $\ast$u, \hyperlink{structUser}{User} $\ast$target, char $\ast$channel)
+\begin{DoxyCompactList}\small\item\em Funzione per gestire il caso \char`\"{}utente\char`\"{} del comando W\+HO. \end{DoxyCompactList}\item 
+void \hyperlink{utils_8h_a669c72b7546c9887dd91adb6d967f4fe}{send\+\_\+all\+\_\+user\+\_\+info} (\hyperlink{structUser}{User} $\ast$u)
+\begin{DoxyCompactList}\small\item\em Funzione per gestire il caso \char`\"{}tutti gli utenti\char`\"{} del comando W\+HO. \end{DoxyCompactList}\item 
+void \hyperlink{utils_8h_a6d21282acf404f5671d1feacf4a01915}{send\+\_\+channel\+\_\+info} (\hyperlink{structUser}{User} $\ast$u, \hyperlink{structChannel}{Channel} $\ast$c)
+\begin{DoxyCompactList}\small\item\em Fuzione per gestire il caso \char`\"{}cananle\char`\"{} del comando W\+HO. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variabili}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{utils_8h_ad43c3812e6d13e0518d9f8b8f463ffcf}{count}
+\begin{DoxyCompactList}\small\item\em contatore per la lista utenti \end{DoxyCompactList}\item 
+\hyperlink{user_8h_a2bea59709d82bd0d4c29c992bf9c7607}{User\+\_\+list} $\ast$ \hyperlink{utils_8h_a6c29d94220d6632d6fc82de4053e8464}{main\+\_\+user\+\_\+list}
+\begin{DoxyCompactList}\small\item\em lista globale per contenente tutti gli utenti del presenti nel server \end{DoxyCompactList}\item 
+pthread\+\_\+mutex\+\_\+t \hyperlink{utils_8h_ae5cbd20f69c3bff8fcd4f5f140256964}{main\+\_\+user\+\_\+list\+\_\+mutex}
+\begin{DoxyCompactList}\small\item\em semaforo per la lista utenti, evita malfunzionamenti dalla programmazione concorrente \end{DoxyCompactList}\item 
+\hyperlink{channel_8h_a9c868ec1b385595c9834b24d93822887}{Channel\+\_\+list} $\ast$ \hyperlink{utils_8h_ac4f5a11a5387bbe2657b3347f80f056b}{main\+\_\+channel\+\_\+list}
+\begin{DoxyCompactList}\small\item\em lista globale per la gestione di tutti i canali \end{DoxyCompactList}\item 
+pthread\+\_\+mutex\+\_\+t \hyperlink{utils_8h_a4c6973fcebd82a66c83edbdff2a8c9fd}{main\+\_\+channel\+\_\+list\+\_\+mutex}
+\begin{DoxyCompactList}\small\item\em semaforo per la lista cananli, evita malfunzionamenti dalla programmazione concorrente \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+File contenente funzioni e/o variabili globali. 
+
+\begin{DoxyAuthor}{Autore}
+Edoardo Vanin 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Data}
+20 Giugno 2017 
+\end{DoxyDate}
+
+
+\subsection{Documentazione delle definizioni}
+\mbox{\Hypertarget{utils_8h_adee8f73df9f6ac5e1ef0cb6cfa9cba4d}\label{utils_8h_adee8f73df9f6ac5e1ef0cb6cfa9cba4d}} 
+\index{utils.\+h@{utils.\+h}!M\+A\+X\+U\+S\+ER@{M\+A\+X\+U\+S\+ER}}
+\index{M\+A\+X\+U\+S\+ER@{M\+A\+X\+U\+S\+ER}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{M\+A\+X\+U\+S\+ER}{MAXUSER}}
+{\footnotesize\ttfamily \#define M\+A\+X\+U\+S\+ER~150}
+
+
+
+impone un numero massimo di utenti che si possono collegare al server 
+
+
+
+Definizione alla linea 20 del file utils.\+h.
+
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{utils_8h_a669c72b7546c9887dd91adb6d967f4fe}\label{utils_8h_a669c72b7546c9887dd91adb6d967f4fe}} 
+\index{utils.\+h@{utils.\+h}!send\+\_\+all\+\_\+user\+\_\+info@{send\+\_\+all\+\_\+user\+\_\+info}}
+\index{send\+\_\+all\+\_\+user\+\_\+info@{send\+\_\+all\+\_\+user\+\_\+info}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{send\+\_\+all\+\_\+user\+\_\+info()}{send\_all\_user\_info()}}
+{\footnotesize\ttfamily void send\+\_\+all\+\_\+user\+\_\+info (\begin{DoxyParamCaption}\item[{\hyperlink{structUser}{User} $\ast$}]{u }\end{DoxyParamCaption})}
+
+
+
+Funzione per gestire il caso \char`\"{}tutti gli utenti\char`\"{} del comando W\+HO. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em u} & l\textquotesingle{}utente che ha chiamato la funzione \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 40 del file utils.\+c.
+
+\mbox{\Hypertarget{utils_8h_a6d21282acf404f5671d1feacf4a01915}\label{utils_8h_a6d21282acf404f5671d1feacf4a01915}} 
+\index{utils.\+h@{utils.\+h}!send\+\_\+channel\+\_\+info@{send\+\_\+channel\+\_\+info}}
+\index{send\+\_\+channel\+\_\+info@{send\+\_\+channel\+\_\+info}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{send\+\_\+channel\+\_\+info()}{send\_channel\_info()}}
+{\footnotesize\ttfamily void send\+\_\+channel\+\_\+info (\begin{DoxyParamCaption}\item[{\hyperlink{structUser}{User} $\ast$}]{u,  }\item[{\hyperlink{structChannel}{Channel} $\ast$}]{c }\end{DoxyParamCaption})}
+
+
+
+Fuzione per gestire il caso \char`\"{}cananle\char`\"{} del comando W\+HO. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em u} & l\textquotesingle{}utente che ha chiamato la funzione \\
+\hline
+{\em c} & il canale di cui si vogliono le informazioni \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 80 del file utils.\+c.
+
+\mbox{\Hypertarget{utils_8h_ab5fc4a05a21140b36781db99da85c392}\label{utils_8h_ab5fc4a05a21140b36781db99da85c392}} 
+\index{utils.\+h@{utils.\+h}!send\+\_\+user\+\_\+info@{send\+\_\+user\+\_\+info}}
+\index{send\+\_\+user\+\_\+info@{send\+\_\+user\+\_\+info}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{send\+\_\+user\+\_\+info()}{send\_user\_info()}}
+{\footnotesize\ttfamily void send\+\_\+user\+\_\+info (\begin{DoxyParamCaption}\item[{\hyperlink{structUser}{User} $\ast$}]{u,  }\item[{\hyperlink{structUser}{User} $\ast$}]{target,  }\item[{char $\ast$}]{channel }\end{DoxyParamCaption})}
+
+
+
+Funzione per gestire il caso \char`\"{}utente\char`\"{} del comando W\+HO. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em u} & l\textquotesingle{}utente che ha chiamato la funzione W\+HO \\
+\hline
+{\em target} & l\textquotesingle{}obbiettivo su cui chiamare W\+HO \\
+\hline
+{\em il} & nome del cananle\\
+\hline
+\end{DoxyParams}
+la funzione è usate in due casi d\textquotesingle{}uso diversi, la presenza del parametro channel non N\+U\+L\+LO facilita la selezione del caso 
+
+Definizione alla linea 3 del file utils.\+c.
+
+
+
+\subsection{Documentazione delle variabili}
+\mbox{\Hypertarget{utils_8h_ad43c3812e6d13e0518d9f8b8f463ffcf}\label{utils_8h_ad43c3812e6d13e0518d9f8b8f463ffcf}} 
+\index{utils.\+h@{utils.\+h}!count@{count}}
+\index{count@{count}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{count}{count}}
+{\footnotesize\ttfamily int count}
+
+
+
+contatore per la lista utenti 
+
+
+
+Definizione alla linea 24 del file utils.\+h.
+
+\mbox{\Hypertarget{utils_8h_ac4f5a11a5387bbe2657b3347f80f056b}\label{utils_8h_ac4f5a11a5387bbe2657b3347f80f056b}} 
+\index{utils.\+h@{utils.\+h}!main\+\_\+channel\+\_\+list@{main\+\_\+channel\+\_\+list}}
+\index{main\+\_\+channel\+\_\+list@{main\+\_\+channel\+\_\+list}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{main\+\_\+channel\+\_\+list}{main\_channel\_list}}
+{\footnotesize\ttfamily \hyperlink{channel_8h_a9c868ec1b385595c9834b24d93822887}{Channel\+\_\+list}$\ast$ main\+\_\+channel\+\_\+list}
+
+
+
+lista globale per la gestione di tutti i canali 
+
+
+
+Definizione alla linea 31 del file utils.\+h.
+
+\mbox{\Hypertarget{utils_8h_a4c6973fcebd82a66c83edbdff2a8c9fd}\label{utils_8h_a4c6973fcebd82a66c83edbdff2a8c9fd}} 
+\index{utils.\+h@{utils.\+h}!main\+\_\+channel\+\_\+list\+\_\+mutex@{main\+\_\+channel\+\_\+list\+\_\+mutex}}
+\index{main\+\_\+channel\+\_\+list\+\_\+mutex@{main\+\_\+channel\+\_\+list\+\_\+mutex}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{main\+\_\+channel\+\_\+list\+\_\+mutex}{main\_channel\_list\_mutex}}
+{\footnotesize\ttfamily pthread\+\_\+mutex\+\_\+t main\+\_\+channel\+\_\+list\+\_\+mutex}
+
+
+
+semaforo per la lista cananli, evita malfunzionamenti dalla programmazione concorrente 
+
+
+
+Definizione alla linea 33 del file utils.\+h.
+
+\mbox{\Hypertarget{utils_8h_a6c29d94220d6632d6fc82de4053e8464}\label{utils_8h_a6c29d94220d6632d6fc82de4053e8464}} 
+\index{utils.\+h@{utils.\+h}!main\+\_\+user\+\_\+list@{main\+\_\+user\+\_\+list}}
+\index{main\+\_\+user\+\_\+list@{main\+\_\+user\+\_\+list}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{main\+\_\+user\+\_\+list}{main\_user\_list}}
+{\footnotesize\ttfamily \hyperlink{user_8h_a2bea59709d82bd0d4c29c992bf9c7607}{User\+\_\+list}$\ast$ main\+\_\+user\+\_\+list}
+
+
+
+lista globale per contenente tutti gli utenti del presenti nel server 
+
+
+
+Definizione alla linea 26 del file utils.\+h.
+
+\mbox{\Hypertarget{utils_8h_ae5cbd20f69c3bff8fcd4f5f140256964}\label{utils_8h_ae5cbd20f69c3bff8fcd4f5f140256964}} 
+\index{utils.\+h@{utils.\+h}!main\+\_\+user\+\_\+list\+\_\+mutex@{main\+\_\+user\+\_\+list\+\_\+mutex}}
+\index{main\+\_\+user\+\_\+list\+\_\+mutex@{main\+\_\+user\+\_\+list\+\_\+mutex}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{main\+\_\+user\+\_\+list\+\_\+mutex}{main\_user\_list\_mutex}}
+{\footnotesize\ttfamily pthread\+\_\+mutex\+\_\+t main\+\_\+user\+\_\+list\+\_\+mutex}
+
+
+
+semaforo per la lista utenti, evita malfunzionamenti dalla programmazione concorrente 
+
+
+
+Definizione alla linea 28 del file utils.\+h.
+

@@ -28,7 +28,6 @@
 *.x86_64
 *.hex
 /bin
-/doc
 
 # Debug files
 *.dSYM/

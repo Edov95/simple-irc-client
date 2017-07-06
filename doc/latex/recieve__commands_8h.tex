@@ -1,0 +1,281 @@
+\hypertarget{recieve__commands_8h}{}\section{Riferimenti per il file recieve\+\_\+commands.\+h}
+\label{recieve__commands_8h}\index{recieve\+\_\+commands.\+h@{recieve\+\_\+commands.\+h}}
+
+
+File contenente le funzioni da svolgere ogni volta che ricevo un comando.  
+
+
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}commands.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}user.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}channel.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}utils.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}text.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}errors.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}response.\+h\char`\"{}}\newline
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{recieve__commands_8h_a6da47519f46bb4a907ea3a8f36c9ca5e}{recieve\+\_\+nick} (\hyperlink{structUser}{User} $\ast$u, \hyperlink{user_8h_a2bea59709d82bd0d4c29c992bf9c7607}{User\+\_\+list} $\ast$list, char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Cambia il nickname. \end{DoxyCompactList}\item 
+void \hyperlink{recieve__commands_8h_a6322b90daeda0bf1a55b469404cc7bfc}{recieve\+\_\+user} (\hyperlink{structUser}{User} $\ast$u)
+\begin{DoxyCompactList}\small\item\em Risponde con un messaggio di benvenuto. \end{DoxyCompactList}\item 
+void \hyperlink{recieve__commands_8h_a00a9ad79797ca07556a061bae0110025}{recieve\+\_\+join} (\hyperlink{structUser}{User} $\ast$u, char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Entra in un canale. \end{DoxyCompactList}\item 
+void \hyperlink{recieve__commands_8h_abcff67724bfdca4928e190b68dc50450}{recieve\+\_\+mode} (\hyperlink{structUser}{User} $\ast$u, char $\ast$umode)
+\begin{DoxyCompactList}\small\item\em Mode. \end{DoxyCompactList}\item 
+void \hyperlink{recieve__commands_8h_a2a2d0ec2c0f1b1b76fa0b62e1075f7a5}{recieve\+\_\+who} (\hyperlink{structUser}{User} $\ast$u, char $\ast$query)
+\begin{DoxyCompactList}\small\item\em Who. \end{DoxyCompactList}\item 
+void \hyperlink{recieve__commands_8h_a519608af0e51957666094b2d946b7142}{recieve\+\_\+whois} (\hyperlink{structUser}{User} $\ast$u, char $\ast$query)
+\begin{DoxyCompactList}\small\item\em Whois. \end{DoxyCompactList}\item 
+void \hyperlink{recieve__commands_8h_a5ed2081bb13c3aefd76f07a458036a63}{recieve\+\_\+ping} (\hyperlink{structUser}{User} $\ast$u, char $\ast$ping\+\_\+message)
+\begin{DoxyCompactList}\small\item\em Ping. \end{DoxyCompactList}\item 
+void \hyperlink{recieve__commands_8h_a915ec42a8d89c7a70670507c84b42a19}{recieve\+\_\+privmsg} (\hyperlink{structUser}{User} $\ast$u, char $\ast$message)
+\begin{DoxyCompactList}\small\item\em Privmsg. \end{DoxyCompactList}\item 
+void \hyperlink{recieve__commands_8h_a8f347668266a14b6595360574e9f32c3}{recieve\+\_\+part} (\hyperlink{structUser}{User} $\ast$u, char $\ast$parameter)
+\begin{DoxyCompactList}\small\item\em Part. \end{DoxyCompactList}\item 
+void \hyperlink{recieve__commands_8h_a3728de77e184fc48924e06a23067e87f}{recieve\+\_\+quit} (\hyperlink{structUser}{User} $\ast$u, char $\ast$parameter)
+\begin{DoxyCompactList}\small\item\em Quit. \end{DoxyCompactList}\item 
+void \hyperlink{recieve__commands_8h_a4b7a8e07ab51af7a61431669299ef487}{recieve\+\_\+list} (\hyperlink{structUser}{User} $\ast$u)
+\begin{DoxyCompactList}\small\item\em List. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+File contenente le funzioni da svolgere ogni volta che ricevo un comando. 
+
+\begin{DoxyAuthor}{Autore}
+Edoardo Vanin 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Data}
+23 Giugno 2017 
+\end{DoxyDate}
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{recieve__commands_8h_a00a9ad79797ca07556a061bae0110025}\label{recieve__commands_8h_a00a9ad79797ca07556a061bae0110025}} 
+\index{recieve\+\_\+commands.\+h@{recieve\+\_\+commands.\+h}!recieve\+\_\+join@{recieve\+\_\+join}}
+\index{recieve\+\_\+join@{recieve\+\_\+join}!recieve\+\_\+commands.\+h@{recieve\+\_\+commands.\+h}}
+\subsubsection{\texorpdfstring{recieve\+\_\+join()}{recieve\_join()}}
+{\footnotesize\ttfamily void recieve\+\_\+join (\begin{DoxyParamCaption}\item[{\hyperlink{structUser}{User} $\ast$}]{u,  }\item[{char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Entra in un canale. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em u} & l\textquotesingle{}utente che ha chiamato il comando \\
+\hline
+{\em name} & il nome del canale in cui entrare\\
+\hline
+\end{DoxyParams}
+la funzione entra sempre in un canale, se non esiste lo crea, se esiste aggiunge l\textquotesingle{}utente alla lista utenti del canale 
+
+Definizione alla linea 71 del file recieve\+\_\+commands.\+c.
+
+\mbox{\Hypertarget{recieve__commands_8h_a4b7a8e07ab51af7a61431669299ef487}\label{recieve__commands_8h_a4b7a8e07ab51af7a61431669299ef487}} 
+\index{recieve\+\_\+commands.\+h@{recieve\+\_\+commands.\+h}!recieve\+\_\+list@{recieve\+\_\+list}}
+\index{recieve\+\_\+list@{recieve\+\_\+list}!recieve\+\_\+commands.\+h@{recieve\+\_\+commands.\+h}}
+\subsubsection{\texorpdfstring{recieve\+\_\+list()}{recieve\_list()}}
+{\footnotesize\ttfamily void recieve\+\_\+list (\begin{DoxyParamCaption}\item[{\hyperlink{structUser}{User} $\ast$}]{u }\end{DoxyParamCaption})}
+
+
+
+List. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em u} & l\textquotesingle{}utente che ha chiamato il comando\\
+\hline
+\end{DoxyParams}
+ritorna la lista di canali presenti nel server 
+
+Definizione alla linea 487 del file recieve\+\_\+commands.\+c.
+
+\mbox{\Hypertarget{recieve__commands_8h_abcff67724bfdca4928e190b68dc50450}\label{recieve__commands_8h_abcff67724bfdca4928e190b68dc50450}} 
+\index{recieve\+\_\+commands.\+h@{recieve\+\_\+commands.\+h}!recieve\+\_\+mode@{recieve\+\_\+mode}}
+\index{recieve\+\_\+mode@{recieve\+\_\+mode}!recieve\+\_\+commands.\+h@{recieve\+\_\+commands.\+h}}
+\subsubsection{\texorpdfstring{recieve\+\_\+mode()}{recieve\_mode()}}
+{\footnotesize\ttfamily void recieve\+\_\+mode (\begin{DoxyParamCaption}\item[{\hyperlink{structUser}{User} $\ast$}]{u,  }\item[{char $\ast$}]{umode }\end{DoxyParamCaption})}
+
+
+
+Mode. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em u} & l\textquotesingle{}utente che ha chiamato il comando \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 193 del file recieve\+\_\+commands.\+c.
+
+\mbox{\Hypertarget{recieve__commands_8h_a6da47519f46bb4a907ea3a8f36c9ca5e}\label{recieve__commands_8h_a6da47519f46bb4a907ea3a8f36c9ca5e}} 
+\index{recieve\+\_\+commands.\+h@{recieve\+\_\+commands.\+h}!recieve\+\_\+nick@{recieve\+\_\+nick}}
+\index{recieve\+\_\+nick@{recieve\+\_\+nick}!recieve\+\_\+commands.\+h@{recieve\+\_\+commands.\+h}}
+\subsubsection{\texorpdfstring{recieve\+\_\+nick()}{recieve\_nick()}}
+{\footnotesize\ttfamily void recieve\+\_\+nick (\begin{DoxyParamCaption}\item[{\hyperlink{structUser}{User} $\ast$}]{u,  }\item[{\hyperlink{user_8h_a2bea59709d82bd0d4c29c992bf9c7607}{User\+\_\+list} $\ast$}]{list,  }\item[{char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Cambia il nickname. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em u} & l\textquotesingle{}utente che ha chiamato il comando \\
+\hline
+{\em list} & la lista utenti da cui andare a cercare u \\
+\hline
+{\em name} & il nuovo nickname \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 3 del file recieve\+\_\+commands.\+c.
+
+\mbox{\Hypertarget{recieve__commands_8h_a8f347668266a14b6595360574e9f32c3}\label{recieve__commands_8h_a8f347668266a14b6595360574e9f32c3}} 
+\index{recieve\+\_\+commands.\+h@{recieve\+\_\+commands.\+h}!recieve\+\_\+part@{recieve\+\_\+part}}
+\index{recieve\+\_\+part@{recieve\+\_\+part}!recieve\+\_\+commands.\+h@{recieve\+\_\+commands.\+h}}
+\subsubsection{\texorpdfstring{recieve\+\_\+part()}{recieve\_part()}}
+{\footnotesize\ttfamily void recieve\+\_\+part (\begin{DoxyParamCaption}\item[{\hyperlink{structUser}{User} $\ast$}]{u,  }\item[{char $\ast$}]{parameter }\end{DoxyParamCaption})}
+
+
+
+Part. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em u} & l\textquotesingle{}utente che ha chiamato il comando \\
+\hline
+{\em parameter} & la stringa che contiene il canale da abbandonare e il messaggio di leave\\
+\hline
+\end{DoxyParams}
+la funzione non gestisce, a differenza di quanto indicato dalla R\+F\+C1459 l\textquotesingle{}abbandono multiplo 
+
+Definizione alla linea 382 del file recieve\+\_\+commands.\+c.
+
+\mbox{\Hypertarget{recieve__commands_8h_a5ed2081bb13c3aefd76f07a458036a63}\label{recieve__commands_8h_a5ed2081bb13c3aefd76f07a458036a63}} 
+\index{recieve\+\_\+commands.\+h@{recieve\+\_\+commands.\+h}!recieve\+\_\+ping@{recieve\+\_\+ping}}
+\index{recieve\+\_\+ping@{recieve\+\_\+ping}!recieve\+\_\+commands.\+h@{recieve\+\_\+commands.\+h}}
+\subsubsection{\texorpdfstring{recieve\+\_\+ping()}{recieve\_ping()}}
+{\footnotesize\ttfamily void recieve\+\_\+ping (\begin{DoxyParamCaption}\item[{\hyperlink{structUser}{User} $\ast$}]{u,  }\item[{char $\ast$}]{ping\+\_\+message }\end{DoxyParamCaption})}
+
+
+
+Ping. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em u} & l\textquotesingle{}utente che ha chiamato il comando \\
+\hline
+{\em ping\+\_\+message} & l\textquotesingle{}identificativo del cliente che ha chiamato il comando Ping\\
+\hline
+\end{DoxyParams}
+a differenza della specifica nel R\+F\+C1459 non supporta la gestione di server multipli o chiamata di ping verso utenti del sistema 
+
+Definizione alla linea 335 del file recieve\+\_\+commands.\+c.
+
+\mbox{\Hypertarget{recieve__commands_8h_a915ec42a8d89c7a70670507c84b42a19}\label{recieve__commands_8h_a915ec42a8d89c7a70670507c84b42a19}} 
+\index{recieve\+\_\+commands.\+h@{recieve\+\_\+commands.\+h}!recieve\+\_\+privmsg@{recieve\+\_\+privmsg}}
+\index{recieve\+\_\+privmsg@{recieve\+\_\+privmsg}!recieve\+\_\+commands.\+h@{recieve\+\_\+commands.\+h}}
+\subsubsection{\texorpdfstring{recieve\+\_\+privmsg()}{recieve\_privmsg()}}
+{\footnotesize\ttfamily void recieve\+\_\+privmsg (\begin{DoxyParamCaption}\item[{\hyperlink{structUser}{User} $\ast$}]{u,  }\item[{char $\ast$}]{message }\end{DoxyParamCaption})}
+
+
+
+Privmsg. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em u} & l\textquotesingle{}utente che ha chiamato il comando \\
+\hline
+{\em message} & il messaggio da inviare al canale\\
+\hline
+\end{DoxyParams}
+la funzione non gestisce lo scambio di messaggi tra utenti ma sono nei canali 
+
+Definizione alla linea 345 del file recieve\+\_\+commands.\+c.
+
+\mbox{\Hypertarget{recieve__commands_8h_a3728de77e184fc48924e06a23067e87f}\label{recieve__commands_8h_a3728de77e184fc48924e06a23067e87f}} 
+\index{recieve\+\_\+commands.\+h@{recieve\+\_\+commands.\+h}!recieve\+\_\+quit@{recieve\+\_\+quit}}
+\index{recieve\+\_\+quit@{recieve\+\_\+quit}!recieve\+\_\+commands.\+h@{recieve\+\_\+commands.\+h}}
+\subsubsection{\texorpdfstring{recieve\+\_\+quit()}{recieve\_quit()}}
+{\footnotesize\ttfamily void recieve\+\_\+quit (\begin{DoxyParamCaption}\item[{\hyperlink{structUser}{User} $\ast$}]{u,  }\item[{char $\ast$}]{parameter }\end{DoxyParamCaption})}
+
+
+
+Quit. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em u} & l\textquotesingle{}utente che ha chiamato il comando \\
+\hline
+{\em parameter} & il leave message\\
+\hline
+\end{DoxyParams}
+comando quit, disconnnette l\textquotesingle{}utente dal server e rimuove la sua presenza dalle liste utente e canale 
+
+Definizione alla linea 447 del file recieve\+\_\+commands.\+c.
+
+\mbox{\Hypertarget{recieve__commands_8h_a6322b90daeda0bf1a55b469404cc7bfc}\label{recieve__commands_8h_a6322b90daeda0bf1a55b469404cc7bfc}} 
+\index{recieve\+\_\+commands.\+h@{recieve\+\_\+commands.\+h}!recieve\+\_\+user@{recieve\+\_\+user}}
+\index{recieve\+\_\+user@{recieve\+\_\+user}!recieve\+\_\+commands.\+h@{recieve\+\_\+commands.\+h}}
+\subsubsection{\texorpdfstring{recieve\+\_\+user()}{recieve\_user()}}
+{\footnotesize\ttfamily void recieve\+\_\+user (\begin{DoxyParamCaption}\item[{\hyperlink{structUser}{User} $\ast$}]{u }\end{DoxyParamCaption})}
+
+
+
+Risponde con un messaggio di benvenuto. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em u} & l\textquotesingle{}utente che ha chiamato il comando \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 57 del file recieve\+\_\+commands.\+c.
+
+\mbox{\Hypertarget{recieve__commands_8h_a2a2d0ec2c0f1b1b76fa0b62e1075f7a5}\label{recieve__commands_8h_a2a2d0ec2c0f1b1b76fa0b62e1075f7a5}} 
+\index{recieve\+\_\+commands.\+h@{recieve\+\_\+commands.\+h}!recieve\+\_\+who@{recieve\+\_\+who}}
+\index{recieve\+\_\+who@{recieve\+\_\+who}!recieve\+\_\+commands.\+h@{recieve\+\_\+commands.\+h}}
+\subsubsection{\texorpdfstring{recieve\+\_\+who()}{recieve\_who()}}
+{\footnotesize\ttfamily void recieve\+\_\+who (\begin{DoxyParamCaption}\item[{\hyperlink{structUser}{User} $\ast$}]{u,  }\item[{char $\ast$}]{query }\end{DoxyParamCaption})}
+
+
+
+Who. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em u} & l\textquotesingle{}utente che ha chiamato il comando \\
+\hline
+{\em query} & la sintassi per il comando W\+HO\\
+\hline
+\end{DoxyParams}
+si possono distinguere tre casi in cui agisce il comando W\+HO il primo senza query ed invia al chiamante tutte le informazioni di tutti gli utenti che non sono negli stessi canali di u il secondo con parametro un canale ed invia ad u le informazioni di tutt gli utenti del canale (u escluso) infine il terzo caso in cui la funzione W\+HO viene chiamata su un utente e invia ad u nickname e hostname dell\textquotesingle{}utente cercato 
+
+Definizione alla linea 212 del file recieve\+\_\+commands.\+c.
+
+\mbox{\Hypertarget{recieve__commands_8h_a519608af0e51957666094b2d946b7142}\label{recieve__commands_8h_a519608af0e51957666094b2d946b7142}} 
+\index{recieve\+\_\+commands.\+h@{recieve\+\_\+commands.\+h}!recieve\+\_\+whois@{recieve\+\_\+whois}}
+\index{recieve\+\_\+whois@{recieve\+\_\+whois}!recieve\+\_\+commands.\+h@{recieve\+\_\+commands.\+h}}
+\subsubsection{\texorpdfstring{recieve\+\_\+whois()}{recieve\_whois()}}
+{\footnotesize\ttfamily void recieve\+\_\+whois (\begin{DoxyParamCaption}\item[{\hyperlink{structUser}{User} $\ast$}]{u,  }\item[{char $\ast$}]{query }\end{DoxyParamCaption})}
+
+
+
+Whois. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em u} & l\textquotesingle{}utente che ha chiamato il comando \\
+\hline
+{\em query} & l\textquotesingle{}utente su vui si vuole chiamare il W\+H\+O\+IS\\
+\hline
+\end{DoxyParams}
+invia le stesse informazioni di W\+HO username solo con la formattazione di una chiamata W\+H\+O\+IS 
+
+Definizione alla linea 269 del file recieve\+\_\+commands.\+c.
+

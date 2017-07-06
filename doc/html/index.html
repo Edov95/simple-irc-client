@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IRC Server: IRC server</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">IRC Server
+   </div>
+   <div id="projectbrief">Un semplice server IRC</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Cerca');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">IRC server </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>IRC Server è un progetto sviluppato per l'esame di laboratorio di ingegneria informatica dell'università di Padova.</p>
+<h1><a class="anchor" id="implementazione"></a>
+Cosa implmenta e cosa non implementa il server</h1>
+<p>Il server è un'implementazione molto semplificata del protocollo definitio dalla RFC1459 (<a href="https://tools.ietf.org/html/rfc1459">https://tools.ietf.org/html/rfc1459</a>) in particolare implementa i comandi</p><ul>
+<li>NICK</li>
+<li>JOIN</li>
+<li>MODE</li>
+<li>WHO</li>
+<li>WHOIS</li>
+<li>PING</li>
+<li>PRIVMSG</li>
+<li>PART</li>
+<li>QUIT</li>
+<li>LIST</li>
+</ul>
+<p>Il server non gestisce a differenza di quanto dichiarato nel RFC1459 (<a href="https://tools.ietf.org/html/rfc1459">https://tools.ietf.org/html/rfc1459</a>) le proprietà dei canali e degli utenti, non gestisce gli operatori dei canali quindi un utente non si può chiamare il comando KICK su nessun utente e non è stato implementato l'invio di file tra utenti</p>
+<h1><a class="anchor" id="installazione"></a>
+Come installare il server</h1>
+<p>Una volta scaricati i sorgenti del progetto eseguire i seguenti comandi</p><ul>
+<li>cmake .</li>
+<li>make</li>
+</ul>
+<p>Il primo serve a creare i file make per la compilazione, il secondo comando compila il progetto creando gli eseguibili nella cartella bin/ il progetto include anche due programmi di test per le due liste, Channel_list e User_list i sorgenti sono disponibili in test/</p>
+<p>I test file sono stati creati con il framework Check (<a href="https://libcheck.github.io/check/">https://libcheck.github.io/check/</a>) </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

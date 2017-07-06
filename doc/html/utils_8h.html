@@ -1,0 +1,365 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IRC Server: Riferimenti per il file utils.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">IRC Server
+   </div>
+   <div id="projectbrief">Un semplice server IRC</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Cerca');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Definizioni</a> &#124;
+<a href="#func-members">Funzioni</a> &#124;
+<a href="#var-members">Variabili</a>  </div>
+  <div class="headertitle">
+<div class="title">Riferimenti per il file utils.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>File contenente funzioni e/o variabili globali.  
+<a href="#details">Continua...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="user_8h_source.html">user.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="channel_8h_source.html">channel.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="errors_8h_source.html">errors.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="response_8h_source.html">response.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="text_8h_source.html">text.h</a>&quot;</code><br />
+<code>#include &lt;pthread.h&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+</div>
+<p><a href="utils_8h_source.html">Vai al codice sorgente di questo file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Definizioni</h2></td></tr>
+<tr class="memitem:adee8f73df9f6ac5e1ef0cb6cfa9cba4d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#adee8f73df9f6ac5e1ef0cb6cfa9cba4d">MAXUSER</a>&#160;&#160;&#160;150</td></tr>
+<tr class="memdesc:adee8f73df9f6ac5e1ef0cb6cfa9cba4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">impone un numero massimo di utenti che si possono collegare al server  <a href="#adee8f73df9f6ac5e1ef0cb6cfa9cba4d">Continua...</a><br /></td></tr>
+<tr class="separator:adee8f73df9f6ac5e1ef0cb6cfa9cba4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e937c42922f7601edb17b747602c471"><td class="memItemLeft" align="right" valign="top"><a id="a3e937c42922f7601edb17b747602c471"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAXLINE</b>&#160;&#160;&#160;4096</td></tr>
+<tr class="separator:a3e937c42922f7601edb17b747602c471"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funzioni</h2></td></tr>
+<tr class="memitem:ab5fc4a05a21140b36781db99da85c392"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#ab5fc4a05a21140b36781db99da85c392">send_user_info</a> (<a class="el" href="structUser.html">User</a> *u, <a class="el" href="structUser.html">User</a> *target, char *channel)</td></tr>
+<tr class="memdesc:ab5fc4a05a21140b36781db99da85c392"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funzione per gestire il caso "utente" del comando WHO.  <a href="#ab5fc4a05a21140b36781db99da85c392">Continua...</a><br /></td></tr>
+<tr class="separator:ab5fc4a05a21140b36781db99da85c392"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a669c72b7546c9887dd91adb6d967f4fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#a669c72b7546c9887dd91adb6d967f4fe">send_all_user_info</a> (<a class="el" href="structUser.html">User</a> *u)</td></tr>
+<tr class="memdesc:a669c72b7546c9887dd91adb6d967f4fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funzione per gestire il caso "tutti gli utenti" del comando WHO.  <a href="#a669c72b7546c9887dd91adb6d967f4fe">Continua...</a><br /></td></tr>
+<tr class="separator:a669c72b7546c9887dd91adb6d967f4fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d21282acf404f5671d1feacf4a01915"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#a6d21282acf404f5671d1feacf4a01915">send_channel_info</a> (<a class="el" href="structUser.html">User</a> *u, <a class="el" href="structChannel.html">Channel</a> *c)</td></tr>
+<tr class="memdesc:a6d21282acf404f5671d1feacf4a01915"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fuzione per gestire il caso "cananle" del comando WHO.  <a href="#a6d21282acf404f5671d1feacf4a01915">Continua...</a><br /></td></tr>
+<tr class="separator:a6d21282acf404f5671d1feacf4a01915"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variabili</h2></td></tr>
+<tr class="memitem:ad43c3812e6d13e0518d9f8b8f463ffcf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#ad43c3812e6d13e0518d9f8b8f463ffcf">count</a></td></tr>
+<tr class="memdesc:ad43c3812e6d13e0518d9f8b8f463ffcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">contatore per la lista utenti  <a href="#ad43c3812e6d13e0518d9f8b8f463ffcf">Continua...</a><br /></td></tr>
+<tr class="separator:ad43c3812e6d13e0518d9f8b8f463ffcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c29d94220d6632d6fc82de4053e8464"><td class="memItemLeft" align="right" valign="top"><a class="el" href="user_8h.html#a2bea59709d82bd0d4c29c992bf9c7607">User_list</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#a6c29d94220d6632d6fc82de4053e8464">main_user_list</a></td></tr>
+<tr class="memdesc:a6c29d94220d6632d6fc82de4053e8464"><td class="mdescLeft">&#160;</td><td class="mdescRight">lista globale per contenente tutti gli utenti del presenti nel server  <a href="#a6c29d94220d6632d6fc82de4053e8464">Continua...</a><br /></td></tr>
+<tr class="separator:a6c29d94220d6632d6fc82de4053e8464"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5cbd20f69c3bff8fcd4f5f140256964"><td class="memItemLeft" align="right" valign="top">pthread_mutex_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#ae5cbd20f69c3bff8fcd4f5f140256964">main_user_list_mutex</a></td></tr>
+<tr class="memdesc:ae5cbd20f69c3bff8fcd4f5f140256964"><td class="mdescLeft">&#160;</td><td class="mdescRight">semaforo per la lista utenti, evita malfunzionamenti dalla programmazione concorrente  <a href="#ae5cbd20f69c3bff8fcd4f5f140256964">Continua...</a><br /></td></tr>
+<tr class="separator:ae5cbd20f69c3bff8fcd4f5f140256964"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4f5a11a5387bbe2657b3347f80f056b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="channel_8h.html#a9c868ec1b385595c9834b24d93822887">Channel_list</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#ac4f5a11a5387bbe2657b3347f80f056b">main_channel_list</a></td></tr>
+<tr class="memdesc:ac4f5a11a5387bbe2657b3347f80f056b"><td class="mdescLeft">&#160;</td><td class="mdescRight">lista globale per la gestione di tutti i canali  <a href="#ac4f5a11a5387bbe2657b3347f80f056b">Continua...</a><br /></td></tr>
+<tr class="separator:ac4f5a11a5387bbe2657b3347f80f056b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c6973fcebd82a66c83edbdff2a8c9fd"><td class="memItemLeft" align="right" valign="top">pthread_mutex_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#a4c6973fcebd82a66c83edbdff2a8c9fd">main_channel_list_mutex</a></td></tr>
+<tr class="memdesc:a4c6973fcebd82a66c83edbdff2a8c9fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">semaforo per la lista cananli, evita malfunzionamenti dalla programmazione concorrente  <a href="#a4c6973fcebd82a66c83edbdff2a8c9fd">Continua...</a><br /></td></tr>
+<tr class="separator:a4c6973fcebd82a66c83edbdff2a8c9fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descrizione dettagliata</h2>
+<div class="textblock"><p>File contenente funzioni e/o variabili globali. </p>
+<dl class="section author"><dt>Autore</dt><dd>Edoardo Vanin </dd></dl>
+<dl class="section date"><dt>Data</dt><dd>20 Giugno 2017 </dd></dl>
+
+<p class="definition">Definizione nel file <a class="el" href="utils_8h_source.html">utils.h</a>.</p>
+</div><h2 class="groupheader">Documentazione delle definizioni</h2>
+<a id="adee8f73df9f6ac5e1ef0cb6cfa9cba4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adee8f73df9f6ac5e1ef0cb6cfa9cba4d">&#9670;&nbsp;</a></span>MAXUSER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAXUSER&#160;&#160;&#160;150</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>impone un numero massimo di utenti che si possono collegare al server </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="utils_8h_source.html#l00020">20</a> del file <a class="el" href="utils_8h_source.html">utils.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentazione delle funzioni</h2>
+<a id="a669c72b7546c9887dd91adb6d967f4fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a669c72b7546c9887dd91adb6d967f4fe">&#9670;&nbsp;</a></span>send_all_user_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void send_all_user_info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUser.html">User</a> *&#160;</td>
+          <td class="paramname"><em>u</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funzione per gestire il caso "tutti gli utenti" del comando WHO. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>l'utente che ha chiamato la funzione </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="utils_8c_source.html#l00040">40</a> del file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
+
+</div>
+</div>
+<a id="a6d21282acf404f5671d1feacf4a01915"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d21282acf404f5671d1feacf4a01915">&#9670;&nbsp;</a></span>send_channel_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void send_channel_info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUser.html">User</a> *&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structChannel.html">Channel</a> *&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fuzione per gestire il caso "cananle" del comando WHO. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>l'utente che ha chiamato la funzione </td></tr>
+    <tr><td class="paramname">c</td><td>il canale di cui si vogliono le informazioni </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="utils_8c_source.html#l00080">80</a> del file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
+
+</div>
+</div>
+<a id="ab5fc4a05a21140b36781db99da85c392"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5fc4a05a21140b36781db99da85c392">&#9670;&nbsp;</a></span>send_user_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void send_user_info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUser.html">User</a> *&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structUser.html">User</a> *&#160;</td>
+          <td class="paramname"><em>target</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>channel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funzione per gestire il caso "utente" del comando WHO. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>l'utente che ha chiamato la funzione WHO </td></tr>
+    <tr><td class="paramname">target</td><td>l'obbiettivo su cui chiamare WHO </td></tr>
+    <tr><td class="paramname">il</td><td>nome del cananle</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>la funzione è usate in due casi d'uso diversi, la presenza del parametro channel non NULLO facilita la selezione del caso </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="utils_8c_source.html#l00003">3</a> del file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentazione delle variabili</h2>
+<a id="ad43c3812e6d13e0518d9f8b8f463ffcf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad43c3812e6d13e0518d9f8b8f463ffcf">&#9670;&nbsp;</a></span>count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>contatore per la lista utenti </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="utils_8h_source.html#l00024">24</a> del file <a class="el" href="utils_8h_source.html">utils.h</a>.</p>
+
+</div>
+</div>
+<a id="ac4f5a11a5387bbe2657b3347f80f056b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4f5a11a5387bbe2657b3347f80f056b">&#9670;&nbsp;</a></span>main_channel_list</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="channel_8h.html#a9c868ec1b385595c9834b24d93822887">Channel_list</a>* main_channel_list</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>lista globale per la gestione di tutti i canali </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="utils_8h_source.html#l00031">31</a> del file <a class="el" href="utils_8h_source.html">utils.h</a>.</p>
+
+</div>
+</div>
+<a id="a4c6973fcebd82a66c83edbdff2a8c9fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c6973fcebd82a66c83edbdff2a8c9fd">&#9670;&nbsp;</a></span>main_channel_list_mutex</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">pthread_mutex_t main_channel_list_mutex</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>semaforo per la lista cananli, evita malfunzionamenti dalla programmazione concorrente </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="utils_8h_source.html#l00033">33</a> del file <a class="el" href="utils_8h_source.html">utils.h</a>.</p>
+
+</div>
+</div>
+<a id="a6c29d94220d6632d6fc82de4053e8464"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c29d94220d6632d6fc82de4053e8464">&#9670;&nbsp;</a></span>main_user_list</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="user_8h.html#a2bea59709d82bd0d4c29c992bf9c7607">User_list</a>* main_user_list</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>lista globale per contenente tutti gli utenti del presenti nel server </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="utils_8h_source.html#l00026">26</a> del file <a class="el" href="utils_8h_source.html">utils.h</a>.</p>
+
+</div>
+</div>
+<a id="ae5cbd20f69c3bff8fcd4f5f140256964"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5cbd20f69c3bff8fcd4f5f140256964">&#9670;&nbsp;</a></span>main_user_list_mutex</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">pthread_mutex_t main_user_list_mutex</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>semaforo per la lista utenti, evita malfunzionamenti dalla programmazione concorrente </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="utils_8h_source.html#l00028">28</a> del file <a class="el" href="utils_8h_source.html">utils.h</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

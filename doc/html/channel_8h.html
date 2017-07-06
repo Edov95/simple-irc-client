@@ -1,0 +1,506 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IRC Server: Riferimenti per il file channel.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">IRC Server
+   </div>
+   <div id="projectbrief">Un semplice server IRC</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Cerca');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Strutture dati</a> &#124;
+<a href="#define-members">Definizioni</a> &#124;
+<a href="#typedef-members">Ridefinizioni di tipo (typedef)</a> &#124;
+<a href="#func-members">Funzioni</a>  </div>
+  <div class="headertitle">
+<div class="title">Riferimenti per il file channel.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>File per gestire i cananli del server.  
+<a href="#details">Continua...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="user_8h_source.html">user.h</a>&quot;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+</div>
+<p><a href="channel_8h_source.html">Vai al codice sorgente di questo file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Strutture dati</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structChannel.html">Channel</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struttura per gestire i cananli.  <a href="structChannel.html#details">Continua...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__Channel__list.html">_Channel_list</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struttura per collezionare i canali nel server.  <a href="struct__Channel__list.html#details">Continua...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Definizioni</h2></td></tr>
+<tr class="memitem:a07d1e0970253ccfcd94cfccb455ec04e"><td class="memItemLeft" align="right" valign="top"><a id="a07d1e0970253ccfcd94cfccb455ec04e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>__STRING__</b></td></tr>
+<tr class="separator:a07d1e0970253ccfcd94cfccb455ec04e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7de35174b9983a28bc94d014ae4b265"><td class="memItemLeft" align="right" valign="top"><a id="aa7de35174b9983a28bc94d014ae4b265"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CHANNEL</b>(OBJ)&#160;&#160;&#160;((<a class="el" href="structChannel.html">Channel</a>*)(OGJ))</td></tr>
+<tr class="separator:aa7de35174b9983a28bc94d014ae4b265"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80804bbbf572d7b972ab09d98bfa1e4e"><td class="memItemLeft" align="right" valign="top"><a id="a80804bbbf572d7b972ab09d98bfa1e4e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CHANNEL_LIST</b>(OBJ)&#160;&#160;&#160;((<a class="el" href="channel_8h.html#a9c868ec1b385595c9834b24d93822887">Channel_list</a>*)(OBJ))</td></tr>
+<tr class="separator:a80804bbbf572d7b972ab09d98bfa1e4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e937c42922f7601edb17b747602c471"><td class="memItemLeft" align="right" valign="top"><a id="a3e937c42922f7601edb17b747602c471"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAXLINE</b>&#160;&#160;&#160;4096</td></tr>
+<tr class="separator:a3e937c42922f7601edb17b747602c471"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Ridefinizioni di tipo (typedef)</h2></td></tr>
+<tr class="memitem:a4505c08c065b48840a30eedd9845cce2"><td class="memItemLeft" align="right" valign="top"><a id="a4505c08c065b48840a30eedd9845cce2"></a>
+typedef char *&#160;</td><td class="memItemRight" valign="bottom"><b>string</b></td></tr>
+<tr class="separator:a4505c08c065b48840a30eedd9845cce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c868ec1b385595c9834b24d93822887"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct__Channel__list.html">_Channel_list</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="channel_8h.html#a9c868ec1b385595c9834b24d93822887">Channel_list</a></td></tr>
+<tr class="memdesc:a9c868ec1b385595c9834b24d93822887"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struttura per collezionare i canali nel server.  <a href="#a9c868ec1b385595c9834b24d93822887">Continua...</a><br /></td></tr>
+<tr class="separator:a9c868ec1b385595c9834b24d93822887"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funzioni</h2></td></tr>
+<tr class="memitem:a4f753c5ffc5cade7849a6854a02d1c95"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structChannel.html">Channel</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="channel_8h.html#a4f753c5ffc5cade7849a6854a02d1c95">create_channel</a> (string name, string topic)</td></tr>
+<tr class="memdesc:a4f753c5ffc5cade7849a6854a02d1c95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea un canale dato un nome ed un argomento.  <a href="#a4f753c5ffc5cade7849a6854a02d1c95">Continua...</a><br /></td></tr>
+<tr class="separator:a4f753c5ffc5cade7849a6854a02d1c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62974af4d66936424972910b77f284ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="channel_8h.html#a62974af4d66936424972910b77f284ec">change_topic</a> (<a class="el" href="structChannel.html">Channel</a> *c, string topic)</td></tr>
+<tr class="memdesc:a62974af4d66936424972910b77f284ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cambia il topic.  <a href="#a62974af4d66936424972910b77f284ec">Continua...</a><br /></td></tr>
+<tr class="separator:a62974af4d66936424972910b77f284ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0550dcb121cf43ef709e0a7c0b2a756"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="channel_8h.html#ad0550dcb121cf43ef709e0a7c0b2a756">add_user_to_channel</a> (<a class="el" href="structChannel.html">Channel</a> **c, <a class="el" href="structUser.html">User</a> *u)</td></tr>
+<tr class="memdesc:ad0550dcb121cf43ef709e0a7c0b2a756"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aggiunge un utente al canale.  <a href="#ad0550dcb121cf43ef709e0a7c0b2a756">Continua...</a><br /></td></tr>
+<tr class="separator:ad0550dcb121cf43ef709e0a7c0b2a756"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada8dfb4d981bba5cad833fed6ed876a7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="channel_8h.html#ada8dfb4d981bba5cad833fed6ed876a7">add_channel</a> (<a class="el" href="channel_8h.html#a9c868ec1b385595c9834b24d93822887">Channel_list</a> **list, <a class="el" href="structChannel.html">Channel</a> *c)</td></tr>
+<tr class="memdesc:ada8dfb4d981bba5cad833fed6ed876a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aggiunge un canale alla lista.  <a href="#ada8dfb4d981bba5cad833fed6ed876a7">Continua...</a><br /></td></tr>
+<tr class="separator:ada8dfb4d981bba5cad833fed6ed876a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbe5d4a3598c94a264a5060e83e83497"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structChannel.html">Channel</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="channel_8h.html#adbe5d4a3598c94a264a5060e83e83497">remove_channel</a> (<a class="el" href="channel_8h.html#a9c868ec1b385595c9834b24d93822887">Channel_list</a> **list, string name)</td></tr>
+<tr class="memdesc:adbe5d4a3598c94a264a5060e83e83497"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rimuove un canale dalla lista.  <a href="#adbe5d4a3598c94a264a5060e83e83497">Continua...</a><br /></td></tr>
+<tr class="separator:adbe5d4a3598c94a264a5060e83e83497"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa915e2c917da3cb7c5ee61d681405a4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structChannel.html">Channel</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="channel_8h.html#aa915e2c917da3cb7c5ee61d681405a4a">find_channel</a> (<a class="el" href="channel_8h.html#a9c868ec1b385595c9834b24d93822887">Channel_list</a> *list, string name)</td></tr>
+<tr class="memdesc:aa915e2c917da3cb7c5ee61d681405a4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trova un canale nella lista canali.  <a href="#aa915e2c917da3cb7c5ee61d681405a4a">Continua...</a><br /></td></tr>
+<tr class="separator:aa915e2c917da3cb7c5ee61d681405a4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4da167e3f008f087f1531aa0e1c2aceb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="channel_8h.html#a4da167e3f008f087f1531aa0e1c2aceb">print_list_channel</a> (<a class="el" href="channel_8h.html#a9c868ec1b385595c9834b24d93822887">Channel_list</a> *list)</td></tr>
+<tr class="memdesc:a4da167e3f008f087f1531aa0e1c2aceb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stampa la lista dei canali.  <a href="#a4da167e3f008f087f1531aa0e1c2aceb">Continua...</a><br /></td></tr>
+<tr class="separator:a4da167e3f008f087f1531aa0e1c2aceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4909d2030e9fef984bc52b875e31a752"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="channel_8h.html#a4909d2030e9fef984bc52b875e31a752">print_users_in_channel</a> (<a class="el" href="structChannel.html">Channel</a> *c)</td></tr>
+<tr class="memdesc:a4909d2030e9fef984bc52b875e31a752"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stampa la lista utenti per il canale selezionato.  <a href="#a4909d2030e9fef984bc52b875e31a752">Continua...</a><br /></td></tr>
+<tr class="separator:a4909d2030e9fef984bc52b875e31a752"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a306cd5410c03f11e1c41a17f79c59eaa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="channel_8h.html#a306cd5410c03f11e1c41a17f79c59eaa">print_list_channel_and_users</a> (<a class="el" href="channel_8h.html#a9c868ec1b385595c9834b24d93822887">Channel_list</a> *list)</td></tr>
+<tr class="memdesc:a306cd5410c03f11e1c41a17f79c59eaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stampa la lista degli utenti in ogni canale.  <a href="#a306cd5410c03f11e1c41a17f79c59eaa">Continua...</a><br /></td></tr>
+<tr class="separator:a306cd5410c03f11e1c41a17f79c59eaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descrizione dettagliata</h2>
+<div class="textblock"><p>File per gestire i cananli del server. </p>
+<dl class="section author"><dt>Autore</dt><dd>Edoardo Vanin </dd></dl>
+<dl class="section date"><dt>Data</dt><dd>17 Giugno 2017 </dd></dl>
+
+<p class="definition">Definizione nel file <a class="el" href="channel_8h_source.html">channel.h</a>.</p>
+</div><h2 class="groupheader">Documentazione delle ridefinizioni di tipo (typedef)</h2>
+<a id="a9c868ec1b385595c9834b24d93822887"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c868ec1b385595c9834b24d93822887">&#9670;&nbsp;</a></span>Channel_list</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct__Channel__list.html">_Channel_list</a> <a class="el" href="channel_8h.html#a9c868ec1b385595c9834b24d93822887">Channel_list</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Struttura per collezionare i canali nel server. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentazione delle funzioni</h2>
+<a id="ada8dfb4d981bba5cad833fed6ed876a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada8dfb4d981bba5cad833fed6ed876a7">&#9670;&nbsp;</a></span>add_channel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int add_channel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="channel_8h.html#a9c868ec1b385595c9834b24d93822887">Channel_list</a> **&#160;</td>
+          <td class="paramname"><em>list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structChannel.html">Channel</a> *&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Aggiunge un canale alla lista. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">il</td><td>puntatore alla lista di canali da aggiornare </td></tr>
+    <tr><td class="paramname">il</td><td>canale da aggiungere </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Restituisce</dt><dd>-1 se il canale NON è stato inserito correttamente nella lista </dd>
+<dd>
+diverso da -1 se il canale è stato inserito correttamente </dd></dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="channel_8c_source.html#l00039">39</a> del file <a class="el" href="channel_8c_source.html">channel.c</a>.</p>
+
+</div>
+</div>
+<a id="ad0550dcb121cf43ef709e0a7c0b2a756"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0550dcb121cf43ef709e0a7c0b2a756">&#9670;&nbsp;</a></span>add_user_to_channel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int add_user_to_channel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structChannel.html">Channel</a> **&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structUser.html">User</a> *&#160;</td>
+          <td class="paramname"><em>u</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Aggiunge un utente al canale. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>il canale a cui aggiungere l'utente </td></tr>
+    <tr><td class="paramname">u</td><td>l'utente da aggiungere al canale </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Restituisce</dt><dd>-1 se l'utente NON è stato inserito correttamente nella lista </dd>
+<dd>
+diverso da -1 se l'utente è stato inserito correttamente </dd></dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="channel_8c_source.html#l00033">33</a> del file <a class="el" href="channel_8c_source.html">channel.c</a>.</p>
+
+</div>
+</div>
+<a id="a62974af4d66936424972910b77f284ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62974af4d66936424972910b77f284ec">&#9670;&nbsp;</a></span>change_topic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void change_topic </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structChannel.html">Channel</a> *&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>topic</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cambia il topic. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">topic</td><td>l'argomento da cambiare </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="channel_8c_source.html#l00020">20</a> del file <a class="el" href="channel_8c_source.html">channel.c</a>.</p>
+
+</div>
+</div>
+<a id="a4f753c5ffc5cade7849a6854a02d1c95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f753c5ffc5cade7849a6854a02d1c95">&#9670;&nbsp;</a></span>create_channel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structChannel.html">Channel</a>* create_channel </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>topic</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crea un canale dato un nome ed un argomento. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>il nome del canale </td></tr>
+    <tr><td class="paramname">topic</td><td>l'argomento del canale, può eventualmente essere nullo non influisce sulla creazione effettiva del canale </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Restituisce</dt><dd>il puntatore all'area occupata dal canale appena creato </dd></dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="channel_8c_source.html#l00005">5</a> del file <a class="el" href="channel_8c_source.html">channel.c</a>.</p>
+
+</div>
+</div>
+<a id="aa915e2c917da3cb7c5ee61d681405a4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa915e2c917da3cb7c5ee61d681405a4a">&#9670;&nbsp;</a></span>find_channel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structChannel.html">Channel</a>* find_channel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="channel_8h.html#a9c868ec1b385595c9834b24d93822887">Channel_list</a> *&#160;</td>
+          <td class="paramname"><em>list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Trova un canale nella lista canali. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>puntatore alla lista di canali </td></tr>
+    <tr><td class="paramname">name</td><td>il nome del canale </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Restituisce</dt><dd>il puntatore al canale se trovato altrimenti ritorna puntatore nullo</dd></dl>
+<p>a differenza della funzione remove_channel non elimina la referenza nella lista di canali </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="channel_8c_source.html#l00065">65</a> del file <a class="el" href="channel_8c_source.html">channel.c</a>.</p>
+
+</div>
+</div>
+<a id="a4da167e3f008f087f1531aa0e1c2aceb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4da167e3f008f087f1531aa0e1c2aceb">&#9670;&nbsp;</a></span>print_list_channel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_list_channel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="channel_8h.html#a9c868ec1b385595c9834b24d93822887">Channel_list</a> *&#160;</td>
+          <td class="paramname"><em>list</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stampa la lista dei canali. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>la lista da stampare </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="channel_8c_source.html#l00116">116</a> del file <a class="el" href="channel_8c_source.html">channel.c</a>.</p>
+
+</div>
+</div>
+<a id="a306cd5410c03f11e1c41a17f79c59eaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a306cd5410c03f11e1c41a17f79c59eaa">&#9670;&nbsp;</a></span>print_list_channel_and_users()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_list_channel_and_users </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="channel_8h.html#a9c868ec1b385595c9834b24d93822887">Channel_list</a> *&#160;</td>
+          <td class="paramname"><em>list</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stampa la lista degli utenti in ogni canale. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lista</td><td>la lista che si vuole stampare </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="channel_8c_source.html#l00133">133</a> del file <a class="el" href="channel_8c_source.html">channel.c</a>.</p>
+
+</div>
+</div>
+<a id="a4909d2030e9fef984bc52b875e31a752"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4909d2030e9fef984bc52b875e31a752">&#9670;&nbsp;</a></span>print_users_in_channel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_users_in_channel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structChannel.html">Channel</a> *&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stampa la lista utenti per il canale selezionato. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>il canale per di cui si vuole stampare la lista utenti </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="channel_8c_source.html#l00125">125</a> del file <a class="el" href="channel_8c_source.html">channel.c</a>.</p>
+
+</div>
+</div>
+<a id="adbe5d4a3598c94a264a5060e83e83497"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbe5d4a3598c94a264a5060e83e83497">&#9670;&nbsp;</a></span>remove_channel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structChannel.html">Channel</a>* remove_channel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="channel_8h.html#a9c868ec1b385595c9834b24d93822887">Channel_list</a> **&#160;</td>
+          <td class="paramname"><em>list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rimuove un canale dalla lista. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>puntatore doppio alla lista di canali, la lista viene modificata </td></tr>
+    <tr><td class="paramname">name</td><td>il nome del canale </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Restituisce</dt><dd>il puntatore al canale se trovato, altrimenti puntatore nullo</dd></dl>
+<p>La funzione cerca il canale e se lo trova restituire un puntatore alla zona di memora contenente l'oggetto e contemporaneamente lo rimuove dalla lista ma NON libera l'area di memoria occupata </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="channel_8c_source.html#l00082">82</a> del file <a class="el" href="channel_8c_source.html">channel.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

@@ -1,0 +1,25 @@
+I\+RC Server è un progetto sviluppato per l\textquotesingle{}esame di laboratorio di ingegneria informatica dell\textquotesingle{}università di Padova.\hypertarget{index_implementazione}{}\section{Cosa implmenta e cosa non implementa il server}\label{index_implementazione}
+Il server è un\textquotesingle{}implementazione molto semplificata del protocollo definitio dalla R\+F\+C1459 (\href{https://tools.ietf.org/html/rfc1459}{\tt https\+://tools.\+ietf.\+org/html/rfc1459}) in particolare implementa i comandi
+\begin{DoxyItemize}
+\item N\+I\+CK
+\item J\+O\+IN
+\item M\+O\+DE
+\item W\+HO
+\item W\+H\+O\+IS
+\item P\+I\+NG
+\item P\+R\+I\+V\+M\+SG
+\item P\+A\+RT
+\item Q\+U\+IT
+\item L\+I\+ST
+\end{DoxyItemize}
+
+Il server non gestisce a differenza di quanto dichiarato nel R\+F\+C1459 (\href{https://tools.ietf.org/html/rfc1459}{\tt https\+://tools.\+ietf.\+org/html/rfc1459}) le proprietà dei canali e degli utenti, non gestisce gli operatori dei canali quindi un utente non si può chiamare il comando K\+I\+CK su nessun utente e non è stato implementato l\textquotesingle{}invio di file tra utenti\hypertarget{index_installazione}{}\section{Come installare il server}\label{index_installazione}
+Una volta scaricati i sorgenti del progetto eseguire i seguenti comandi
+\begin{DoxyItemize}
+\item cmake .
+\item make
+\end{DoxyItemize}
+
+Il primo serve a creare i file make per la compilazione, il secondo comando compila il progetto creando gli eseguibili nella cartella bin/ il progetto include anche due programmi di test per le due liste, Channel\+\_\+list e User\+\_\+list i sorgenti sono disponibili in test/
+
+I test file sono stati creati con il framework Check (\href{https://libcheck.github.io/check/}{\tt https\+://libcheck.\+github.\+io/check/}) 
