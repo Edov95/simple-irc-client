@@ -34,7 +34,7 @@
   * creando gli eseguibili nella cartella bin/ il progetto include anche due programmi di test per
   * le due liste, Channel_list e User_list i sorgenti sono disponibili in test/
   *
-  * I test file sono stati creati con il framework Check (<https://libcheck.github.io/check/>) 
+  * I test file sono stati creati con il framework Check (<https://libcheck.github.io/check/>)
   *
   */
 
@@ -112,12 +112,10 @@ int main(int argc, char const *argv[]) {
       add_user(&main_user_list,new_user);
       count = count + 1; //va a braccetto con la lista, deve andare qui
       pthread_mutex_unlock(&main_user_list_mutex);
+      pthread_create(&(new_user -> thread), NULL, (void* (*)(void*))user_thread, new_user);
     } else { //troppi utenti glielo dico
       close(user_socket); // così rifiuto la connessione, chiudendo il socket
     }
-
-    pthread_create(&(new_user -> thread), NULL, (void* (*)(void*))user_thread, new_user);
-
   }
 
   return 0;
