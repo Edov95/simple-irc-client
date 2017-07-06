@@ -87,11 +87,16 @@ Server IRC
 \end_layout
 
 \begin_layout Author
-Edoardo Vanin
+Edoardo Vanin mat.
+ 1094068
 \end_layout
 
 \begin_layout Date
 5 Luglio 2017
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Standard
@@ -1416,6 +1421,47 @@ Altri possibili bug sono dovuti all'utilizzo improprio dei parametri dei
  come paramtro il nome di un utente, c'è una possibilità significativamente
  alta che il programma vada in crash.
  Nonostante tale configurazione sia lecita da specifica di protocollo.
+\end_layout
+
+\begin_layout Section
+Conclusioni e lavoro futuro
+\end_layout
+
+\begin_layout Standard
+Nonostante le molteplici difficoltà trovate, specialmente nella gestione
+ dei comandi utenti, mi sento soddisfatto del lavoro svolto.
+\end_layout
+
+\begin_layout Standard
+Ho acquisito molte più competenze specialmente nella gestione di un progetto
+ mediante git.
+ Sicuramente continuerò ad approfondire la programmazione di rete anche
+ in vista della tesi e della laurea magistrale.
+ 
+\end_layout
+
+\begin_layout Standard
+Possibili sviluppi del software potrebbero includere:
+\end_layout
+
+\begin_layout Itemize
+Ampliare lo spettro dei comandi gestibili dal server 
+\end_layout
+
+\begin_layout Itemize
+Possibilià dello scambio di file
+\end_layout
+
+\begin_layout Itemize
+Estensione del comando PRIVMSG al caso utente-utente
+\end_layout
+
+\begin_layout Itemize
+Una migliore formattazione delle risposte al client
+\end_layout
+
+\begin_layout Itemize
+Implementazione di tutti i casi 
 \end_layout
 
 \end_body

@@ -1,0 +1,507 @@
+%% LyX 2.2.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage[unicode=true,
+ bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+ breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false]
+ {hyperref}
+\hypersetup{pdftitle={IRC Server},
+ pdfauthor={Edoardo Vanin}}
+\usepackage{listings}
+\renewcommand{\lstlistingname}{Listing}
+
+\begin{document}
+
+\title{Server IRC}
+
+\author{Edoardo Vanin mat. 1094068}
+
+\date{5 Luglio 2017}
+
+\maketitle
+
+\newpage{}
+
+\tableofcontents{}
+
+\newpage{}
+
+\section{Introduzione}
+
+Il progetto consiste nella realizzazione di un server basato sul protocollo
+IRC. Il server deve sempre rimanere in ascolto ed accettare le connessioni
+da parte dei nuovi utenti. Per poter gestire al meglio le connessione
+di nuovi utenti, viene utilizzata la programmazione multithreading.
+Il programma è scritto in C, essendo un linguaggio di programmazione
+a basso livello permette una migliore elaborazione delle richieste
+grazie alla sua velocità di esecuzione
+
+\subsection{Obbiettivi}
+
+L'obbiettivo del progetto è implementare un server in grado di far
+comunicare gli untenti all'interno delle stanza IRC per fare ciò c'è
+bisogno di implementare un numero minimo di comandi tra tutti i possibili
+definiti dal protocollo per la corretta comunicazione server-client
+
+I seguenti comandi sono stati implementati:
+\begin{itemize}
+\item NICK comando per modificare il nomeutente
+\item USER comando per la registrazione dell'utente
+\item JOIN comando per entrare in una stanza
+\item MODE comando per visualizzare o modificare le caratteristiche di un
+canale
+\item WHO comando per avere informazioni su utenti/canali
+\item WHOIS comando per avere informazioni su utenti/canali
+\item PING comando per verificare la connessione
+\item PRIVMSG comando per inviare messaggi
+\item PART comando per abbandonare una stanza
+\item QUIT comando per disconnettersi dal server
+\item LIST comando per visualizzare tutte le stanza presenti nel server
+\end{itemize}
+
+\subsection{Motivazioni}
+
+Da sempre sono stato affascinato dalla comunicazione client-server
+così ho colto l'occasione al balzo per approfondire le mie conoscenze
+in questo ambito. Già dalle superiori sapevo che la comunicazione
+di rete tra programmi avviene mediante socket ma non ho mai avuto
+modo di poterla provare con mano. Un altro aspetto interessante è
+la programmazioe concorrente, anche di questa ne sapevo dell'esistenza
+ma non ho mai avuto modo di provarla con mano, qui la programmazione
+multithreading è assolutamtnente necessaria per gestire in modo indipendente
+i comandi provenienti dai vari utenti.
+
+\section{Architettura e progettazione del software}
+
+Il progetto consiste in un programma che gestisce i comandi che gli
+arrivano dal più client.
+
+Per farlo nel modo più veloce e corretto possibile si è seguito l'approccio
+\emph{divide et impera}, il problema è stato diviso in due sottoproblemi,
+l'accettazione della connessione del client e la gestione dei comandi
+utente
+
+L'accettazione è gestita all'interno del main mentre per la gestione
+dei comandi utente si è ricorso alla programmazione multithreading
+per poter gestire contemporaneamente comandi provenienti da utenti
+diversi
+
+\subsection{Accettazione della connessione}
+
+Una volta avviato il programma il software rimane in ascolto di una
+connessione alla porta di default del protocollo IRC ovvero la porta
+6667.
+
+Una volta stabilita la connessione con il client, mediante protocollo
+TCP, il programma associa al nuovo utente un thread che gestirà i
+comandi ricevuti dal client.
+
+\subsection{Gestione comandi utenti}
+
+La funzione che gestisce i comandi utente entra in un loop infinito
+per legge la stringa in arrivo nel socket associato all'utente mediante
+la funzione read, che data la sua natura bloccante non manda il programma
+in un loop infinito ma resta in attesa sino a quando l'utente non
+invia un \emph{ritorno a capo. }Con il ritorno capo la funzione ritorna
+e il ciclo while ricomincia per fare il parsing del comando appena
+inviato
+
+\section{Sviluppo ed implementazione}
+
+\subsection{Stumenti per lo sviluppo}
+
+Per lo sviluppo di questo progetto sono stati utilizzati vari tool
+esterni, ed esempio:
+\begin{description}
+\item [{CMake}] CMake è un software libero multipiattaforma per l\textquoteright automazione
+della compilazione il cui nome è un\textquoteright abbreviazione di
+cross platform make.
+\item [{Git}] Git è un software di controllo versione distribuito utilizzabile
+da inter- faccia a riga di comando.
+\item [{Doxygen}] Doxygen è una applicazione per la generazione automatica
+della documentazione a partire dal codice sorgente di un generico
+software.
+\item [{Atom}] ``A hackable text editor'' Un semplice editor di testo
+creato dalla comunità di github appositamente per gli sviluppatori
+\item [{Lyx}] Lyx è un sistema per la preparazione di documenti tex-like
+\end{description}
+
+\subsection{Implementazione del codice}
+
+Di seguito verranno presentate e commentate le parti di codice più
+importanti essendo impossibile commentare tutti il codice date le
+sue notevoli dimensioni
+
+Il server per funzionare dipende dalle librerie standard del C e da
+due librerie svilippate appositamente per gestire gli utenti e i canali.
+
+\subsubsection{Libreria user}
+
+Questa libreria fornisce una struttura per descrivere gli utenti ed
+una lista doppiamente concatenata per collezionare gli utenti
+
+Particolarmente interessanti risultano le funzioni di creazione utente
+ed inserimento dell'utente nella lista.
+
+\begin{lstlisting}[numbers=left,basicstyle={\footnotesize\ttfamily}]
+User* create_user(string name, string hostname,int id, int socket){
+  User* u =  malloc(sizeof(User));
+  u -> name = malloc(strlen(name));   
+  u -> hostname = malloc(strlen(hostname) + 1);
+  strcpy(u -> name, name);
+  strcpy(u -> hostname, hostname);
+  u -> id = id;
+  u -> socket = socket;
+  for (size_t i = 0; i < 15; i++) {
+    u -> channels[i] = NULL;
+  }
+  return u;
+}
+\end{lstlisting}
+
+La funzione alloca una zona di memoria per il nuovo utente e per le
+stringhe che conterranno nome utente e hostname, poi copia i parametri
+della funzione nei rispettivi campi dell'utente, infine inizializza
+a NULL il vettore che conterrà i nomi dei canali a cui l'utente è
+collegato.
+
+\begin{lstlisting}[numbers=left,basicstyle={\footnotesize\ttfamily}]
+int add_user(User_list** list, User* user){   
+  // Utente nullo o già presente
+  if(user == NULL || find_by_id(*list,user->id) != NULL){
+    return -1;
+  }
+  User_list* temp = malloc(sizeof(User_list)); // allocazione memoria
+  temp -> payload = user; // inserisco l'utene nel nodo di lista
+  //gestisco il caso critico: il primo inserimento
+  if(*list == NULL){
+    temp -> prev = NULL;
+    temp -> next = NULL;
+  } else {     //inserimento in testa
+    temp -> prev = NULL;
+    temp -> next = *list;
+    (*list) -> prev = temp;
+  }
+  *list = temp; // riassegnazione della testa della lista
+  return 1; // ritorno di successo
+}
+\end{lstlisting}
+
+La funzione add\_user gestisce l'inserimento nella lista di utenti,
+come parametri accetta l'indirizzo del puntatore alla struttura lista
+in cui inserire il nuovo utente
+
+Come prima cosa controlla che l'utente sia un utente valido oppure
+non sia già presente nella lista, in questo caso non modifica la lista
+(non è permesso l'inserimento multiplo di utenti) e ritorna \emph{``-1''}
+come valore, ad indicare che l'operazione di inserimento non è andata
+a buon fine.
+
+Poi si ditiunguono due casi, il caso critico ovvero il primo inserimento
+e il caso in cui almeno un utente è presente nella lista.
+
+Il primo inserimento è un caso critico in quanto l'operazione 
+\begin{lstlisting}[basicstyle={\footnotesize\ttfamily}]
+(*list) -> prev = temp
+\end{lstlisting}
+ è vietata perché si cerca di accedere ad un campo di un puntatore
+nullo.
+
+Infine riposiziona il puntatore passato come parametro alla testa
+della lista.
+
+\subsubsection{Libreria channel}
+
+Questa libria fornisce una struttura per descrivere i canali ed una
+lista doppiamente concatenata collezionare i canali.
+
+La struttura le funzioni che operano sulla struttura Channel\_list
+sono una copia opportunamente modificata delle funzioni che operano
+sulla lista User\_list, infatti entrambe le liste hanno una struttura
+di lista doppiamente concatenata ma accettano come oggetto da collezionare
+due tipi di dato diversi.
+
+Per completezza verranno trattati la funzione di rimozione di un canale
+dalla lista, che a parte modifiche sul tipo di dato di ritorno è uguale
+alla funzione remove\_user della libreria user\_lib
+
+\begin{lstlisting}[numbers=left,basicstyle={\footnotesize\ttfamily}]
+Channel* remove_channel(Channel_list** list, string name){
+  if(*list == NULL) return NULL;
+  Channel_list* temp = *list;
+  //scorro la lista per portarmi al canale scelto
+  while (strcmp(temp -> payload -> name, name) != 0) {
+    if(temp -> next == NULL) {
+      return NULL;
+    } else {
+      temp = temp -> next;
+    }
+  }
+  if(temp -> next == NULL && temp -> prev == NULL){ //c'è un solo nodo
+    (*list) = NULL;
+  } else if(temp -> prev == NULL){ //caso in cui il nodo da rimuovere è il primo
+    temp -> next -> prev = NULL;
+    *list = (*list) -> next;
+  } else if(temp -> next == NULL) { //devo rimuovere l'ultimo
+    temp -> prev -> next = NULL;
+  } else {
+    temp -> prev -> next = temp -> next;
+    temp -> next -> prev = temp -> prev;
+  }
+  Channel* chan = temp -> payload; //salvo il canale
+  free(temp); // libero la cella di memoria puntata
+  return chan; //ritoro il canale
+} 
+\end{lstlisting}
+
+Il primo controllo che fa la funzione riguarda la correttezza del
+puntatore alla lista, se esso è NULL non ha senso cercare un nodo
+da rimuovere che non c'è e anzi se si cercassero di fare operazioni
+su tale puntatore si solleverebbe un errore di \emph{``core dump''
+}che farebbe terminare il programma.
+
+Se il primo controllo va a buon fine, con un puntatore temporaneo
+si scorre la lista fino a puntare il nodo da eliminare.
+
+Per rimuoverlo si possono identificare quattro casi, tre critici con
+gestioni leggermente diverse dal caso generale, essi sono la rimozione
+del nodo centrale, la rimozione del nodo in coda e la presenza di
+un sono nodo. Sono casi critici perché nel caso rimozione del nodo
+di testa e rimozione del nodo in coda vengono svolte operazioni che
+causano un errore di \emph{``core dump''} ed esse sono rispettivamente
+
+\begin{lstlisting}[numbers=left,basicstyle={\footnotesize\ttfamily}]
+temp -> prev -> next = temp -> next;
+temp -> next -> prev = temp -> prev;
+\end{lstlisting}
+
+Le operazioni tentano di eseguire un accesso ad un parametro di una
+struttura che punta a NULL.
+
+Infine nel caso di un solo nodo sono violate contemporaneamente perche
+un sono nodo ha i puntatori precedente e successivo a NULL.
+
+Una volta rimosso il nodo di lista che contiene il canle cercato,
+colleziono con un nuovo puntatore il canale cercato, libero la zona
+di memoria occupata dal nodo della lista ed infine ritorno il canale
+cercato, sarà il chiamante a decidere cosa farne.
+
+Una differenza tra struttua Channel e la struttura User è il fatto
+che all'interno della struttura Channel esiste una lista che colleziona
+gli utenti presenti nel canale mentre nella struttura User è presente
+un vettore di stringhe contente i nomi di canali a cui l'utente è
+accreditato. Ho adoperato questa scelata perché è conveniente ai fini
+della velocità di esecuzione del programma in quanto l'invio di messaggi
+nel canale è un'operazione svolta con maggior frequenza, mentre l'abbandono
+del server, che è l'unico motivo per cui esiste questo vettore, è
+molto più raro e può avere tempi di latenza maggiori rispetto all'invio
+di messaggi, operazione che deve essere svolta in modo più veloce.
+
+\subsubsection{Libreria utils}
+
+Come suggerisce il nome contiente funzioni di utilità, utilità a gestire
+i casi del comando WHO infatti le tre funzioni implementate corrispondono
+ai vari casi in cui viene chiamato il comando WHO prendiamo in esame
+il caso in cui viene chiamato il comando WHO e come parametro viene
+inserito il nome di un canale.
+
+\begin{lstlisting}[numbers=left,basicstyle={\footnotesize\ttfamily}]
+void send_channel_info(User* u, Channel* c) {
+  User_list* list = c -> users;
+  User* target;
+  char* send_line = malloc(MAXLINE + 1);
+  while (list != NULL) {
+    target = list -> payload;
+    send_user_info(u, target, c -> name);
+    list = list -> next;
+  }
+  strcpy(send_line, ":");
+  strcat(send_line, SERVER_NAME);
+  strcat(send_line, " ");
+  strcat(send_line, RPL_ENDOFWHO);
+  strcat(send_line, " ");
+  strcat(send_line, u -> name);
+  strcat(send_line, ENDOFWHO);
+  write(u -> socket, send_line, strlen(send_line));
+  free(send_line);
+}
+\end{lstlisting}
+
+Le operazioni iniziali creano un puntatore alla lista utenti del canale
+per raccogliere ed inviare all'utente u che ha chiamato il comando
+WHO le informazioni di tutti gli utenti presenti nel canale. Il ciclo
+while serve appunto per iterare la lista e inviare le informazioni
+di tutti gli utenti presenti nel canale.
+
+Infine viene costruita la striga per indicare la fine della lista
+in risposta al comando WHO, viene inviata e liberata la zona di memoria
+occupata.
+
+\subsubsection{Libreria user\_thread}
+
+La libreria principe che contiene la funzione da associare al thread
+dell'utente, essa gestisce i comandi inviati dall'utente.
+
+\begin{lstlisting}[numbers=left,basicstyle={\footnotesize\ttfamily}]
+void user_thread(User* u){
+  char recvline[MAXLINE + 1];
+  char* line = malloc((MAXLINE + 1) * sizeof(char));
+  char* send_line = malloc((MAXLINE + 1) * sizeof(char));
+  char* command;
+  ssize_t n;
+  pthread_mutex_lock(&(u -> socket_mutex));
+  n = read(u -> socket, recvline, MAXLINE);
+  pthread_mutex_unlock(&(u -> socket_mutex));
+  while(n > 0){
+    recvline[n] = 0;
+    line = strcpy(line, recvline);
+    command = strtok(line, " \t\r\n/");
+    while (command != NULL) {
+      printf("L'utente: %i ha inviato il comando: %s\n",u -> id, command);
+      /*Qui parte lo switch di comparazaione con i comandi conosciuti*/
+	  if(strcmp(command, NICK) == 0){
+		...
+	  }
+	  ...
+      command = strtok(NULL, " \t\r\n/");
+    }
+    pthread_mutex_lock(&u->socket_mutex);
+    n = read(u->socket, recvline, MAXLINE);
+    pthread_mutex_unlock(&u->socket_mutex);
+  }
+}
+\end{lstlisting}
+
+Nella parte iniziale creo tutte le variabili per poter fare un parsing
+della stringa line, ovvero quella che conterrà il comando con i suoi
+parametri.
+
+Per poter leggere la stringa di dati uso la funzione read sul socket
+dell'utente ma, essendo il socket una risorsa condivisa, ed accessibile
+conteporanemente da più thread, ho usato il sistema di semafori messo
+a disposizione dalla libreria pthread per gestire la lettura e scritura
+concorrente da parte di più utenti, in particolare le funzioni pthread\_mutex\_lock
+e pthread\_mutex\_unlock bloccano o liberano la risorsa condivisa
+o meglio il semaforo associato alla risorsa.
+
+Segue il ciclo while principale per gestire la successione di stringhe
+inviate dall'utente, ed annidato il secondo ciclo while per parsare
+la stringa con la funzione strtok e selezionare il comando ricchiesto
+dall'utente mediante una serie di decisioni if - else if.
+
+\subsubsection{File main.c}
+
+Nel main file c'è l'unica funzione main, la principale, il cui unico
+compito è gestire le connessioni in ingresso dai vari utenti
+
+\begin{lstlisting}[numbers=left,basicstyle={\footnotesize\ttfamily}]
+while(1){
+    //accept non è all'interno dell'if di decisione perché è una funzione bloccante
+    if ((user_socket = accept(server_socket,
+                            (struct sockaddr *) &client_address,
+                            &client_address_size)) == -1 ) {
+      fprintf(stderr, "[Errore chiamando accept: %s]\n", strerror(errno));
+      exit(5);
+    }
+    // aggiunge l'utente alla lista se permesso
+    if(count < MAXUSER){
+      strcpy(username, "user"); //pulisco la stringa dal nome precendente
+      sprintf(temp,"%d", u_id);
+      strcat(username, temp);
+      new_user = create_user( username,
+                              inet_ntoa(client_address.sin_addr),
+                              u_id,
+                              user_socket);
+      u_id = u_id + 1; //incrementa il contatore degli id
+      pthread_mutex_lock(&main_user_list_mutex);
+      add_user(&main_user_list,new_user);
+      count = count + 1; //va a braccetto con la lista, deve andare qui
+      pthread_mutex_unlock(&main_user_list_mutex);
+      pthread_create(&(new_user -> thread), NULL, (void* (*)(void*))user_thread, new_user);
+    } else { //troppi utenti glielo dico
+      close(user_socket); // così rifiuto la connessione, chiudendo il socket
+    }
+}
+\end{lstlisting}
+
+Prima di questo loop infinito, ovviamente ci sono tutte le chiamate
+a funzione per inizializzare la porta e le strutture dati necessarie
+per gestire il cliente.
+
+Interessante è il ruolo giocato dalla funzione accept, una funzione
+bloccante che ritorna solo se c'è un elemento nella coda di attesa
+delle connessioni, se la code fosse vuota, la funzione accept aspetta
+finchè non c'è una connessione da gestire.
+
+La funzione estrae la prima connessione dalla coda del listen socket,
+ovvero il socket associato al servizio creato con le funzioni precedenti,
+crea un nuovo socket per l'utente e ritorna un file descriptor per
+tale socket, il nuovo socket creato non è nello stato di listen.
+
+Se l'operazione di accettazione è andata a buon fine e non ci sono
+troppi utenti nel sistema, inserisco il nuovo utente nella lista principale
+degli utenti, aumento il contatore associato alla lista e associo
+all'utente il thread che dovrà gestire i comandi.
+
+Se invece l'operazione di accettazione è andata a buonfine ma ci sono
+troppi utenti, semplicemente non creo l'utente e chiudo il socket
+appena creato.
+
+Infine se l'accettazione non è andata a buon fine termino il programma,
+evento abbastanza critico ma necessario perchè se la funzione accept
+fallisce è sintomo di problemi di rete.
+
+\section{Valutazione e collaudo}
+
+Il programma è stato collaudato man mano con esempi inseriti manualmente
+ed ogni libreria presente nel progetto è stata provata in diversi
+scenari durante lo sviluppo cercando di eliminare i bug che si pressentavano
+via via che il progetto cresceva, importanti sono state le modifiche
+alla struttra del progetto per la gestione dei comandi WHO e PART.
+Per risolvere in modo efficente il problema di raggiungere tutti i
+canali a cui un utente è collegato ho dovuto aggiungere il campo \emph{channels}
+all'interno della struttura \emph{User} con conseguente modifica dei
+metodi per la creazione e rimozione dell'utente.
+
+Per testare tutti i casi critici delle liste utente e canale mi sono
+avvalso del framework Check creando due test case ed è grazie a questi
+test che sono riuscito a identificare e risolvere i casi critici che
+non avevo considerato.
+
+Un altro bug che mi ha fatto penare è stata la dimenticanza del carattere
+\emph{``\textbackslash{}n''} come terminazione delle stringhe di
+invio all'utente solo a posteriori ho capito dell'importanza di tale
+terminazione e, dopo una sera intera alla ricerca dell'errore, sono
+riuscito a far funzionare il comando PRIVMSG, comando che per primo
+presentò tale bug.
+
+Altri possibili bug sono dovuti all'utilizzo improprio dei parametri
+dei vari comandi, ad esempio se si cerca di chiamare il comando PING
+e passando come paramtro il nome di un utente, c'è una possibilità
+significativamente alta che il programma vada in crash. Nonostante
+tale configurazione sia lecita da specifica di protocollo.
+
+\newpage{}
+
+\section{Conclusioni e lavoro futuro}
+
+Nonostante le molteplici difficoltà trovate, specialmente nella gestione
+dei comandi utenti, mi sento soddisfatto del lavoro svolto.
+
+Ho acquisito molte più competenze specialmente nella gestione di un
+progetto mediante git. Sicuramente continuerò ad approfondire la programmazione
+di rete anche in vista della tesi e della laurea magistrale. 
+
+Possibili sviluppi del software potrebbero includere:
+\begin{itemize}
+\item Ampliare lo spettro dei comandi gestibili dal server 
+\item Possibilià dello scambio di file
+\item Estensione del comando PRIVMSG al caso utente-utente
+\item Una migliore formattazione delle risposte al client
+\item Implementazione di tutti i casi 
+\end{itemize}
+
+\end{document}

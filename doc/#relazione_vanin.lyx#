@@ -87,11 +87,16 @@ Server IRC
 \end_layout
 
 \begin_layout Author
-Edoardo Vanin
+Edoardo Vanin mat.
+ 1094068
 \end_layout
 
 \begin_layout Date
 5 Luglio 2017
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Standard
@@ -1383,9 +1388,9 @@ User
 
 \begin_layout Standard
 Per testare tutti i casi critici delle liste utente e canale mi sono avvalso
- del framework Check creando due test case ed è grazie a questi test case
- che sono riuscito a risolvere e identificare i casi critici che non avevo
- considerato.
+ del framework Check creando due test case ed è grazie a questi test che
+ sono riuscito a identificare e risolvere i casi critici che non avevo considera
+to.
 \end_layout
 
 \begin_layout Standard
@@ -1404,7 +1409,63 @@ n
 
 
 \emph default
- come terminazione delle stringhe di invio all'utente 
+ come terminazione delle stringhe di invio all'utente solo a posteriori
+ ho capito dell'importanza di tale terminazione e, dopo una sera intera
+ alla ricerca dell'errore, sono riuscito a far funzionare il comando PRIVMSG,
+ comando che per primo presentò tale bug.
+\end_layout
+
+\begin_layout Standard
+Altri possibili bug sono dovuti all'utilizzo improprio dei parametri dei
+ vari comandi, ad esempio se si cerca di chiamare il comando PING e passando
+ come paramtro il nome di un utente, c'è una possibilità significativamente
+ alta che il programma vada in crash.
+ Nonostante tale configurazione sia lecita da specifica di protocollo.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Section
+Conclusioni e lavoro futuro
+\end_layout
+
+\begin_layout Standard
+Nonostante le molteplici difficoltà trovate, specialmente nella gestione
+ dei comandi utenti, mi sento soddisfatto del lavoro svolto.
+\end_layout
+
+\begin_layout Standard
+Ho acquisito molte più competenze specialmente nella gestione di un progetto
+ mediante git.
+ Sicuramente continuerò ad approfondire la programmazione di rete anche
+ in vista della tesi e della laurea magistrale.
+ 
+\end_layout
+
+\begin_layout Standard
+Possibili sviluppi del software potrebbero includere:
+\end_layout
+
+\begin_layout Itemize
+Ampliare lo spettro dei comandi gestibili dal server 
+\end_layout
+
+\begin_layout Itemize
+Possibilià dello scambio di file
+\end_layout
+
+\begin_layout Itemize
+Estensione del comando PRIVMSG al caso utente-utente
+\end_layout
+
+\begin_layout Itemize
+Una migliore formattazione delle risposte al client
+\end_layout
+
+\begin_layout Itemize
+Implementazione di tutti i casi 
 \end_layout
 
 \end_body
