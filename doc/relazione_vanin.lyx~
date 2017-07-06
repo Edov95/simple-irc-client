@@ -1162,5 +1162,261 @@ Segue il ciclo while principale per gestire la successione di stringhe inviate
  mediante una serie di decisioni if - else if.
 \end_layout
 
+\begin_layout Subsubsection
+File main.c
+\end_layout
+
+\begin_layout Standard
+Nel main file c'è l'unica funzione main, la principale, il cui unico compito
+ è gestire le connessioni in ingresso dai vari utenti
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "numbers=left,basicstyle={\footnotesize\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+while(1){
+\end_layout
+
+\begin_layout Plain Layout
+
+    //accept non è all'interno dell'if di decisione perché è una funzione
+ bloccante
+\end_layout
+
+\begin_layout Plain Layout
+
+    if ((user_socket = accept(server_socket,
+\end_layout
+
+\begin_layout Plain Layout
+
+                            (struct sockaddr *) &client_address,
+\end_layout
+
+\begin_layout Plain Layout
+
+                            &client_address_size)) == -1 ) {
+\end_layout
+
+\begin_layout Plain Layout
+
+      fprintf(stderr, "[Errore chiamando accept: %s]
+\backslash
+n", strerror(errno));
+\end_layout
+
+\begin_layout Plain Layout
+
+      exit(5);
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+    // aggiunge l'utente alla lista se permesso
+\end_layout
+
+\begin_layout Plain Layout
+
+    if(count < MAXUSER){
+\end_layout
+
+\begin_layout Plain Layout
+
+      strcpy(username, "user"); //pulisco la stringa dal nome precendente
+\end_layout
+
+\begin_layout Plain Layout
+
+      sprintf(temp,"%d", u_id);
+\end_layout
+
+\begin_layout Plain Layout
+
+      strcat(username, temp);
+\end_layout
+
+\begin_layout Plain Layout
+
+      new_user = create_user( username,
+\end_layout
+
+\begin_layout Plain Layout
+
+                              inet_ntoa(client_address.sin_addr),
+\end_layout
+
+\begin_layout Plain Layout
+
+                              u_id,
+\end_layout
+
+\begin_layout Plain Layout
+
+                              user_socket);
+\end_layout
+
+\begin_layout Plain Layout
+
+      u_id = u_id + 1; //incrementa il contatore degli id
+\end_layout
+
+\begin_layout Plain Layout
+
+      pthread_mutex_lock(&main_user_list_mutex);
+\end_layout
+
+\begin_layout Plain Layout
+
+      add_user(&main_user_list,new_user);
+\end_layout
+
+\begin_layout Plain Layout
+
+      count = count + 1; //va a braccetto con la lista, deve andare qui
+\end_layout
+
+\begin_layout Plain Layout
+
+      pthread_mutex_unlock(&main_user_list_mutex);
+\end_layout
+
+\begin_layout Plain Layout
+
+      pthread_create(&(new_user -> thread), NULL, (void* (*)(void*))user_thread,
+ new_user);
+\end_layout
+
+\begin_layout Plain Layout
+
+    } else { //troppi utenti glielo dico
+\end_layout
+
+\begin_layout Plain Layout
+
+      close(user_socket); // così rifiuto la connessione, chiudendo il socket
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Prima di questo loop infinito, ovviamente ci sono tutte le chiamate a funzione
+ per inizializzare la porta e le strutture dati necessarie per gestire il
+ cliente.
+\end_layout
+
+\begin_layout Standard
+Interessante è il ruolo giocato dalla funzione accept, una funzione bloccante
+ che ritorna solo se c'è un elemento nella coda di attesa delle connessioni,
+ se la code fosse vuota, la funzione accept aspetta finchè non c'è una connessio
+ne da gestire.
+\end_layout
+
+\begin_layout Standard
+La funzione estrae la prima connessione dalla coda del listen socket, ovvero
+ il socket associato al servizio creato con le funzioni precedenti, crea
+ un nuovo socket per l'utente e ritorna un file descriptor per tale socket,
+ il nuovo socket creato non è nello stato di listen.
+\end_layout
+
+\begin_layout Standard
+Se l'operazione di accettazione è andata a buon fine e non ci sono troppi
+ utenti nel sistema, inserisco il nuovo utente nella lista principale degli
+ utenti, aumento il contatore associato alla lista e associo all'utente
+ il thread che dovrà gestire i comandi.
+\end_layout
+
+\begin_layout Standard
+Se invece l'operazione di accettazione è andata a buonfine ma ci sono troppi
+ utenti, semplicemente non creo l'utente e chiudo il socket appena creato.
+\end_layout
+
+\begin_layout Standard
+Infine se l'accettazione non è andata a buon fine termino il programma,
+ evento abbastanza critico ma necessario perchè se la funzione accept fallisce
+ è sintomo di problemi di rete.
+\end_layout
+
+\begin_layout Section
+Valutazione e collaudo
+\end_layout
+
+\begin_layout Standard
+Il programma è stato collaudato man mano con esempi inseriti manualmente
+ ed ogni libreria presente nel progetto è stata provata in diversi scenari
+ durante lo sviluppo cercando di eliminare i bug che si pressentavano via
+ via che il progetto cresceva, importanti sono state le modifiche alla struttra
+ del progetto per la gestione dei comandi WHO e PART.
+ Per risolvere in modo efficente il problema di raggiungere tutti i canali
+ a cui un utente è collegato ho dovuto aggiungere il campo 
+\emph on
+channels
+\emph default
+ all'interno della struttura 
+\emph on
+User
+\emph default
+ con conseguente modifica dei metodi per la creazione e rimozione dell'utente.
+\end_layout
+
+\begin_layout Standard
+Per testare tutti i casi critici delle liste utente e canale mi sono avvalso
+ del framework Check creando due test case ed è grazie a questi test che
+ sono riuscito a identificare e risolvere i casi critici che non avevo considera
+to.
+\end_layout
+
+\begin_layout Standard
+Un altro bug che mi ha fatto penare è stata la dimenticanza del carattere
+ 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph default
+ come terminazione delle stringhe di invio all'utente solo a posteriori
+ ho capito dell'importanza di tale terminazione e, dopo una sera intera
+ alla ricerca dell'errore, sono riuscito a far funzionare il comando PRIVMSG,
+ comando che per primo presentò tale bug.
+\end_layout
+
+\begin_layout Standard
+Altri possibili bug sono dovuti all'utilizzo improprio dei parametri dei
+ vari comandi, ad esempio se si cerca di chiamare il comando PING e passando
+ come paramtro il nome di un utente, c'è una possibilità significativamente
+ alta che il programma vada in crash.
+ Nonostante tale configurazione sia lecita da specifica di protocollo.
+\end_layout
+
 \end_body
 \end_document

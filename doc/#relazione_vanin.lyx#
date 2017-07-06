@@ -1242,35 +1242,169 @@ n", strerror(errno));
 
 \begin_layout Plain Layout
 
-      strcat(username, temp);       new_user = create_user( username,  
-                             inet_ntoa(client_address.sin_addr),        
-                       u_id,                               user_socket);
+      strcat(username, temp);
 \end_layout
 
 \begin_layout Plain Layout
 
-      u_id = u_id + 1; //incrementa il contatore degli id       pthread_mutex_lo
-ck(&main_user_list_mutex);       add_user(&main_user_list,new_user);   
-    count = count + 1; //va a braccetto con la lista, deve andare qui  
-     pthread_mutex_unlock(&main_user_list_mutex);     } else { //troppi
- utenti glielo dico       close(user_socket); // così rifiuto la connessione,
- chiudendo il socket     }
+      new_user = create_user( username,
 \end_layout
 
 \begin_layout Plain Layout
 
-    pthread_create(&(new_user -> thread), NULL, (void* (*)(void*))user_thread,
+                              inet_ntoa(client_address.sin_addr),
+\end_layout
+
+\begin_layout Plain Layout
+
+                              u_id,
+\end_layout
+
+\begin_layout Plain Layout
+
+                              user_socket);
+\end_layout
+
+\begin_layout Plain Layout
+
+      u_id = u_id + 1; //incrementa il contatore degli id
+\end_layout
+
+\begin_layout Plain Layout
+
+      pthread_mutex_lock(&main_user_list_mutex);
+\end_layout
+
+\begin_layout Plain Layout
+
+      add_user(&main_user_list,new_user);
+\end_layout
+
+\begin_layout Plain Layout
+
+      count = count + 1; //va a braccetto con la lista, deve andare qui
+\end_layout
+
+\begin_layout Plain Layout
+
+      pthread_mutex_unlock(&main_user_list_mutex);
+\end_layout
+
+\begin_layout Plain Layout
+
+      pthread_create(&(new_user -> thread), NULL, (void* (*)(void*))user_thread,
  new_user);
 \end_layout
 
 \begin_layout Plain Layout
 
-  }
+    } else { //troppi utenti glielo dico
+\end_layout
+
+\begin_layout Plain Layout
+
+      close(user_socket); // così rifiuto la connessione, chiudendo il socket
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Prima di questo loop infinito, ovviamente ci sono tutte le chiamate a funzione
+ per inizializzare la porta e le strutture dati necessarie per gestire il
+ cliente.
+\end_layout
+
+\begin_layout Standard
+Interessante è il ruolo giocato dalla funzione accept, una funzione bloccante
+ che ritorna solo se c'è un elemento nella coda di attesa delle connessioni,
+ se la code fosse vuota, la funzione accept aspetta finchè non c'è una connessio
+ne da gestire.
+\end_layout
+
+\begin_layout Standard
+La funzione estrae la prima connessione dalla coda del listen socket, ovvero
+ il socket associato al servizio creato con le funzioni precedenti, crea
+ un nuovo socket per l'utente e ritorna un file descriptor per tale socket,
+ il nuovo socket creato non è nello stato di listen.
+\end_layout
+
+\begin_layout Standard
+Se l'operazione di accettazione è andata a buon fine e non ci sono troppi
+ utenti nel sistema, inserisco il nuovo utente nella lista principale degli
+ utenti, aumento il contatore associato alla lista e associo all'utente
+ il thread che dovrà gestire i comandi.
+\end_layout
+
+\begin_layout Standard
+Se invece l'operazione di accettazione è andata a buonfine ma ci sono troppi
+ utenti, semplicemente non creo l'utente e chiudo il socket appena creato.
+\end_layout
+
+\begin_layout Standard
+Infine se l'accettazione non è andata a buon fine termino il programma,
+ evento abbastanza critico ma necessario perchè se la funzione accept fallisce
+ è sintomo di problemi di rete.
+\end_layout
+
+\begin_layout Section
+Valutazione e collaudo
+\end_layout
+
+\begin_layout Standard
+Il programma è stato collaudato man mano con esempi inseriti manualmente
+ ed ogni libreria presente nel progetto è stata provata in diversi scenari
+ durante lo sviluppo cercando di eliminare i bug che si pressentavano via
+ via che il progetto cresceva, importanti sono state le modifiche alla struttra
+ del progetto per la gestione dei comandi WHO e PART.
+ Per risolvere in modo efficente il problema di raggiungere tutti i canali
+ a cui un utente è collegato ho dovuto aggiungere il campo 
+\emph on
+channels
+\emph default
+ all'interno della struttura 
+\emph on
+User
+\emph default
+ con conseguente modifica dei metodi per la creazione e rimozione dell'utente.
+\end_layout
+
+\begin_layout Standard
+Per testare tutti i casi critici delle liste utente e canale mi sono avvalso
+ del framework Check creando due test case ed è grazie a questi test case
+ che sono riuscito a risolvere e identificare i casi critici che non avevo
+ considerato.
+\end_layout
+
+\begin_layout Standard
+Un altro bug che mi ha fatto penare è stata la dimenticanza del carattere
+ 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph default
+ come terminazione delle stringhe di invio all'utente 
 \end_layout
 
 \end_body
