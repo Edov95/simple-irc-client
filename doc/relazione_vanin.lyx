@@ -4,8 +4,13 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass article
+\textclass paper
 \use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -84,6 +89,11 @@
 
 \begin_layout Title
 Server IRC
+\end_layout
+
+\begin_layout SubTitle
+Laboratorio di ingegneria informatica a.a.
+ 2016/2017
 \end_layout
 
 \begin_layout Author
