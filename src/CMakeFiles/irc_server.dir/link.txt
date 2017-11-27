@@ -1,1 +1,0 @@
-/usr/bin/cc -lpthread   CMakeFiles/irc_server.dir/main.c.o  -o ../bin/irc_server ../lib/libuser_lib.a ../lib/libchannel_lib.a ../lib/libuser_thread_lib.a ../lib/libuser_lib.a ../lib/libutils_lib.a 
